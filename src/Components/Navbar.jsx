@@ -1,0 +1,57 @@
+import React from 'react'
+import logo from '../assets/logo-transparent.png'
+import { useState } from 'react'
+import { RxHamburgerMenu } from "react-icons/rx";
+import { RxCross2 } from "react-icons/rx";
+import { Link } from 'react-router-dom';
+
+
+export default function Navbar() {
+
+    const [isopen, setopen] = useState(false);
+
+    const clickfunction = function () {
+        setopen(true)
+    }
+
+
+    return (
+        <div className="flex justify-between h-20 border-b fixed bg-white w-full z-50">
+
+            <div className='flex '>
+                <img src={logo} alt="logo" className='ml-2 rounded-full lg:ml-16  w-16 h-16 mt-2 hover:scale-125' />
+                <h1 className='text-MD mt-7 ml-1 lg:text-2xl font-bold lg:mt-6 lg:ml-2 hover:scale-y-110 hover:scale-x-110'>STUDENT SUPPORT</h1>
+            </div>
+
+            <div className='hidden lg:flex justify-end gap-28 items-center font-semibold mr-10'>
+                <Link to='/Home' className='hover:text-yellow-400'>Home</Link >
+                <Link to='/Project' className='hover:text-yellow-400'>Project</Link >
+                <Link to='/Contact' className='hover:text-yellow-400'>Contact</Link >
+                <Link to='/Admin' className='hover:text-yellow-400'>Admin</Link >
+                <Link to='/login' className='hover:text-yellow-400'>login</Link>
+            </div>
+
+            {isopen ?
+
+                <div className='mr-4 mt-10 bg-slate-100 '>
+                    <RxCross2 size={30} className='relative left-32 p-1' onClick={() => setopen(false)} />
+                    <div className='flex flex-col w-auto scale-x-100 h-auto relative min-w-40 bg-slate-100 font-semibold rounded-sm'>
+                        <Link to='/Home' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Home</Link >
+                        <Link to='/Project' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Project</Link >
+                        <Link to='/Contact' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Contact</Link >
+                        <Link to='/Admin' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Admin</Link>
+                        <Link to='/login' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>login</Link >
+                    </div>
+                </div>
+
+                :
+
+                <button className='lg:hidden border-2 bg-gray-50 rounded-md w-10 block h-10 text-center text-3xl pl-1 mr-4 mt-5' onClick={clickfunction}>
+                    <RxHamburgerMenu />
+                </button>
+
+            }
+
+        </div>
+    )
+}
