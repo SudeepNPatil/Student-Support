@@ -12,8 +12,6 @@ export default function Project() {
     const [stretch, setstretch] = useState(false)
 
 
-
-
     const searchbar = (
         <div className="relative cursor-auto">
             <input type="text" className="min-w-52 cursor-pointer h-10 border font-semibold opacity-80 rounded-xl" />
@@ -21,15 +19,10 @@ export default function Project() {
         </div>)
 
 
-
-
-
-
-
     return (
         <>
             <Navbar />
-            <div className="inset-0 flex flex-row w-screen min-h-screen pt-20">
+            <div className="inset-0 flex flex-row w-screen min-h-screen pt-20 mb-4 sm:mb-10">
                 <div className="sm:w-[20%] bg-green-50 flex flex-col items-center">
                     <h2 className="mt-8 font-bold text-xl text-center">Catagories</h2>
                     <hr className="font-bold w-full mt-5" />

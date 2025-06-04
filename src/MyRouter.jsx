@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App.jsx";
 import Project from "./Components/Project.jsx";
+import Contact from "./Components/Contact.jsx";
 
 
 export default function MyRouter() {
@@ -16,7 +17,7 @@ export default function MyRouter() {
 
                 <Route path="/Project" element={<Project />} />
 
-                <Route path="/Contact" element={<App />} />
+                <Route path="/Contact" element={<Contact />} />
 
                 <Route path="/Admin" element={<App />} />
 
