@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { BsSearch } from "react-icons/bs";
 import { BsCart2 } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
-import Track_order from "../assets/Track_order"
+import trackorder from "../assets/Track_order.png"
 import Footer from "./Footer";
 
 
@@ -42,7 +42,7 @@ export default function Project() {
                         }
                         <BsCart2 className="w-7 h-7 cursor-pointer" />
                         <FaRegHeart className="w-7 h-7 cursor-pointer" />
-                        <img src={Track_order} alt="track_order" className="w-8 h-8 cursor-pointer" />
+                        <img src={trackorder} alt="track_order" className="w-8 h-8 cursor-pointer" />
                     </div>
 
                 </div>
