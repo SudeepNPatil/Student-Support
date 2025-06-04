@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { BsSearch } from "react-icons/bs";
 import { BsCart2 } from "react-icons/bs";
 import { FaRegHeart } from "react-icons/fa";
-import Track_order from "../assets/Track order.png"
+import Track_order from "../assets/Track_order"
 import Footer from "./Footer";
 
 
