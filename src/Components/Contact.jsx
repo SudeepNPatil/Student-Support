@@ -37,19 +37,19 @@ export default function Contact() {
                         </div>
                     </div>
 
-                    <div className="sm:w-1/2 pt-16 sm:pt-24 pl-8">
+                    <div className="w-auto sm:w-1/2 pt-16 sm:pt-24 pl-8 ">
 
                         <label htmlFor="name" >Name </label>
 
-                        <input type="text" className="border w-auto sm:w-96 min-w-80 mt-1 mb-4 h-10 rounded-md pl-2 block text-sm" placeholder='Enter your Name' />
+                        <input type="text" className="border w-11/12 sm:w-96 mt-1 mb-4 h-10 rounded-md pl-2 block text-sm" placeholder='Enter your Name' />
 
                         <label htmlFor="Email" >Email </label>
 
-                        <input type="Email" className="border mt-1 mb-4 sm:w-96 min-w-80 h-10 rounded-md pl-2 block text-sm" placeholder="Enter your Email id" />
+                        <input type="Email" className="border mt-1 mb-4 w-11/12 sm:w-96  h-10 rounded-md pl-2 block text-sm" placeholder="Enter your Email id" />
 
                         <label htmlFor="Email">What service are you interested in </label>
 
-                        <select name="service" id="service" className="sm:w-96 min-w-80 pl-2 h-10 opacity-75 mt-1 mb-4 border rounded-md text-sm">
+                        <select name="service" id="service" className="sm:w-96 w-11/12 pl-2 h-10 opacity-75 mt-1 mb-4 border rounded-md text-sm">
                             <option value="select">Select option </option>
                             <option value="Build Project">Build Project</option>
                             <option value="Buy Project">Buy Project</option>
@@ -62,7 +62,7 @@ export default function Contact() {
 
                         <label htmlFor="Budget" className="block">Budget </label>
 
-                        <select name="amount" id="amount" className="sm:w-96 min-w-80 pl-2 h-10 mt-1 mb-4 opacity-75 border rounded-md text-sm">
+                        <select name="amount" id="amount" className="sm:w-96 w-11/12 pl-2 h-10 mt-1 mb-4 opacity-75 border rounded-md text-sm">
                             <option value="choose amount">choose amount</option>
                             <option value="500">Less than 500</option>
                             <option value="800">Less than 800</option>
@@ -75,9 +75,9 @@ export default function Contact() {
 
                         <label htmlFor="message" className="block">Message </label>
 
-                        <textarea name="text" id="text" placeholder="write what you want to ask about..." className="text-sm min-w-80 sm:w-96 pl-3 pt-2 mt-1 mb-4 min-h-28 border rounded-md"></textarea>
+                        <textarea name="text" id="text" placeholder="write what you want to ask about..." className="text-sm w-11/12 sm:w-96 pl-3 pt-2 mt-1 mb-4 min-h-28 border rounded-md"></textarea>
 
-                        <button className="bg-black text-white min-w-80 block sm:w-96 h-10 rounded-md mb-4">Submit</button>
+                        <button className="bg-black text-white w-11/12 block sm:w-96 h-10 rounded-md mb-4">Submit</button>
                     </div>
 
                 </div>
