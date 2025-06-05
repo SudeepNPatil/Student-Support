@@ -13,11 +13,11 @@ export default function Contact() {
             <div className="flex justify-center mb-8">
                 <div className="flex flex-col sm:flex-row w-screen sm:w-2/3 h-auto rounded-xl border pb-5">
 
-                    <div className="self-center sm:w-1/2 pl-10">
+                    <div className="self-center sm:w-1/2 pl-8">
                         <h1 className="text-2xl sm:text-[35px] font-bold mb-4 pt-36 sm:pt-40 transform scale-y-110">
                             Let's Talk
                         </h1>
-                        <p className="sm:mt-6 mt-3 max-w-96 text-sm sm:text-base">
+                        <p className="sm:mt-6 mt-3 pr-8 sm:pr-0 sm:max-w-96 text-sm sm:text-base">
                             Have some big idea or brand to develop and need help?
                             Then reach out we'd love to hear about your project  and provide help
                         </p>
