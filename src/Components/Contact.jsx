@@ -11,45 +11,45 @@ export default function Contact() {
         <>
             <Navbar />
             <div className="flex justify-center mb-8">
-                <div className="flex w-2/3 h-auto rounded-xl border pb-5">
+                <div className="flex flex-col sm:flex-row w-screen sm:w-2/3 h-auto rounded-xl border pb-5">
 
-                    <div className="self-center w-1/2 pl-10">
-                        <h1 className="text-[35px] font-bold mb-3 pt-40 transform scale-y-110">
+                    <div className="self-center sm:w-1/2 pl-10">
+                        <h1 className="text-2xl sm:text-[35px] font-bold mb-4 pt-36 sm:pt-40 transform scale-y-110">
                             Let's Talk
                         </h1>
-                        <p className="mt-2 max-w-96 ">
+                        <p className="sm:mt-6 mt-3 max-w-96 text-sm sm:text-base">
                             Have some big idea or brand to develop and need help?
                             Then reach out we'd love to hear about your project  and provide help
                         </p>
-                        <h1 className="text-xl font-bold mt-9">
+                        <h1 className="text-lg sm:text-xl font-bold mt-6 sm:mt-9">
                             Email
                         </h1>
                         <div className="flex inset-0 mt-2 gap-1">
-                            <MdOutlineMail className="w-5 h-5 mt-[3px]" />
-                            <p>sudeeppatil873@gmail.com</p>
+                            <MdOutlineMail className="w-5 h-5 sm:mt-[3px]" />
+                            <p className="text-sm sm:text-base">sudeeppatil873@gmail.com</p>
                         </div>
-                        <h1 className="text-xl font-bold mt-9"> Socials </h1>
+                        <h1 className="text-lg sm:text-xl font-bold mt-6 sm:mt-9"> Socials </h1>
                         <div className="flex gap-5  mt-3">
-                            <FaInstagram className="w-5 h-5" />
-                            <BsTwitterX className="w-5 h-5 " />
-                            <FaLinkedin className="w-5 h-5" />
+                            <FaInstagram className="sm:w-5 sm:h-5 w-4 h-4" />
+                            <BsTwitterX className="sm:w-5 sm:h-5 w-4 h-4" />
+                            <FaLinkedin className="sm:w-5 sm:h-5 w-4 h-4" />
 
                         </div>
                     </div>
 
-                    <div className="w-1/2 pt-24 pl-8">
+                    <div className="sm:w-1/2 pt-16 sm:pt-24 pl-8">
 
                         <label htmlFor="name" >Name </label>
 
-                        <input type="text" className="border w-96 mt-1 mb-4 h-10 rounded-md pl-2 block text-sm" placeholder='Enter your Name' />
+                        <input type="text" className="border w-auto sm:w-96 min-w-80 mt-1 mb-4 h-10 rounded-md pl-2 block text-sm" placeholder='Enter your Name' />
 
                         <label htmlFor="Email" >Email </label>
 
-                        <input type="Email" className="border mt-1 mb-4 w-96 h-10 rounded-md pl-2 block text-sm" placeholder="Enter your Email id" />
+                        <input type="Email" className="border mt-1 mb-4 sm:w-96 min-w-80 h-10 rounded-md pl-2 block text-sm" placeholder="Enter your Email id" />
 
                         <label htmlFor="Email">What service are you interested in </label>
 
-                        <select name="service" id="service" className="w-96 pl-2 h-10 opacity-75 mt-1 mb-4 border rounded-md text-sm">
+                        <select name="service" id="service" className="sm:w-96 min-w-80 pl-2 h-10 opacity-75 mt-1 mb-4 border rounded-md text-sm">
                             <option value="select">Select option </option>
                             <option value="Build Project">Build Project</option>
                             <option value="Buy Project">Buy Project</option>
@@ -60,9 +60,9 @@ export default function Contact() {
 
                         </select>
 
-                        <label htmlFor="Budget">Budget </label>
+                        <label htmlFor="Budget" className="block">Budget </label>
 
-                        <select name="amount" id="amount" className="w-96 pl-2 h-10 mt-1 mb-4 opacity-75 border rounded-md text-sm">
+                        <select name="amount" id="amount" className="sm:w-96 min-w-80 pl-2 h-10 mt-1 mb-4 opacity-75 border rounded-md text-sm">
                             <option value="choose amount">choose amount</option>
                             <option value="500">Less than 500</option>
                             <option value="800">Less than 800</option>
@@ -73,11 +73,11 @@ export default function Contact() {
 
                         </select>
 
-                        <label htmlFor="message">Message </label>
+                        <label htmlFor="message" className="block">Message </label>
 
-                        <textarea name="text" id="text" placeholder="write what you want to ask about..." className="text-sm w-96 pl-3 pt-2 mt-1 mb-4 min-h-28 border rounded-md"></textarea>
+                        <textarea name="text" id="text" placeholder="write what you want to ask about..." className="text-sm min-w-80 sm:w-96 pl-3 pt-2 mt-1 mb-4 min-h-28 border rounded-md"></textarea>
 
-                        <button className="bg-black text-white w-96 h-10 rounded-md mb-4">Submit</button>
+                        <button className="bg-black text-white min-w-80 block sm:w-96 h-10 rounded-md mb-4">Submit</button>
                     </div>
 
                 </div>
