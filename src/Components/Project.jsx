@@ -73,8 +73,14 @@ export default function Project() {
                     </div>
 
                     <IoArrowBackCircleOutline className="h-[8%] w-[8%]" onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
-                    <div className={`bg-green-400 rounded-md h-screen fixed right-0 top-36 w-1/4 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                    <div className={`bg-green-50 rounded-md h-full fixed right-0 top-36 w-auto transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                         <IoArrowForwardCircleOutline size={25} className="m-1" onClick={(e) => { e.stopPropagation(), setIsopen(false) }} />
+
+
+                        <p className="text-sm mb-2 pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"> <BsCart2 size={30} className="cursor-pointer inline-block p-2" />Cart</p>
+                        <p className="text-sm mb-2 pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"> <FaRegHeart size={30} className=" cursor-pointer inline-block p-2" />Wishlist</p>
+                        <p className="text-sm mb-5 pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"><img src={trackorder} alt="track_order" className="w-8 h-8 cursor-pointer inline-block p-2" />Order </p>
+
                     </div>
 
                 </div>
