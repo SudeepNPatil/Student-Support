@@ -6,26 +6,35 @@ import { IoIosArrowDropleft } from "react-icons/io";
 
 export default function Ourservices() {
 
-    const [currentindex, setcurrentindex] = useState(0)
+    const [currentindex, setCurrentIndex] = useState(0)
 
     const items = [1, 2, 3]
 
-    const prestep = function () {
+    /*   const prestep = function () {
+  
+          if (currentindex == 2 || currentindex == 1) {
+  
+              setcurrentindex(currentindex - 1);
+          }
+  
+      }
+  
+      const nextstep = function () {
+          if (currentindex == 0 || currentindex == 1) {
+  
+              setcurrentindex(currentindex + 1);
+          }
+  
+      }
+   */
 
-        if (currentindex == 2 || currentindex == 1) {
+    const prestep = () => {
+        setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    };
 
-            setcurrentindex(currentindex - 1);
-        }
-
-    }
-
-    const nextstep = function () {
-        if (currentindex == 0 || currentindex == 1) {
-
-            setcurrentindex(currentindex + 1);
-        }
-
-    }
+    const nextstep = () => {
+        setCurrentIndex((prev) => Math.min(prev + 1, items.length - 1));
+    };
 
     return (
         <>
@@ -44,12 +53,14 @@ export default function Ourservices() {
                 </div>
             </div>
 
-            <div className="relative w-full h-auto overflow-hidden sm:hidden">
+            <div className="relative w-[80vw] mx-auto border self-center h-auto items-center flex sm:hidden">
 
-                <div className="flex transition-transform duration-500 ml-[85px] w-52 h-40 gap-52" style={{ transform: `translateX(-${currentindex * 200}%)` }}>
-
+                <div
+                    className="flex gap-16 overflow-hidden transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentindex * 100}%)` }} // move by 50% per index
+                >
                     {items.map((item, index) => (
-                        <div key={index} className="border h-full w-full flex-shrink-0 bg-gray-50  rounded-xl">
+                        <div key={index} className="border h-40 ml-12  w-1/2 flex-shrink-0  bg-gray-50  rounded-xl">
 
                         </div>
 
@@ -57,18 +68,24 @@ export default function Ourservices() {
 
                 </div>
 
-                <div className="flex flex-row justify-center gap-2 mt-2  sm:hidden">
-
-                    <button className={`w-2 h-2 rounded-full border ${currentindex == 0 ? 'bg-white' : 'bg-gray-200'} `}></button>
-                    <button className={`w-2 h-2 rounded-full border ${currentindex == 1 ? 'bg-white' : 'bg-gray-200'} `}></button>
-                    <button className={`w-2 h-2 rounded-full border  ${currentindex == 2 ? 'bg-white' : 'bg-gray-200'} `}></button>
-
-                </div>
-
-                <IoIosArrowDropleft size={25} className="absolute top-16 left-8 cursor-pointer opacity-65" onClick={prestep} />
-                <IoIosArrowDropright size={25} className="absolute top-16 left-[317px] cursor-pointer opacity-65" onClick={nextstep} />
+                <IoIosArrowDropleft size={25} className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer opacity-65" onClick={prestep} />
+                <IoIosArrowDropright size={25} className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer opacity-65" onClick={nextstep} />
 
             </div>
+
+            <div className="flex flex-row justify-center gap-2 mt-2  sm:hidden">
+
+                <button className={`w-2 h-2 rounded-full border ${currentindex == 0 ? 'bg-white' : 'bg-gray-200'} `}></button>
+                <button className={`w-2 h-2 rounded-full border ${currentindex == 1 ? 'bg-white' : 'bg-gray-200'} `}></button>
+                <button className={`w-2 h-2 rounded-full border  ${currentindex == 2 ? 'bg-white' : 'bg-gray-200'} `}></button>
+
+            </div>
+
+
+
+
+
+
 
         </>
 

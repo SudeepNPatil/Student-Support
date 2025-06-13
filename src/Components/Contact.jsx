@@ -86,32 +86,3 @@ export default function Contact() {
         </>
     )
 }
-
-/* 
- <div className="border h-screen self-center w-1/2 bg-red-50 pl-32">
-                    <h1 className="text-[30px] font-bold pt-52">
-                        Let's Talk
-                    </h1>
-                    <p className="mt-2 max-w-96 border">
-                        Have some big idea or brand to develop and need help?
-                        Then reach out we'd love to hear about your project  and provide help
-                    </p>
-                    <h1 className="text-xl font-bold mt-4">
-                        Email
-                    </h1>
-                    <div className="flex inset-0 mt-2 gap-1">
-                        <MdOutlineMail className="w-5 h-5 mt-[3px]" />
-                        <p>sudeeppatil873@gmail.com</p>
-                    </div>
-                    <h1 className="text-xl font-bold mt-4"> Socials </h1>
-                    <div className="flex gap-5  mt-4">
-                        <FaInstagram className="w-5 h-5" />
-                        <BsTwitterX className="w-5 h-5 " />
-                        <FaLinkedin className="w-5 h-5" />
-
-                    </div>
-                </div>
-
-                <div className="border h-screen w-1/2 bg-green-50">
-
-                </div> */
