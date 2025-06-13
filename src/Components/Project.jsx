@@ -73,19 +73,21 @@ export default function Project() {
                     </div>
 
                     <IoArrowBackCircleOutline className="h-[8%] w-[8%]" onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
-
-                    <div className={`bg-green-400 rounded-md h-screen absolute right-0 top-36 w-1/4 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                    <div className={`bg-green-400 rounded-md h-screen fixed right-0 top-36 w-1/4 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                         <IoArrowForwardCircleOutline size={25} className="m-1" onClick={(e) => { e.stopPropagation(), setIsopen(false) }} />
                     </div>
 
-
                 </div>
+
 
                 <div className={`bg-green-50 rounded-xl h-screen w-1/2 absolute left-0 top-36 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
 
                     <MdArrowBackIosNew size={30} className="absolute top-1/2 right-0 border rounded-full p-2" />
 
                 </div>
+
+
+
 
             </div>
 
