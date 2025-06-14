@@ -16,6 +16,7 @@ export default function Project() {
 
     const [isOpen, setIsopen] = useState(false)
 
+    let items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 2, 3, 4, 5, 6, 7];
 
     const searchbar = (
         <div className="relative cursor-auto">
@@ -73,7 +74,7 @@ export default function Project() {
                     </div>
 
                     <IoArrowBackCircleOutline className="h-[8%] w-[8%]" onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
-                    <div className={`bg-green-50 rounded-md h-full fixed right-0 top-36 w-auto transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                    <div className={`bg-green-50 rounded-md h-full fixed right-0 top-24 w-auto transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                         <IoArrowForwardCircleOutline size={25} className="m-1" onClick={(e) => { e.stopPropagation(), setIsopen(false) }} />
 
 
@@ -86,20 +87,27 @@ export default function Project() {
                 </div>
 
 
-                <div className={`bg-green-50 rounded-xl h-screen w-1/2 absolute left-0 top-36 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className={`bg-green-50 rounded-xl h-screen w-1/2 absolute left-0 top-24 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
 
                     <MdArrowBackIosNew size={30} className="absolute top-1/2 right-0 border rounded-full p-2" />
 
                 </div>
 
 
+                <div className="flex flex-wrap justify-center gap-4 p-4">
 
+                    {items.map((item, index) => (
+                        <div key={index} className="bg-gray-300 w-40 h-40 flex items-center justify-center rounded-2xl">
+                            {item}
+                        </div>
+                    ))
+                    }
 
+                </div>
+
+                <Footer />
             </div>
 
-
-
-            {/*  <Footer /> */}
         </>
     )
 }

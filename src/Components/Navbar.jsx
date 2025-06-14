@@ -31,26 +31,22 @@ export default function Navbar() {
                 <Link to='/login' className='hover:text-yellow-400'>login</Link>
             </div>
 
-            {isopen ?
 
-                <div className='mr-4 mt-10 bg-slate-100 '>
-                    <RxCross2 size={30} className='relative left-32 p-1' onClick={() => setopen(false)} />
-                    <div className='flex flex-col w-auto scale-x-100 h-auto relative min-w-40 bg-slate-100 font-semibold rounded-sm'>
-                        <Link to='/Home' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Home</Link >
-                        <Link to='/Project' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Project</Link >
-                        <Link to='/Contact' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Contact</Link >
-                        <Link to='/Admin' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Admin</Link>
-                        <Link to='/login' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>login</Link >
-                    </div>
+            <div className={`mt-5 bg-slate-100 fixed right-0 transform transition-transform duration-300 ease-in-out ${isopen ? 'translate-x-0' : 'translate-x-full'} `}>
+                <RxCross2 size={30} className='relative left-32 p-1' onClick={() => setopen(false)} />
+                <div className='flex flex-col w-auto scale-x-100 h-auto relative min-w-40 bg-slate-100 font-semibold rounded-sm'>
+                    <Link to='/Home' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Home</Link >
+                    <Link to='/Project' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Project</Link >
+                    <Link to='/Contact' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Contact</Link >
+                    <Link to='/Admin' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Admin</Link>
+                    <Link to='/login' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>login</Link >
                 </div>
+            </div>
 
-                :
+            <button className='lg:hidden border-2 bg-gray-50 rounded-md w-10 block h-10 text-center text-3xl pl-1 mr-4 mt-5' onClick={clickfunction}>
+                <RxHamburgerMenu />
+            </button>
 
-                <button className='lg:hidden border-2 bg-gray-50 rounded-md w-10 block h-10 text-center text-3xl pl-1 mr-4 mt-5' onClick={clickfunction}>
-                    <RxHamburgerMenu />
-                </button>
-
-            }
 
         </div>
     )
