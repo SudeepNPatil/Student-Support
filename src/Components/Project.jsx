@@ -18,41 +18,42 @@ export default function Project() {
 
     let items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 2, 3, 4, 5, 6, 7];
 
-    const searchbar = (
-        <div className="relative cursor-auto">
-            <input type="text" className="min-w-52 cursor-pointer h-10 border font-semibold opacity-80 rounded-xl" />
-            {/*  <BsSearch size={20} className="absolute top-2 " /> */}
-        </div>)
-
 
     return (
         <>
             <Navbar />
-            <div className="inset-0 hidden sm:flex flex-row w-screen min-h-screen pt-20 mb-4 sm:mb-10">
-                <div className="sm:w-[20%] bg-green-50 sm:flex flex-col items-center">
-                    <h2 className="mt-8 font-bold text-xl text-center">Catagories</h2>
-                    <hr className="font-bold w-full mt-5" />
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">E-commerce</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">IOT</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">AI/ML</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Portfolio</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Others</p>
-                </div>
-                <div className="flex-1">
-                    <div className="flex justify-end gap-16 pr-16 pt-10 border-b">
-                        {
+            <div className="hidden inset-0 sm:flex flex-col">
+                <div className="inset-0 hidden sm:flex flex-row w-screen min-h-screen pt-20 mb-4 sm:mb-10">
+                    <div className="sm:w-[20%] bg-green-50 sm:flex flex-col items-center border-r">
+                        <h2 className="mt-8 font-bold text-xl text-center">Catagories</h2>
+                        <hr className="font-bold w-full mt-5" />
+                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">E-commerce</p>
+                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">IOT</p>
+                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">AI/ML</p>
+                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</p>
+                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Portfolio</p>
+                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Others</p>
+                    </div>
+                    <div className="flex-1">
+                        <div className="flex justify-evenly gap-16  h-20 border-b items-center">
 
-                            stretch ? searchbar : <BsSearch className="w-7 h-7 cursor-pointer" onClick={() => { setstretch(true) }} />
+                            <div className="flex flex-row">
+                                <BsSearch size={20} className="-mr-8 self-center z-10 cursor-pointer" />
+                                <input type="text" name="text" id="some" className="h-10 w-80 border rounded-md pl-12" placeholder="Search..." />
+                            </div>
 
-                        }
-                        <BsCart2 className="w-7 h-7 cursor-pointer" />
-                        <FaRegHeart className="w-7 h-7 cursor-pointer" />
-                        <img src={trackorder} alt="track_order" className="w-8 h-8 cursor-pointer" />
+                            <BsCart2 className="w-7 h-7 cursor-pointer" />
+                            <FaRegHeart className="w-7 h-7 cursor-pointer" />
+
+                            <img src={trackorder} alt="track_order" className="w-8 h-8 cursor-pointer" />
+                        </div>
+
                     </div>
 
                 </div>
+                <Footer />
             </div>
+
 
             {/* for mobile design */}
 
@@ -60,20 +61,21 @@ export default function Project() {
                 <div className="flex justify-between items-center gap-4 pl-5 pr-5 pt-5" >
 
 
-                    <button className="w-1/3 h-8 border rounded-lg text-center bg-green-100" onClick={(e) => { e.stopPropagation(), setstretch(true) }}>Category   <IoArrowForwardCircleOutline size={14} className="inline-block" /></button>
+                    <button className="w-2/3 min-w-[50px] max-w-[110px] h-8 border text-sm opacity-85 rounded-lg text-center bg-green-100" onClick={(e) => { e.stopPropagation(), setstretch(true) }}>Category<IoArrowForwardCircleOutline size={14} className="inline-block ml-0.5" /></button>
 
-                    <div className="inline-flex items-center gap-2 p-1 border rounded-lg">
-                        <BsSearch className="w-4 h-4 shrink-0 opacity-75" />
-                        <input
-                            type="text"
-                            name="text"
-                            id="text"
-                            className="h-6 outline-none text-sm p-0"
-                            placeholder="Search..."
-                        />
-                    </div>
 
-                    <IoArrowBackCircleOutline className="h-[8%] w-[8%]" onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
+                    <BsSearch size={15} className="-mr-10 ml-2 z-10 self-center flex-shrink-0" />
+
+                    <input
+                        type="text"
+                        name="text"
+                        id="text"
+                        className="pl-8 border rounded-md h-8 w-2/3"
+                        placeholder="Search..."
+                    />
+
+
+                    <IoArrowBackCircleOutline size={35} onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
                     <div className={`bg-green-50 rounded-md h-full fixed right-0 top-24 w-auto transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                         <IoArrowForwardCircleOutline size={25} className="m-1" onClick={(e) => { e.stopPropagation(), setIsopen(false) }} />
 
@@ -90,6 +92,13 @@ export default function Project() {
                 <div className={`bg-green-50 rounded-xl h-screen w-1/2 absolute left-0 top-24 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
 
                     <MdArrowBackIosNew size={30} className="absolute top-1/2 right-0 border rounded-full p-2" />
+
+                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">E-commerce</p>
+                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">IOT</p>
+                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">AI/ML</p>
+                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</p>
+                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Portfolio</p>
+                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">Others</p>
 
                 </div>
 
