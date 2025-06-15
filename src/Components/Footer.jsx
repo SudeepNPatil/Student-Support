@@ -7,7 +7,7 @@ import { MdOutlineMail } from "react-icons/md";
 export default function Footer() {
     return (
         <div className="bg-slate-50 pb-8 sm:pb-5">
-            <div className="flex flex-row justify-center gap-6 sm:gap-96">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-96">
 
                 <ul className="flex flex-col mt-4 sm:mt-10">
                     <li>
@@ -26,7 +26,7 @@ export default function Footer() {
                         <a href="#">About Us</a>
                     </li>
                 </ul>
-                <div className="mt-5  sm:mt-10">
+                <div className="self-center ml-20 m:mt-10">
                     <h1 className="text-sm sm:text-xl font-bold opacity-75">Stay connected</h1>
                     <MdOutlineMail className="inline-block opacity-65 w-4 h-4 sm:w-5 sm:h-5" />
                     <p className="inline-block sm:mt-3 sm:ml-2 mt-2 opacity-75 ml-2 text-sm sm:text-base ">sudeeppatil873@gmail.com</p>
@@ -38,9 +38,9 @@ export default function Footer() {
                 </div>
 
             </div>
-            <div className="flex flex-row justify-center gap-6 sm:gap-96 mt-6 sm:mt-10 pb-6 sm:pb-10 opacity-70">
+            <div className="flex flex-col ml-10 sm:flex-row justify-center items-center gap-6 sm:gap-96 mt-6 sm:mt-10 pb-6 sm:pb-10 opacity-70">
                 <p className="text-sm sm:text-base">Built with 💛 by Sudeep</p>
-                <p className="text-sm sm:text-base sm-0 sm:mr-7">© 2025 All rights reserved</p>
+                <p className="text-sm sm:text-base sm:mr-7">© 2025 All rights reserved</p>
             </div>
 
         </div>
