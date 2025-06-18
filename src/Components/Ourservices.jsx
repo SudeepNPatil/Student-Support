@@ -8,33 +8,15 @@ export default function Ourservices() {
 
     const [currentindex, setCurrentIndex] = useState(0)
 
-    const items = [1, 2, 3]
-
-    /*   const prestep = function () {
-  
-          if (currentindex == 2 || currentindex == 1) {
-  
-              setcurrentindex(currentindex - 1);
-          }
-  
-      }
-  
-      const nextstep = function () {
-          if (currentindex == 0 || currentindex == 1) {
-  
-              setcurrentindex(currentindex + 1);
-          }
-  
-      }
-   */
-
     const prestep = () => {
-        setCurrentIndex((prev) => Math.max(prev - 1, 0));
+        setCurrentIndex(currentindex - 1);
     };
 
     const nextstep = () => {
-        setCurrentIndex((prev) => Math.min(prev + 1, items.length - 1));
+        setCurrentIndex(currentindex + 1);
     };
+
+    let items = [0, 1, 2];
 
     return (
         <>
@@ -53,25 +35,31 @@ export default function Ourservices() {
                 </div>
             </div>
 
-            <div className="relative w-[80vw] mx-auto border self-center h-auto items-center flex sm:hidden">
+            {/* Mobile view */}
 
-                <div
-                    className="flex gap-16 overflow-hidden transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentindex * 100}%)` }} // move by 50% per index
-                >
-                    {items.map((item, index) => (
-                        <div key={index} className="border h-40 ml-12  w-1/2 flex-shrink-0  bg-gray-50  rounded-xl">
+            <div className="relative w-[80vw] text-center self-center h-auto sm:hidden">
 
-                        </div>
-
-                    ))}
-
+                <div className="overflow-hidden relative w-[55vw] mx-auto">
+                    <div
+                        className="flex h-40 transition-transform duration-500 ease-in-out"
+                        style={{ transform: `translateX(-${currentindex * 100}%)` }}
+                    >
+                        {items.map((item, index) => (
+                            <div
+                                key={index}
+                                className="w-[55vw] flex-shrink-0 bg-gray-50 rounded-xl border p-4"
+                            >
+                                {item}
+                            </div>
+                        ))}
+                    </div>
                 </div>
 
-                <IoIosArrowDropleft size={25} className="absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer opacity-65" onClick={prestep} />
-                <IoIosArrowDropright size={25} className="absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer opacity-65" onClick={nextstep} />
 
-            </div>
+                <IoIosArrowDropleft className="w-5 h-5 absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer opacity-65" onClick={prestep} />
+                <IoIosArrowDropright className="w-5 h-5 absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer opacity-65" onClick={nextstep} />
+
+            </div >
 
             <div className="flex flex-row justify-center gap-2 mt-2  sm:hidden">
 

@@ -3,15 +3,47 @@ import { FaInstagram } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
+import { Link } from "react-router-dom";
+
 
 export default function Footer() {
     return (
-        <div className="bg-slate-50 pb-8 sm:pb-5">
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-96">
+        <div className="bg-slate-50 pb-8 flex flex-row justify-center gap-5">
 
-                <ul className="flex flex-col mt-4 sm:mt-10">
-                    <li>
-                        <a href="#" className="text-sm sm:text-xl font-bold opacity-75">Student Support</a>
+            <div className="bg-blue-500 p-2 flex flex-col gap-2 text-sm">
+                <Link to='/#' className="font-semibold">Student Support</Link>
+                <Link to='/#'>Home</Link>
+                <Link to='/#'>Project</Link>
+                <Link to='/#'>Contact</Link>
+                <Link to='/#'>About Us</Link>
+            </div>
+
+            <div className="bg-orange-500 text-sm flex flex-col">
+
+                <h1 className="font-semibold">Stay connected</h1>
+                <MdOutlineMail className="inline-block opacity-65 w-4 h-4" />
+                <p className="inline-block">sudeeppatil873@gmail.com</p>
+                <div className="flex flex-row justify-start gap-3 sm:gap-6 mt-3 sm:mt-4 opacity-70">
+                    <FaInstagram className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <BsTwitterX className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <FaLinkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+
+            </div>
+
+        </div>
+    )
+}
+
+
+
+
+
+/*   <div className="flex flex-row  sm:gap-96 border border-black">
+
+                <ul className="flex flex-col mt-8 sm:mt-10">
+                    <li className="text-sm sm:text-xl font-bold opacity-75">
+                        <a href="#" >Student Support</a>
                     </li>
                     <li className="pt-3 font-semibold opacity-75 text-sm sm:text-base">
                         <a href="#">Home</a>
@@ -43,6 +75,4 @@ export default function Footer() {
                 <p className="text-sm sm:text-base sm:mr-7">© 2025 All rights reserved</p>
             </div>
 
-        </div>
-    )
-}
+        </div> */
