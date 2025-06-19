@@ -5,7 +5,7 @@ import Ready2Go from '../assets/Ready2Go.jpeg'
 import Support from '../assets/Support.jpeg'
 import SellProject from '../assets/SellProject.jpeg'
 import getstuck from '../assets/getstuck.jpeg'
-import { FaLocationArrow } from "react-icons/fa6";
+import { GoArrowRight } from "react-icons/go";
 
 
 export default function Ourservices() {
@@ -47,7 +47,7 @@ export default function Ourservices() {
 
             {/* Mobile view */}
 
-            <div className="relative w-[80vw] text-center self-center h-auto sm:hidden">
+            <div className="relative w-[85vw] text-center self-center h-auto sm:hidden">
 
                 <div className="overflow-hidden relative w-[60vw] mx-auto">
                     <div
@@ -60,7 +60,10 @@ export default function Ourservices() {
                                 className="w-[60vw] flex-shrink-0 rounded-xl"
                             >
                                 <img src={item.image} alt="img" className="relative border opacity-80 w-full h-full rounded-xl" />
-                                <h1 className="text-md w-full font-semibold absolute bottom-3 z-10 hover:bg-transparent hover:border rounded-md">{item.name}<FaLocationArrow size={20} className="inline-block ml-2 text-yellow-400 rounded-full hover:border hover:bg-transparent animate-bounce" /></h1>
+                                <div className="flex flex-row gap-2 justify-center items-center w-full absolute bottom-3 z-10">
+                                    <h1 className="text-md w-fit p-1 font-semibold bg-[#00000030]  hover:bg-transparent hover:border rounded-md">{item.name}</h1>
+                                    <GoArrowRight size={25} className="rounded-full hover:border bg-[#00000020]  hover:bg-[#00000025] animate-horizontal-bounce" />
+                                </div>
                             </div>
                         ))}
                     </div>
