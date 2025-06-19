@@ -49,17 +49,17 @@ export default function Ourservices() {
 
             <div className="relative w-[80vw] text-center self-center h-auto sm:hidden">
 
-                <div className="overflow-hidden relative w-[55vw] mx-auto">
+                <div className="overflow-hidden relative w-[60vw] mx-auto">
                     <div
-                        className="flex h-40 transition-transform duration-500 ease-in-out"
+                        className="flex h-48 rounded-xl transition-transform duration-500 ease-in-out"
                         style={{ transform: `translateX(-${currentindex * 100}%)` }}
                     >
                         {items.map((item, index) => (
                             <div
                                 key={index}
-                                className="w-[55vw] flex-shrink-0 rounded-xl"
+                                className="w-[60vw] flex-shrink-0 rounded-xl"
                             >
-                                <img src={item.image} alt="img" className="relative opacity-80 w-full h-full rounded-xl" />
+                                <img src={item.image} alt="img" className="relative border opacity-80 w-full h-full rounded-xl" />
                                 <h1 className="text-md w-full font-semibold absolute bottom-3 z-10 hover:bg-transparent hover:border rounded-md">{item.name}<FaLocationArrow size={20} className="inline-block ml-2 text-yellow-400 rounded-full hover:border hover:bg-transparent animate-bounce" /></h1>
                             </div>
                         ))}
