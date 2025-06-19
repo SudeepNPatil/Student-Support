@@ -1,7 +1,11 @@
 import React, { useState } from "react";
-
 import { IoIosArrowDropright } from "react-icons/io";
 import { IoIosArrowDropleft } from "react-icons/io";
+import Ready2Go from '../assets/Ready2Go.jpeg'
+import Support from '../assets/Support.jpeg'
+import SellProject from '../assets/SellProject.jpeg'
+import getstuck from '../assets/getstuck.jpeg'
+import { FaLocationArrow } from "react-icons/fa6";
 
 
 export default function Ourservices() {
@@ -9,14 +13,20 @@ export default function Ourservices() {
     const [currentindex, setCurrentIndex] = useState(0)
 
     const prestep = () => {
-        setCurrentIndex(currentindex - 1);
+        if (currentindex == 1 || currentindex == 2 || currentindex == 3) {
+            setCurrentIndex(currentindex - 1);
+        }
+
     };
 
     const nextstep = () => {
-        setCurrentIndex(currentindex + 1);
+        if (currentindex == 0 || currentindex == 1 || currentindex == 2) {
+            setCurrentIndex(currentindex + 1);
+        }
+
     };
 
-    let items = [0, 1, 2];
+    let items = [{ image: SellProject, name: "Ready2Go Projects" }, { image: Ready2Go, name: "Custom Build Service" }, { image: Support, name: "🧭 Project Navigator" }, { image: getstuck, name: "Debug & Rescue" }];
 
     return (
         <>
@@ -47,9 +57,10 @@ export default function Ourservices() {
                         {items.map((item, index) => (
                             <div
                                 key={index}
-                                className="w-[55vw] flex-shrink-0 bg-gray-50 rounded-xl border p-4"
+                                className="w-[55vw] flex-shrink-0 rounded-xl"
                             >
-                                {item}
+                                <img src={item.image} alt="img" className="relative opacity-80 w-full h-full rounded-xl" />
+                                <h1 className="text-md w-full font-semibold absolute bottom-3 z-10 hover:bg-transparent hover:border rounded-md">{item.name}<FaLocationArrow size={20} className="inline-block ml-2 text-yellow-400 rounded-full hover:border hover:bg-transparent animate-bounce" /></h1>
                             </div>
                         ))}
                     </div>
@@ -66,7 +77,7 @@ export default function Ourservices() {
                 <button className={`w-2 h-2 rounded-full border ${currentindex == 0 ? 'bg-white' : 'bg-gray-200'} `}></button>
                 <button className={`w-2 h-2 rounded-full border ${currentindex == 1 ? 'bg-white' : 'bg-gray-200'} `}></button>
                 <button className={`w-2 h-2 rounded-full border  ${currentindex == 2 ? 'bg-white' : 'bg-gray-200'} `}></button>
-
+                <button className={`w-2 h-2 rounded-full border  ${currentindex == 3 ? 'bg-white' : 'bg-gray-200'} `}></button>
             </div>
 
 
