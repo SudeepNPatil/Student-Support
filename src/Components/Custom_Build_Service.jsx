@@ -15,8 +15,8 @@ export default function Custom_Build_Service() {
             <div className="flex flex-col items-center mt-5 flex-wrap">
                 <form className="flex flex-col flex-wrap">
 
-                    <label htmlFor="name">Name :</label>
-                    <input type="text" id="value" placeholder="Enter your Full Name" className="border rounded-md text-sm h-8 pl-2 mb-2 w-[80vw] bg-gray-200" />
+                    <label htmlFor="Name">Name :</label>
+                    <input type="text" id="Name" placeholder="Enter your Full Name" className="border rounded-md text-sm h-8 pl-2 mb-2 w-[80vw] bg-gray-200" />
                     <label htmlFor="number">Phone Number :</label>
                     <input type="number" id="number" placeholder="Enter your phone Number" className="border  rounded-md h-8 pl-2 mb-2 text-sm w-[80vw] bg-gray-200" />
                     <label htmlFor="Email">Email :</label>
