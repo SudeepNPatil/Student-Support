@@ -79,7 +79,7 @@ export default function Ourservices() {
 
                 <div className="overflow-hidden relative w-[80vw] mx-auto">
                     <div
-                        className="flex h-48 rounded-xl transition-transform duration-500 ease-in-out"
+                        className="flex h-48 xss:h-52 xs:h-56 ls:h-60 rounded-xl transition-transform duration-500 ease-in-out"
                         style={{ transform: `translateX(-${currentindex * 100}%)` }}
                     >
                         {items.map((item, index) => (
