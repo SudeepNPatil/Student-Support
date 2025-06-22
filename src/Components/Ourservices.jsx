@@ -6,11 +6,14 @@ import Support from '../assets/Support.jpeg'
 import SellProject from '../assets/SellProject.jpeg'
 import getstuck from '../assets/getstuck.jpeg'
 import { GoArrowRight } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Ourservices() {
 
     const [currentindex, setCurrentIndex] = useState(0)
+
+    const navigate = useNavigate('')
 
     const prestep = () => {
         if (currentindex == 1 || currentindex == 2 || currentindex == 3) {
@@ -25,6 +28,31 @@ export default function Ourservices() {
         }
 
     };
+
+    const handleclick = function (e) {
+
+        let val = e.target.innerText
+        if (val === 'Ready2Go Projects') {
+
+            navigate("/Project")
+        }
+        else if (val === 'Custom Build Service') {
+            navigate('/Custom_Build_Service')
+        }
+        else if (val === '🧭 Project Navigator') {
+            navigate('/Project_Navigator')
+        }
+        else if (val === 'Debug & Rescue') {
+
+            navigate('/Debug_Rescue')
+
+        }
+        else {
+
+        }
+
+    }
+
 
     let items = [{ image: SellProject, name: "Ready2Go Projects" }, { image: Ready2Go, name: "Custom Build Service" }, { image: Support, name: "🧭 Project Navigator" }, { image: getstuck, name: "Debug & Rescue" }];
 
@@ -60,9 +88,9 @@ export default function Ourservices() {
                                 className="w-[60vw] flex-shrink-0 rounded-xl"
                             >
                                 <img src={item.image} alt="img" className="relative border opacity-80 w-full h-full rounded-xl" />
-                                <div className="flex flex-row gap-2 justify-center items-center w-full absolute bottom-3 z-10">
+                                <div className="flex flex-row gap-2 justify-center items-center w-full absolute bottom-3 z-10" onClick={handleclick}>
                                     <h1 className="text-md w-fit p-1 font-semibold bg-[#00000030]  hover:bg-transparent hover:border rounded-md">{item.name}</h1>
-                                    <GoArrowRight size={25} className="rounded-full hover:border bg-[#00000020]  hover:bg-[#00000025] animate-horizontal-bounce" />
+                                    <GoArrowRight size={25} className="rounded-full hover:border bg-[#00000020]  hover:bg-[#00000025] animate-horizontal-bounce" onClick={handleclick} />
                                 </div>
                             </div>
                         ))}
@@ -82,10 +110,6 @@ export default function Ourservices() {
                 <button className={`w-2 h-2 rounded-full border  ${currentindex == 2 ? 'bg-white' : 'bg-gray-200'} `}></button>
                 <button className={`w-2 h-2 rounded-full border  ${currentindex == 3 ? 'bg-white' : 'bg-gray-200'} `}></button>
             </div>
-
-
-
-
 
 
 
