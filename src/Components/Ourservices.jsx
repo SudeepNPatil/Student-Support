@@ -77,7 +77,7 @@ export default function Ourservices() {
 
             <div className="relative w-[85vw] text-center self-center h-auto sm:hidden">
 
-                <div className="overflow-hidden relative w-[60vw] mx-auto">
+                <div className="overflow-hidden relative w-[80vw] mx-auto">
                     <div
                         className="flex h-48 rounded-xl transition-transform duration-500 ease-in-out"
                         style={{ transform: `translateX(-${currentindex * 100}%)` }}
@@ -85,7 +85,7 @@ export default function Ourservices() {
                         {items.map((item, index) => (
                             <div
                                 key={index}
-                                className="w-[60vw] flex-shrink-0 rounded-xl"
+                                className="w-[80vw] flex-shrink-0 rounded-xl"
                             >
                                 <img src={item.image} alt="img" className="relative border opacity-80 w-full h-full rounded-xl" />
                                 <div className="flex flex-row gap-2 justify-center items-center w-full absolute bottom-3 z-10" onClick={handleclick}>
