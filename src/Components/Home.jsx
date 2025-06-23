@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Homeimg from "../assets/Homeimg1.png"
 import Ourservices from "./Ourservices";
+import How_we_Support_you from "./How_we_Support_you";
 
 
 
@@ -8,6 +9,7 @@ export default function Home() {
 
 
     return (
+
         <div className="flex flex-col pt-20 relative mb-8 sm:mb-20">
 
             <div className="relative">
@@ -28,6 +30,14 @@ export default function Home() {
             </div>
 
             <Ourservices />
+
+            <How_we_Support_you />
+
         </div>
+
+
+
+
+
     )
 }
