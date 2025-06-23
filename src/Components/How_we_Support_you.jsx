@@ -13,7 +13,7 @@ export default function How_we_Support_you() {
                 <div className="flex gap-5 mt-2  transition-all duration-500">
                     <div className="flex flex-col gap-4  flex-wrap items-center">
                         <button className="border-2 border-black w-7 h-7 rounded-3xl">1</button>
-                        <div className="w-2 flex-auto bg-blue-200 rounded-sm"></div>
+                        <div className="w-[5px] flex-auto bg-blue-200 rounded-sm"></div>
                     </div>
                     <div className="flex flex-col">
                         <h1 className="text-[17px] font-semibold">Ready2go Project</h1>
@@ -26,7 +26,7 @@ export default function How_we_Support_you() {
                 <div className="flex gap-5 mt-4 transition-all duration-500">
                     <div className="flex flex-col gap-4 flex-wrap items-center">
                         <button className="border-2 border-black w-7 h-7 rounded-3xl">2</button>
-                        <div className="w-2 flex-auto bg-blue-200 rounded-sm"></div>
+                        <div className="w-[5px] flex-auto bg-blue-200 rounded-sm"></div>
                     </div>
 
                     <div className="flex flex-col">
@@ -40,7 +40,7 @@ export default function How_we_Support_you() {
                 <div className="flex gap-5 mt-4  transition-all duration-500">
                     <div className="flex flex-col gap-4 flex-wrap items-center">
                         <button className="border-2 border-black w-7 h-7 rounded-3xl">3</button>
-                        <div className="flex-auto w-2 bg-blue-200 rounded-sm"></div>
+                        <div className="flex-auto w-[5px] bg-blue-200 rounded-sm"></div>
                     </div>
 
                     <div className="flex flex-col">
@@ -54,7 +54,7 @@ export default function How_we_Support_you() {
                 <div className="flex gap-5 mt-4 transition-all duration-500">
                     <div className="flex flex-col gap-4 flex-wrap items-center">
                         <button className="border-2 border-black w-7 h-7 rounded-3xl">4</button>
-                        <div className="flex-auto w-2 bg-blue-200 rounded-sm"></div>
+                        <div className="flex-auto w-[5px] bg-blue-200 rounded-sm"></div>
                     </div>
 
                     <div className="flex flex-col">
