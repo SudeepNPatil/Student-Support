@@ -32,8 +32,12 @@ export default function Debug_Rescue() {
                     <button className="bg-black text-white text-center  rounded-md h-8 text-sm w-[80vw]">Submit</button>
                 </form>
 
-                <div className="w-[80vw] border h-52 rounded-md mt-10 bg-gray-200 mb-8">
+                <div className="w-[80vw] border h-52 rounded-md mt-10 mb-8">
 
+                    <div className="flex flex-col justify-center">
+                        <MdErrorOutline size={52} className="mt-14 self-center opacity-70 text-red-300" />
+                        <p className="text-sm text-center font-light opacity-65 mt-2">You are not submited your code error yet !</p>
+                    </div>
                 </div>
 
 

@@ -30,8 +30,11 @@ export default function Custom_Build_Service() {
                     <button className="bg-black text-white text-center  rounded-md h-8 text-sm w-[80vw]">Submit</button>
                 </form>
 
-                <div className="w-[80vw] border h-52 rounded-md mt-10 bg-gray-200">
-
+                <div className="w-[80vw] border h-52 rounded-md mt-10">
+                    <div className="flex flex-col justify-center">
+                        <FcIdea size={52} className="mt-14 self-center opacity-70" />
+                        <p className="text-sm text-center font-light opacity-65 mt-2">You are not submited your idea yet !</p>
+                    </div>
                 </div>
 
                 <div className="w-[80vw] text-sm mt-8 mb-10">
@@ -61,14 +64,14 @@ export default function Custom_Build_Service() {
                     <form className="flex xl:flex-col xl:flex-wrap p-14 xl:min-w-[35vw]">
                         <h1 className="text-center font-semibold text-xl -mt-2 mb-8">Fill the Details </h1>
                         <label htmlFor="Name">Name :</label>
-                        <input type="text" id="Name" placeholder="Enter your Full Name" className="border rounded-md text-sm h-8 pl-2 mb-4 mt-2 bg-gray-200" />
+                        <input type="text" id="Name" placeholder="Enter your Full Name" className="border rounded-md text-sm h-10 pl-2 mb-5 mt-2" />
                         <label htmlFor="number">Phone Number :</label>
-                        <input type="number" id="number" placeholder="Enter your phone Number" className="border  rounded-md h-8 pl-2 mb-4 mt-2 text-sm  bg-gray-200" />
+                        <input type="number" id="number" placeholder="Enter your phone Number" className="border  rounded-md h-10  pl-2 mb-5 mt-2 text-sm " />
                         <label htmlFor="Email">Email :</label>
-                        <input type="text" id="Email" placeholder="Enter email id" className="border  rounded-md text-sm mb-4 mt-2 h-8 pl-2 bg-gray-200 " />
+                        <input type="text" id="Email" placeholder="Enter email id" className="border  rounded-md text-sm mb-5 mt-2 h-10 pl-2 " />
                         <label htmlFor="textarea">Describe your idea :</label>
-                        <textarea name="textarea" id="textarea" placeholder="describe your Project idea here..." className="border mb-4 mt-2 pl-2 h-20 rounded-md text-sm bg-gray-200"></textarea>
-                        <button className="bg-black text-white text-center  rounded-md h-8 text-sm">Submit</button>
+                        <textarea name="textarea" id="textarea" placeholder="describe your Project idea here..." className="border mb-8 mt-2 pl-2 h-24 rounded-md text-sm"></textarea>
+                        <button className="bg-black text-white text-center  rounded-md h-10 text-sm">Submit</button>
                     </form>
 
                 </div>
@@ -82,7 +85,6 @@ export default function Custom_Build_Service() {
                 </div>
 
             </div>
-
 
             <Footer />
         </>
