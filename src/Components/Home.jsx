@@ -27,7 +27,7 @@ export default function Home() {
                 <h1 className="font-bold text-lime-100 xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl sl:text-2xl xs:text-xl text-lg">Welcome to Student Support</h1>
 
                 <p className="lg:text-xl md:text-sm sm:text-[12px] sl:text-[10px] xs:text-[8px] text-[7px]  lg:mt-5 md:mt-3 sm:mt-2 sl:mt-1 xs:mt-0 mt-0 text-gray-300">Looking for custom and user-friendly projects?Then get from us</p>
-                <button className="text-center sm:text-base sl:text-sm xs:text-[14px] text-[12px] sm:py-3 sl:py-2 xs:py-1 py-1 sm:px-4 sl:px-2 xs:px-1 px-1 sm:mt-5 sl:mt-3 xs:mt-2 mt-1 sl:rounded-xl xs:rounded-lg rounded-md bg-gray-800 hover:scale-110 duration-500 ease-in-out font-light text-white  hover:bg-gray-800">Order now</button>
+                <button className="text-center xl:text-lg sm:text-base sl:text-sm xs:text-[14px] text-[12px] xl:py-4 sm:py-3 sl:py-2 xs:py-1 py-1 xl:px-5 sm:px-4 sl:px-2 xs:px-1 px-1 sm:mt-5 sl:mt-3 xs:mt-2 mt-1 sl:rounded-xl xs:rounded-lg rounded-md bg-gray-800 hover:scale-110 duration-500 ease-in-out font-light text-white  hover:bg-gray-800">Order now</button>
 
             </div>
 
