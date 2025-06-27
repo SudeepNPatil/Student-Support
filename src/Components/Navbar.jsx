@@ -19,8 +19,8 @@ export default function Navbar() {
         <div className="flex justify-between h-20 border-b fixed bg-white w-full z-50">
 
             <div className='flex '>
-                <img src={logo} alt="logo" className='ml-2 rounded-full lg:ml-16  w-16 h-16 mt-2 hover:scale-125' />
-                <h1 className='text-MD mt-7 ml-1 lg:text-2xl font-bold lg:mt-6 lg:ml-2 hover:scale-y-110 hover:scale-x-110'>STUDENT SUPPORT</h1>
+                <img src={logo} alt="logo" className='ml-2 rounded-full lg:ml-16  w-16 h-16 mt-2 hover:scale-125 duration-500 ease-in-out cursor-pointer' />
+                <h1 className='text-MD mt-7 ml-1 lg:text-2xl font-bold lg:mt-6 lg:ml-2 hover:scale-105 duration-500 ease-in-out cursor-pointer'>STUDENT SUPPORT</h1>
             </div>
 
             <div className='hidden lg:flex justify-end gap-28 items-center font-semibold mr-10'>

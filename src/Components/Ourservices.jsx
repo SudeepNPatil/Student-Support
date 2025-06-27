@@ -78,7 +78,10 @@ export default function Ourservices() {
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
                     </div>
                 </div>
+            </div>
 
+
+            <div className="hidden sm:flex sm:gap-28 sm:flex-wrap sm:justify-evenly mt-28">
                 <div className="flex-shrink-0 sm:w-96 sm:h-96 sm:rounded-[60px]">
                     <img src={Support} alt="image" className="sm:w-full sm:h-full  sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
@@ -94,6 +97,7 @@ export default function Ourservices() {
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
                     </div>
                 </div>
+
             </div>
 
             {/* Mobile view */}
