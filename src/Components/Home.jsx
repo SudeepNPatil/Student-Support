@@ -19,7 +19,7 @@ export default function Home() {
 
                 <div className="absolute inset-0 bg-black/20"></div>
 
-                <div className="absolute bottom-0 left-0 w-full h-[70%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-full sl:h-[70%] h-[50%] bg-gradient-to-t from-black/80 to-transparent pointer-events-none"></div>
 
             </div>
 
