@@ -20,10 +20,10 @@ export default function Navbar() {
 
             <div className='flex '>
                 <img src={logo} alt="logo" className='ml-2 rounded-full lg:ml-16  w-16 h-16 mt-2 hover:scale-125 duration-500 ease-in-out cursor-pointer' />
-                <h1 className='text-MD mt-7 ml-1 lg:text-2xl font-bold lg:mt-6 lg:ml-2 hover:scale-105 duration-500 ease-in-out cursor-pointer'>STUDENT SUPPORT</h1>
+                <h1 className='mt-7 ml-1 md:text-xl lg:text-2xl xs:text-lg font-bold lg:mt-6 lg:ml-2 hover:scale-105 duration-500 ease-in-out cursor-pointer'>STUDENT SUPPORT</h1>
             </div>
 
-            <div className='hidden lg:flex justify-end gap-28 items-center font-semibold mr-10'>
+            <div className='hidden md:flex justify-end xl:gap-28 md:gap-12 lg:gap-16 items-center font-semibold mr-10'>
                 <Link to='/Home' className='hover:text-yellow-400'>Home</Link >
                 <Link to='/Project' className='hover:text-yellow-400'>Project</Link >
                 <Link to='/Contact' className='hover:text-yellow-400'>Contact</Link >
@@ -43,7 +43,7 @@ export default function Navbar() {
                 </div>
             </div>
 
-            <button className='lg:hidden border-2 bg-gray-50 rounded-md w-10 block h-10 text-center text-3xl pl-1 mr-4 mt-5' onClick={clickfunction}>
+            <button className='md:hidden border-2 bg-gray-50 rounded-md w-10 block h-10 text-center text-3xl pl-1 mr-4 mt-5' onClick={clickfunction}>
                 <RxHamburgerMenu />
             </button>
 

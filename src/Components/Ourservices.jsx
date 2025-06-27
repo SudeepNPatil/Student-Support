@@ -58,11 +58,11 @@ export default function Ourservices() {
 
     return (
         <>
-            <div className="font-bold text-sm sm:text-2xl mt-2 sm:mt-5 pt-3 sm:pt-11 opacity-80 mb-4 sm:mb-8 text-center w-full h-12 sm:h-32 bg-yellow-50">
+            <div className="font-bold xl:text-4xl xl:font-light text-sm sm:text-2xl mt-2 sm:mt-5 pt-3 sm:pt-11 opacity-80 mb-4 sm:mb-8 text-center w-full h-12 sm:h-32 bg-yellow-50">
                 Our Services
             </div>
 
-            <div className="hidden sm:flex sm:gap-28 sm:flex-wrap sm:justify-evenly ">
+            <div className="hidden sm:flex sm:gap-28 sm:flex-wrap sm:justify-evenly mt-10">
                 <div className="flex-shrink-0 sm:w-96 sm:h-96 sm:rounded-[60px] relative">
                     <img src={SellProject} alt="image" className="sm:w-full sm:h-full  sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
