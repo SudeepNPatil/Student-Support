@@ -10,6 +10,7 @@ export default {
         'xs': '400px',
         'xss': '350px',
         'ls': '450px',
+        'sl': '512px',
       },
       keyframes: {
         'horizontal-bounce': {
