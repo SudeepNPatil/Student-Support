@@ -23,7 +23,7 @@ export default function Home() {
 
             </div>
 
-            <div className="block relative text-center  xl:-mt-[275px] lg:-mt-[250px] md:-mt-[230px] sm:-mt-[220px] sl:-mt-[110px] xs:-mt-[90px] -mt-[75px] xl:mb-28 lg:mb-24 md:mb-24 sm:mb-24 sl:mb-3 xs:mb-4 mb-3">
+            <div className="block relative text-center  xl:-mt-[275px] lg:-mt-[250px] md:-mt-[230px] sm:-mt-[220px] sl:-mt-[110px] xs:-mt-[90px] -mt-[75px] xl:mb-28 lg:mb-28 md:mb-28 sm:mb-28 sl:mb-7 xs:mb-6 mb-5">
                 <h1 className="font-bold text-lime-100 xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl sl:text-2xl xs:text-xl text-lg">Welcome to Student Support</h1>
 
                 <p className="lg:text-xl md:text-sm sm:text-[12px] sl:text-[10px] xs:text-[8px] text-[7px]  lg:mt-5 md:mt-3 sm:mt-2 sl:mt-1 xs:mt-0 mt-0 text-gray-300">Looking for custom and user-friendly projects?Then get from us</p>

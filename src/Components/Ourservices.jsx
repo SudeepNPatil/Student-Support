@@ -58,42 +58,42 @@ export default function Ourservices() {
 
     return (
         <>
-            <div className="font-bold xl:text-4xl xl:font-light text-sm sm:text-2xl mt-2 sm:mt-5 pt-3 sm:pt-11 opacity-80 mb-4 sm:mb-8 text-center w-full h-12 sm:h-32 bg-yellow-50">
+            <div className="2xl:text-5xl xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl text-lg xl:py-10 lg:py-8 md:py-7 sm:py-6 py-4 xl:mb-4 lg:mb-3 mb-6  bg-yellow-50 font-light text-center w-full opacity-80">
                 Our Services
             </div>
 
-            <div className="hidden sm:flex sm:gap-28 sm:flex-wrap sm:justify-evenly mt-10">
-                <div className="flex-shrink-0 sm:w-96 sm:h-96 sm:rounded-[60px] relative">
+            <div className="hidden sm:flex xl:gap-28 lg:gap-16 md:gap-10  sm:flex-wrap sm:justify-evenly md:mt-10 mt-6">
+                <div className="flex-shrink-0 xl:w-96 lg:w-[360px] md:w-[320px] sm:w-[280px] xl:h-96 lg:h-[360px] md:h-[320px] sm:h-[280px] sm:rounded-[60px] relative">
                     <img src={SellProject} alt="image" className="sm:w-full sm:h-full  sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
-                        <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg p-3 font-semibold" onClick={handleclick}>Ready2Go Projects </button>
+                        <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg md:p-3 p-2 font-semibold" onClick={handleclick}>Ready2Go Projects </button>
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
                     </div>
                 </div>
 
-                <div className="flex-shrink-0 sm:w-96 sm:h-96 sm:rounded-[60px]">
+                <div className="flex-shrink-0 xl:w-96 lg:w-[360px] md:w-[320px] sm:w-[280px] xl:h-96 lg:h-[360px] md:h-[320px] sm:h-[280px] sm:rounded-[60px]">
                     <img src={Ready2Go} alt="image" className="sm:w-full sm:h-full sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
-                        <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg p-3 font-semibold" onClick={handleclick}>Custom Build Service</button>
+                        <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg md:p-3 p-2 font-semibold" onClick={handleclick}>Custom Build Service</button>
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
                     </div>
                 </div>
             </div>
 
 
-            <div className="hidden sm:flex sm:gap-28 sm:flex-wrap sm:justify-evenly mt-28">
-                <div className="flex-shrink-0 sm:w-96 sm:h-96 sm:rounded-[60px]">
+            <div className="hidden sm:flex xl:gap-28  lg:gap-16 md:gap-10 sm:flex-wrap sm:justify-evenly lg:mt-28 md:mt-20 sm:mt-14">
+                <div className="flex-shrink-0 xl:w-96 lg:w-[360px] md:w-[320px] sm:w-[280px] xl:h-96 lg:h-[360px] md:h-[320px] sm:h-[280px] sm:rounded-[60px]">
                     <img src={Support} alt="image" className="sm:w-full sm:h-full  sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
-                        <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg p-3 font-semibold" onClick={handleclick}>🧭 Project Navigator</button>
+                        <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg md:p-3 p-2 font-semibold" onClick={handleclick}>🧭 Project Navigator</button>
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
                     </div>
                 </div>
 
-                <div className="flex-shrink-0 sm:w-96 sm:h-96 sm:rounded-[60px]">
+                <div className="flex-shrink-0 xl:w-96 lg:w-[360px] md:w-[320px] sm:w-[280px] xl:h-96 lg:h-[360px] md:h-[320px] sm:h-[280px] sm:rounded-[60px]">
                     <img src={getstuck} alt="image" className="sm:w-full sm:h-full  sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
-                        <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg p-3 font-semibold" onClick={handleclick} >Debug & Rescue</button>
+                        <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg md:p-3 p-2 font-semibold" onClick={handleclick} >Debug & Rescue</button>
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
                     </div>
                 </div>
@@ -106,7 +106,7 @@ export default function Ourservices() {
 
                 <div className="overflow-hidden relative w-[80vw] mx-auto">
                     <div
-                        className="flex h-48 xss:h-52 xs:h-56 ls:h-60 rounded-xl transition-transform duration-500 ease-in-out"
+                        className="flex h-48 xss:h-52 xs:h-56 ls:h-60 sl:h-72 rounded-xl transition-transform duration-500 ease-in-out"
                         style={{ transform: `translateX(-${currentindex * 100}%)` }}
                     >
                         {items.map((item, index) => (
@@ -125,8 +125,8 @@ export default function Ourservices() {
                 </div>
 
 
-                <IoIosArrowDropleft className="w-5 h-5 absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer opacity-65" onClick={prestep} />
-                <IoIosArrowDropright className="w-5 h-5 absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer opacity-65" onClick={nextstep} />
+                <IoIosArrowDropleft className="w-5 h-5 ls:w-6 ls:h-6 sl:w-7 sl:h-7 opacity-80 absolute top-1/2 left-4 transform -translate-y-1/2 z-10 cursor-pointer bg-transparent" onClick={prestep} />
+                <IoIosArrowDropright className="w-5 h-5 ls:w-6 ls:h-6 sl:w-7 sl:h-7 opacity-80 absolute top-1/2 right-4 transform -translate-y-1/2 z-10 cursor-pointer bg-transparent" onClick={nextstep} />
 
             </div >
 
