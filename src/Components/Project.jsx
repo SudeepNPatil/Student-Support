@@ -37,7 +37,7 @@ export default function Project() {
                         <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Others</p>
                     </div>
                     <div className="flex-1">
-                        <div className="flex justify-evenly gap-16  h-20 border-b items-center right-0 mb-10">
+                        <div className="flex justify-evenly gap-16  h-20 border-b items-center right-0">
 
                             <div className="flex flex-row">
                                 <BsSearch size={20} className="-mr-8 self-center z-10 cursor-pointer" />
@@ -50,12 +50,12 @@ export default function Project() {
                             <img src={trackorder} alt="track_order" className="w-8 h-8 cursor-pointer" />
                         </div>
 
-                        <div className="flex flex-row flex-wrap gap-10 px-10 max-h-screen overflow-y-scroll scroll-smooth no-scrollbar">
+                        <div className="flex flex-row flex-wrap gap-10 py-10 justify-center max-h-screen overflow-y-scroll scroll-smooth no-scrollbar">
 
                             {data.map((item, index) => (
                                 <div key={index} className="w-52 rounded-2xl z-10 shadow-lg cursor-pointer hover:scale-95 duration-500 ease-in-out">
                                     <img src={`${item.image_url}`} alt={`${item.title}`} className="w-fit object-cover rounded-2xl" />
-                                    <div className="px-4 py-3 text-base">
+                                    <div className="px-4 py-3 text-sm">
                                         <h1 className="text-base font-semibold truncate">{item.title}</h1>
                                         <p className="truncate">{item.Category_Badge}</p>
                                         <p className="truncate">{item.Tech_Stack_Badges.join(" ,")}</p>
@@ -127,11 +127,17 @@ export default function Project() {
                 </div>
 
 
-                <div className="flex flex-wrap justify-center gap-4 p-4">
+                <div className="flex flex-wrap justify-center gap-10 py-10">
 
-                    {items.map((item, index) => (
-                        <div key={index} className="bg-gray-300 w-40 h-40 flex items-center justify-center rounded-2xl">
-                            {item}
+                    {data.map((item, index) => (
+                        <div key={index} className="w-40 flex flex-col flex-wrap justify-center rounded-2xl border">
+                            <img src={`${item.image_url}`} alt={`${item.title}`} className="w-full object-cover rounded-2xl" />
+
+                            <div className="py-2 px-2 text-[12px] w-40">
+                                <h1 className="text-base font-semibold truncate">{item.title}</h1>
+                                <p className="truncate">{item.Category_Badge}</p>
+                                <p className="truncate">{item.Tech_Stack_Badges.join(" ,")}</p>
+                            </div>
                         </div>
                     ))
                     }
