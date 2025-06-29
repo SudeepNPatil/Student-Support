@@ -82,7 +82,7 @@ export default function Project() {
             {/* for mobile design */}
 
             <div className="sm:hidden w-screen h-screen pt-20 " onClick={(e) => { e.stopPropagation(), setstretch(false) }}>
-                <div className="flex justify-between items-center gap-4 pl-5 pr-5 pt-5" >
+                <div className="flex justify-between items-center gap-4 pl-5 pr-5 pt-5 pb-3" >
 
 
                     <button className="w-2/3 min-w-[50px] max-w-[110px] h-8 border text-sm opacity-85 rounded-lg text-center bg-green-100" onClick={(e) => { e.stopPropagation(), setstretch(true) }}>Category<IoArrowForwardCircleOutline size={14} className="inline-block ml-0.5" /></button>
@@ -127,10 +127,10 @@ export default function Project() {
                 </div>
 
 
-                <div className="flex flex-wrap justify-center gap-10 py-10">
+                <div className="flex flex-wrap justify-center gap-10 py-7 max-h-screen overflow-y-scroll no-scrollbar">
 
                     {data.map((item, index) => (
-                        <div key={index} className="w-40 flex flex-col flex-wrap justify-center rounded-2xl border">
+                        <div key={index} className="w-40 flex flex-col flex-wrap justify-center rounded-2xl shadow-xl z-10">
                             <img src={`${item.image_url}`} alt={`${item.title}`} className="w-full object-cover rounded-2xl" />
 
                             <div className="py-2 px-2 text-[12px] w-40">
