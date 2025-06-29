@@ -8,6 +8,8 @@ import Footer from "./Footer";
 import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { MdArrowBackIosNew } from "react-icons/md";
+import { data } from "../data/E-commerce_collection";
+
 
 
 export default function Project() {
@@ -23,7 +25,7 @@ export default function Project() {
         <>
             <Navbar />
             <div className="hidden inset-0 sm:flex flex-col">
-                <div className="inset-0 hidden sm:flex flex-row w-screen min-h-screen pt-20 mb-4 sm:mb-10">
+                <div className="inset-0 hidden sm:flex flex-row flex-wrap pt-20 mb-4 sm:mb-10 border">
                     <div className="sm:w-[20%] bg-green-50 sm:flex flex-col items-center border-r">
                         <h2 className="mt-8 font-bold text-xl text-center">Catagories</h2>
                         <hr className="font-bold w-full mt-5" />
@@ -35,7 +37,7 @@ export default function Project() {
                         <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Others</p>
                     </div>
                     <div className="flex-1">
-                        <div className="flex justify-evenly gap-16  h-20 border-b items-center">
+                        <div className="flex justify-evenly gap-16  h-20 border-b items-center right-0 mb-10">
 
                             <div className="flex flex-row">
                                 <BsSearch size={20} className="-mr-8 self-center z-10 cursor-pointer" />
@@ -48,9 +50,31 @@ export default function Project() {
                             <img src={trackorder} alt="track_order" className="w-8 h-8 cursor-pointer" />
                         </div>
 
+                        <div className="flex flex-row flex-wrap gap-10 px-10 max-h-screen overflow-y-scroll scroll-smooth no-scrollbar">
+
+                            {data.map((item, index) => (
+                                <div key={index} className="w-52 rounded-2xl z-10 shadow-lg cursor-pointer hover:scale-95 duration-500 ease-in-out">
+                                    <img src={`${item.image_url}`} alt={`${item.title}`} className="w-fit object-cover rounded-2xl" />
+                                    <div className="px-4 py-3 text-base">
+                                        <h1 className="text-base font-semibold truncate">{item.title}</h1>
+                                        <p className="truncate">{item.Category_Badge}</p>
+                                        <p className="truncate">{item.Tech_Stack_Badges.join(" ,")}</p>
+                                    </div>
+                                </div>
+                            ))
+
+                            }
+
+
+                        </div>
+
                     </div>
 
                 </div>
+
+
+
+
                 <Footer />
             </div>
 
