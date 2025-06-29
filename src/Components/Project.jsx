@@ -18,9 +18,6 @@ export default function Project() {
 
     const [isOpen, setIsopen] = useState(false)
 
-    let items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 2, 3, 4, 5, 6, 7];
-
-
     return (
         <>
             <Navbar />
@@ -130,7 +127,7 @@ export default function Project() {
                 <div className="flex flex-wrap justify-center gap-10 py-7 max-h-screen overflow-y-scroll no-scrollbar">
 
                     {data.map((item, index) => (
-                        <div key={index} className="w-40 flex flex-col flex-wrap justify-center rounded-2xl shadow-xl z-10">
+                        <div key={index} className="w-40 flex flex-col flex-wrap justify-center rounded-2xl shadow-xl">
                             <img src={`${item.image_url}`} alt={`${item.title}`} className="w-full object-cover rounded-2xl" />
 
                             <div className="py-2 px-2 text-[12px] w-40">
