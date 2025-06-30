@@ -10,12 +10,14 @@ import Contact from './Components/Contact.jsx'
 import Custom_Build_Service from './Components/Custom_Build_Service.jsx'
 import Project_Navigator from './Components/Project_Navigator.jsx'
 import Debug_Rescue from './Components/Debug_Rescue.jsx'
+import ErrorElement from './Components/ErrorElement.jsx'
 
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <App />,
+        errorElement: <ErrorElement />,
         children: [
             {
                 index: true,
