@@ -6,7 +6,7 @@ import { MdErrorOutline } from "react-icons/md";
 export default function Debug_Rescue() {
     return (
         <>
-            <Navbar />
+
             <div className="flex flex-col items-center bg-red-100 pb-5 pt-24 xl:hidden">
 
                 <h1 className="text-x text-center font-bold ">We Here to Support you</h1>
@@ -81,8 +81,6 @@ export default function Debug_Rescue() {
 
             </div>
 
-
-            <Footer />
         </>
     )
 }

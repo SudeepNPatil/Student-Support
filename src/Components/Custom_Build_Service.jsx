@@ -6,7 +6,7 @@ import { FcIdea } from "react-icons/fc";
 export default function Custom_Build_Service() {
     return (
         <>
-            <Navbar />
+
 
             {/* Mobile View */}
 
@@ -86,7 +86,6 @@ export default function Custom_Build_Service() {
 
             </div>
 
-            <Footer />
         </>
     )
 }

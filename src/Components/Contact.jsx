@@ -9,7 +9,6 @@ import Footer from "./Footer";
 export default function Contact() {
     return (
         <>
-            <Navbar />
             <div className="flex justify-center mb-8">
                 <div className="flex flex-col sm:flex-row w-screen sm:w-2/3 h-auto rounded-xl border pb-5">
 
@@ -82,7 +81,7 @@ export default function Contact() {
 
                 </div>
             </div>
-            <Footer />
+
         </>
     )
 }

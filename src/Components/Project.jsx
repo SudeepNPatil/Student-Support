@@ -20,9 +20,8 @@ export default function Project() {
 
     return (
         <>
-            <Navbar />
             <div className="hidden inset-0 sm:flex flex-col">
-                <div className="inset-0 hidden sm:flex flex-row flex-wrap pt-20 mb-4 sm:mb-10 border">
+                <div className="inset-0 hidden sm:flex flex-row flex-wrap pt-20 mb-4 sm:mb-10">
                     <div className="sm:w-[20%] bg-green-50 sm:flex flex-col items-center border-r">
                         <h2 className="mt-8 font-bold text-xl text-center">Catagories</h2>
                         <hr className="font-bold w-full mt-5" />
@@ -69,10 +68,6 @@ export default function Project() {
 
                 </div>
 
-
-
-
-                <Footer />
             </div>
 
 
@@ -141,7 +136,6 @@ export default function Project() {
 
                 </div>
 
-                <Footer />
             </div>
 
         </>

@@ -6,7 +6,7 @@ import { IoHourglassOutline } from "react-icons/io5";
 export default function Project_Navigator() {
     return (
         <>
-            <Navbar />
+
             <div className="pt-24 bg-green-100 pb-5 flex flex-col items-center xl:hidden">
                 <h1 className="text-xl font-bold text-center ">Take Support From Us</h1>
                 <p className="text-gray-700 mt-2 text-center w-[85vw]">Have an idea but don’t know where to start? We’ll guide you with tech stack, tools, deployment, and more!</p>
@@ -84,8 +84,6 @@ export default function Project_Navigator() {
                 </div>
 
             </div>
-
-            <Footer />
         </>
     )
 }

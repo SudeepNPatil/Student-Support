@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 export default function Home() {
 
     return (
@@ -37,6 +38,9 @@ export default function Home() {
             <How_we_Support_you />
 
         </div>
+
+
+
 
     )
 }
