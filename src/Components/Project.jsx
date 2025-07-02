@@ -119,7 +119,7 @@ export default function Project() {
                 </div>
 
 
-                <div className="flex flex-wrap justify-center gap-10 py-7 max-h-screen overflow-y-scroll no-scrollbar">
+                <div className="flex flex-wrap justify-center gap-10 py-7 h-96 overflow-y-scroll no-scrollbar">
 
                     {data.map((item, index) => (
                         <div key={index} className="w-40 flex flex-col flex-wrap justify-center rounded-2xl shadow-xl">
