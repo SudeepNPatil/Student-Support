@@ -11,6 +11,7 @@ import Custom_Build_Service from './Components/Custom_Build_Service.jsx'
 import Project_Navigator from './Components/Project_Navigator.jsx'
 import Debug_Rescue from './Components/Debug_Rescue.jsx'
 import ErrorElement from './Components/ErrorElement.jsx'
+import Login from './Components/Login.jsx'
 
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: "/Contact",
                 element: <Contact />
+            },
+            {
+                path: "/Login",
+                element: <Login />
             },
             {
                 path: "/Custom_Build_Service",

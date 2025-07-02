@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
     return (
         <>
-            <div className="bg-slate-50 pt-4 flex xss:gap-4 ls:gap-20  xs:gap-8 flex-row z-40 justify-center sm:pt-6 sm:gap-40 lg:gap-80">
+            <div className="bg-slate-50 pt-4 flex xss:gap-4 ls:gap-20  xs:gap-8 flex-row  justify-center sm:pt-6 sm:gap-40 lg:gap-80">
 
                 <div className="p-2 flex flex-col gap-2 text-sm sm:text-base lg:text-md">
                     <Link to='/#' className="font-semibold sm:text-lg lg:text-xl">Student Support</Link>
