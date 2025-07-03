@@ -12,10 +12,10 @@ export default function Footer() {
             <div className="bg-slate-50 pt-4 flex xss:gap-4 ls:gap-20  xs:gap-8 flex-row  justify-center sm:pt-6 sm:gap-40 lg:gap-80">
 
                 <div className="p-2 flex flex-col gap-2 text-sm sm:text-base lg:text-md">
-                    <Link to='/#' className="font-semibold sm:text-lg lg:text-xl">Student Support</Link>
-                    <Link to='/#'>Home</Link>
-                    <Link to='/#'>Project</Link>
-                    <Link to='/#'>Contact</Link>
+                    <Link to='/Home' className="font-semibold sm:text-lg lg:text-xl">Student Support</Link>
+                    <Link to='/Home'>Home</Link>
+                    <Link to='/Project'>Project</Link>
+                    <Link to='/Contact'>Contact</Link>
                     <Link to='/#'>About Us</Link>
                 </div>
 

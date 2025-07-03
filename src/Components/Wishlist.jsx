@@ -5,11 +5,11 @@ export default function Wishlist() {
     return (
         <div className="flex flex-col flex-wrap items-center pt-40">
 
-            <FaHandHoldingHeart size={50} className="text-gray-600" />
+            <FaHandHoldingHeart size={100} className="text-gray-600" />
 
-            <p className="text-gray-700 text-center">Your Wishlist is Empty now</p>
+            <p className="text-gray-700 mt-2 text-center">Your Wishlist is Empty now</p>
 
-            <button className="text-white bg-black h-10 w-60 rounded-md">Go to Project</button>
+            <button className="text-white mt-4 bg-black h-10 w-60 rounded-md">Go to Project</button>
 
         </div>
     )

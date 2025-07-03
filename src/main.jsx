@@ -13,6 +13,10 @@ import Debug_Rescue from './Components/Debug_Rescue.jsx'
 import ErrorElement from './Components/ErrorElement.jsx'
 import Login from './Components/Login.jsx'
 import Signup from './Components/Signup.jsx'
+import Cart from './Components/Cart.jsx'
+import Wishlist from './Components/Wishlist.jsx'
+import OrderTrack from './Components/OrderTrack.jsx'
+import Product from './Components/Product.jsx'
 
 
 const router = createBrowserRouter([
@@ -31,7 +35,25 @@ const router = createBrowserRouter([
             },
             {
                 path: '/Project',
-                element: <Project />
+                element: <Project />,
+                children: [
+                    {
+                        index: true,
+                        element: <Product />
+                    },
+                    {
+                        path: 'Cart',
+                        element: <Cart />
+                    },
+                    {
+                        path: 'Wishlist',
+                        element: <Wishlist />
+                    },
+                    {
+                        path: 'Order',
+                        element: <OrderTrack />
+                    }
+                ]
             },
             {
                 path: "/Contact",
