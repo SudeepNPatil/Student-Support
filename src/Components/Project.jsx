@@ -58,7 +58,7 @@ export default function Project() {
 
                     <button className="w-2/3 min-w-[50px] max-w-[110px] h-8 border text-sm opacity-85 rounded-lg text-center bg-green-100" onClick={(e) => { e.stopPropagation(), setstretch(true) }}>Category<IoArrowForwardCircleOutline size={14} className="inline-block ml-0.5" /></button>
 
-                    <BsSearch size={15} className="-mr-10 ml-2 z-0 self-center flex-shrink-0" />
+                    <BsSearch size={15} className="-mr-10 sl:-mr-11 ml-2 z-0 self-center flex-shrink-0" />
 
                     <input
                         type="text"
