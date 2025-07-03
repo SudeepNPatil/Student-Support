@@ -1,7 +1,7 @@
 import React from "react";
 import { LuLockKeyhole } from "react-icons/lu";
 
-export default function SignuoCom2() {
+export default function SignupCom2() {
     return (
         <div className="mx-auto pt-16 pb-28">
             <LuLockKeyhole size={30} className="mt-16 ml-44 border rounded-md px-1 py-1" />
