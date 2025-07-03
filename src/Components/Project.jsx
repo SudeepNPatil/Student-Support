@@ -73,7 +73,7 @@ export default function Project() {
 
             {/* for mobile design */}
 
-            <div className="sm:hidden w-screen h-screen pt-20 " onClick={(e) => { e.stopPropagation(), setstretch(false) }}>
+            <div className="sm:hidden w-screen h-auto pt-20 " onClick={(e) => { e.stopPropagation(), setstretch(false) }}>
                 <div className="flex justify-between items-center gap-4 pl-5 pr-5 pt-5 pb-3" >
 
 
@@ -119,10 +119,10 @@ export default function Project() {
                 </div>
 
 
-                <div className="flex flex-wrap justify-center gap-10 py-7 h-96 overflow-y-scroll no-scrollbar">
+                <div className="flex flex-wrap justify-center gap-10 py-7 h-[75vh] overflow-y-scroll no-scrollbar">
 
                     {data.map((item, index) => (
-                        <div key={index} className="w-40 flex flex-col flex-wrap justify-center rounded-2xl shadow-xl">
+                        <div key={index} className="w-40 flex flex-col flex-wrap  justify-center rounded-2xl shadow-xl">
                             <img src={`${item.image_url}`} alt={`${item.title}`} className="w-full object-cover rounded-2xl" />
 
                             <div className="py-2 px-2 text-[12px] w-40">
