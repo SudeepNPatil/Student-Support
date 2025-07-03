@@ -1,8 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
-import Signupcom1 from "./SignupCom1";
-import SignupCom2 from "./Signupcom2";
+import SignupCom1 from "./SignupCom1";
+import Signupcom2 from "./Signupcom2";
 import { useState } from "react";
 
 export default function Signup() {
@@ -40,7 +40,7 @@ export default function Signup() {
                 </div>
             </div>
 
-            {nextStep ? <SignupCom2 /> : <Signupcom1 setNextStep={setNextStep} />}
+            {nextStep ? <Signupcom2 /> : <SignupCom1 setNextStep={setNextStep} />}
 
         </div>
 
