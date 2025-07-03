@@ -7,11 +7,8 @@ import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
-import SignuoCom2 from "/Signupcom2";
-
-
-
-
+import Signupcom2 from "./Signupcom2";
+import SignupCom1 from "./SignupCom1";
 export default function Project() {
 
     const [stretch, setstretch] = useState(false)
