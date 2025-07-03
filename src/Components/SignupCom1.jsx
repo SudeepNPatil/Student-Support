@@ -2,7 +2,7 @@ import React from "react";
 import { MdOutlineOutlinedFlag } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 
-export default function Signupcom1({ setNextStep }) {
+export default function SignupCom1({ setNextStep }) {
 
     return (
 
