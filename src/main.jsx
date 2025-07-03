@@ -12,6 +12,7 @@ import Project_Navigator from './Components/Project_Navigator.jsx'
 import Debug_Rescue from './Components/Debug_Rescue.jsx'
 import ErrorElement from './Components/ErrorElement.jsx'
 import Login from './Components/Login.jsx'
+import Signup from './Components/Signup.jsx'
 
 
 const router = createBrowserRouter([
@@ -37,10 +38,6 @@ const router = createBrowserRouter([
                 element: <Contact />
             },
             {
-                path: "/Login",
-                element: <Login />
-            },
-            {
                 path: "/Custom_Build_Service",
                 element: <Custom_Build_Service />
             },
@@ -53,7 +50,15 @@ const router = createBrowserRouter([
                 element: <Debug_Rescue />
             },
         ]
-    }
+    },
+    {
+        path: "/Login",
+        element: <Login />
+    },
+    {
+        path: "/Signup",
+        element: <Signup />
+    },
 ])
 
 createRoot(document.getElementById('root')).render(<RouterProvider router={router} />)
