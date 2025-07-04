@@ -12,32 +12,37 @@ export default function Signup() {
 
     console.log(nextStep)
     return (
-        <div className="mx-auto flex flex-row rounded-lg bg-white w-[80vw] border relative">
+        <div className="mx-auto flex flex-row rounded-lg bg-white lg:w-[80vw] sm:w-[100vw] lg:border relative">
 
-            <Link to={`/Home`}><GoArrowLeft size={30} className="absolute top-0 -left-9 border rounded-full" /></Link>
+            <Link to={`/Home`}><GoArrowLeft size={30} className="hidden sm:absolute sm:block top-0 lg:-left-9 md:left-0 border rounded-full" /></Link>
 
-            <div className="w-96 rounded-l-lg bg-green-50 h-auto">
+            <div className="hidden sm:block lg:w-[38%] sm:w-[40%] rounded-l-lg bg-green-50 h-auto">
 
-                <div className="flex py-10 px-10 items-center gap-2">
+
+                <div className="flex py-10 xl:px-10 lg:px-6 md:px-4 sm:px-3 lg:mt-0 md:mt-10 sm:mt-6 items-center gap-2">
                     <button className="border-4 w-7 h-7 rounded-full border-blue-700"></button>
-
                     <h1 className="text-xl font-semibold tracking-wider">Student Support</h1>
                 </div>
+
+
                 <div className={`flex flex-col ${nextStep ? 'opacity-50' : 'opacity-100'}`}>
                     <div className="flex flex-wrap gap-2 mt-8 items-center">
-                        <button className="border-2 px-[7px] py-[1px] ml-10  rounded-full border-blue-400">✓</button>
+                        <button className="border-2 px-[7px] py-[1px] xl:ml-10 lg:ml-6 md:ml-4 sm:ml-3  rounded-full border-blue-400">✓</button>
                         <h1 className="text-lg font-semibold tracking-wide">Your details</h1>
                     </div>
-                    <p className="text-gray-700 ml-[76px] mt-1 text-base pr-10">Please provide your valid name and email</p>
+                    <p className="text-gray-700 xl:ml-[76px] lg:ml-[65px] md:ml-[56px] sm:ml-[47px] mt-1 text-base xl:pr-10 lg:pr-3 sm:pr-2">Please provide your valid name and email</p>
                 </div>
+
 
                 <div className={`flex flex-col  ${nextStep ? 'opacity-100' : 'opacity-50'}`}>
                     <div className="flex flex-wrap gap-2 mt-5 items-center">
-                        <button className="border-2 px-[7px] py-[1px] ml-10  rounded-full border-blue-400">✓</button>
+                        <button className="border-2 px-[7px] py-[1px] xl:ml-10 lg:ml-6 md:ml-4 sm:ml-3  rounded-full border-blue-400">✓</button>
                         <h1 className="text-lg font-semibold tracking-wide">Choose password</h1>
                     </div>
-                    <p className="text-gray-700 ml-[76px] mt-1 text-base pr-10">Must be at least 8 characters</p>
+                    <p className="text-gray-700 xl:ml-[76px] lg:ml-[65px] md:ml-[58px] sm:ml-[47px] mt-1 text-base xl:pr-10 lg:pr-3 sm:pr-2">Must be at least 8 characters</p>
                 </div>
+
+
             </div>
 
             {nextStep ? <SignupCom2 /> : <SignupCom1 setNextStep={setNextStep} />}
