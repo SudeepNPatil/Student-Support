@@ -7,7 +7,7 @@ import { GoArrowLeft } from "react-icons/go";
 export default function Login() {
     return (
 
-        <div className="mx-auto flex flex-col sm:flex-row rounded-lg bg-white xl:w-[75vw] lg:w-[85vw] sm:w-[100vw] lg:border relative">
+        <div className="mx-auto flex flex-col justify-center items-center sm:flex-row rounded-lg bg-white xl:w-[75vw] lg:w-[85vw] sm:w-[100vw] lg:border relative">
 
             <Link to={`/Home`}><GoArrowLeft size={30} className="hidden sm:block sm:absolute top-0 lg:-left-9 sm:left-0 border rounded-full" /></Link>
 
