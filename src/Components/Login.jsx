@@ -7,7 +7,7 @@ import { GoArrowLeft } from "react-icons/go";
 export default function Login() {
     return (
 
-        <div className="mx-auto flex flex-col justify-center items-center sm:flex-row rounded-lg bg-white xl:w-[75vw] lg:w-[85vw] sm:w-[100vw] lg:border relative">
+        <div className="mx-auto flex flex-col  sm:flex-row rounded-lg bg-white xl:w-[75vw] lg:w-[85vw] sm:w-[100vw] lg:border relative">
 
             <Link to={`/Home`}><GoArrowLeft size={30} className="hidden sm:block sm:absolute top-0 lg:-left-9 sm:left-0 border rounded-full" /></Link>
 
@@ -35,7 +35,7 @@ export default function Login() {
                 </Link>
             </div>
 
-            <div className="xl:w-[67%] sm:w-[58%] w-[70%] my-auto  sm:my-0  xl:px-40 lg:px-20 md:px-16 sm:px-14 mx-auto">
+            <div className="xl:w-[67%] sm:w-[58%] w-[70%] mt-20  sm:my-0  xl:px-40 lg:px-20 md:px-16 sm:px-14 mx-auto">
 
                 <IoPersonAddOutline size={30} className="mx-auto mt-24" />
 
