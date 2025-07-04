@@ -1,18 +1,17 @@
 import React from "react";
-import Navbar from "./Navbar";
 import { FaInstagram } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
-import Footer from "./Footer";
+
 
 export default function Contact() {
     return (
         <>
             <div className="flex justify-center mb-8">
-                <div className="flex flex-col sm:flex-row w-screen sm:w-2/3 h-auto rounded-xl border pb-5">
+                <div className="flex flex-col sm:flex-row w-screen  xl:w-9/12 lg:w-11/12 md:w-11/12 h-auto rounded-xl border pb-5">
 
-                    <div className="self-center sm:w-1/2 pl-8">
+                    <div className="flex flex-col h-auto w-full px-10 mt-10">
                         <h1 className="text-2xl sm:text-[35px] font-bold mb-4 pt-36 sm:pt-40 transform scale-y-110">
                             Let's Talk
                         </h1>
@@ -32,23 +31,22 @@ export default function Contact() {
                             <FaInstagram className="sm:w-5 sm:h-5 w-4 h-4" />
                             <BsTwitterX className="sm:w-5 sm:h-5 w-4 h-4" />
                             <FaLinkedin className="sm:w-5 sm:h-5 w-4 h-4" />
-
                         </div>
                     </div>
 
-                    <div className="w-auto sm:w-1/2 pt-16 sm:pt-24 pl-8 ">
+                    <div className="flex flex-col h-auto w-full pt-16 sm:pt-24 px-10">
 
                         <label htmlFor="name" >Name </label>
 
-                        <input type="text" className="border w-11/12 sm:w-96 mt-1 mb-4 h-10 rounded-md pl-2 block text-sm" placeholder='Enter your Name' />
+                        <input type="text" className="border mt-1 mb-4 h-10 rounded-md pl-2 block text-sm" placeholder='Enter your Name' />
 
                         <label htmlFor="Email" >Email </label>
 
-                        <input type="Email" className="border mt-1 mb-4 w-11/12 sm:w-96  h-10 rounded-md pl-2 block text-sm" placeholder="Enter your Email id" />
+                        <input type="Email" className="border mt-1 mb-4   h-10 rounded-md pl-2 block text-sm" placeholder="Enter your Email id" />
 
                         <label htmlFor="Email">What service are you interested in </label>
 
-                        <select name="service" id="service" className="sm:w-96 w-11/12 pl-2 h-10 opacity-75 mt-1 mb-4 border rounded-md text-sm">
+                        <select name="service" id="service" className="pl-2 h-10 opacity-75 mt-1 mb-4 border rounded-md text-sm">
                             <option value="select">Select option </option>
                             <option value="Build Project">Build Project</option>
                             <option value="Buy Project">Buy Project</option>
@@ -61,7 +59,7 @@ export default function Contact() {
 
                         <label htmlFor="Budget" className="block">Budget </label>
 
-                        <select name="amount" id="amount" className="sm:w-96 w-11/12 pl-2 h-10 mt-1 mb-4 opacity-75 border rounded-md text-sm">
+                        <select name="amount" id="amount" className="pl-2 h-10 mt-1 mb-4 opacity-75 border rounded-md text-sm">
                             <option value="choose amount">choose amount</option>
                             <option value="500">Less than 500</option>
                             <option value="800">Less than 800</option>
@@ -74,9 +72,9 @@ export default function Contact() {
 
                         <label htmlFor="message" className="block">Message </label>
 
-                        <textarea name="text" id="text" placeholder="write what you want to ask about..." className="text-sm w-11/12 sm:w-96 pl-3 pt-2 mt-1 mb-4 min-h-28 border rounded-md"></textarea>
+                        <textarea name="text" id="text" placeholder="write what you want to ask about..." className="text-sm  pl-3 pt-2 mt-1 mb-4 min-h-28 border rounded-md"></textarea>
 
-                        <button className="bg-black text-white w-11/12 block sm:w-96 h-10 rounded-md mb-4">Submit</button>
+                        <button className="bg-black text-white block h-10 rounded-md mb-4">Submit</button>
                     </div>
 
                 </div>
