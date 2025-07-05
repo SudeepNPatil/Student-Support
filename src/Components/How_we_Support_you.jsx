@@ -6,12 +6,12 @@ export default function How_we_Support_you() {
         <div className="flex flex-col gap-1 w-[80vw] self-center mt-10 xl:mt-24 lg:mt-24 md:mt-20 sm:mt-16">
 
             <ScrollReveal >
-                <h1 className="text-lg xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-semibold xl:font-bold sm:font-bold ml-2 xl:px-8 ">HOW WE SUPPORT YOU ? </h1>
-                <p className="text-gray-700  ml-2 mb-4 text-sm xl:text-xl lg:text-xl md:text-lg sm:text-base xl:px-8 xl:mt-5 lg:mt-4 md:mt-3 sm:mt-2">Here is the details of how we support you</p>
+                <h1 className="text-lg xl:text-4xl lg:text-3xl md:text-2xl sm:text-xl font-semibold xl:font-bold sm:font-bold  xl:px-8 ">HOW WE SUPPORT YOU ? </h1>
+                <p className="text-gray-700  mt-1 mb-4 text-sm xl:text-xl lg:text-xl md:text-lg sm:text-base xl:px-8 xl:mt-5 lg:mt-4 md:mt-3 sm:mt-2">Here is the details of how we support you</p>
             </ScrollReveal>
 
             <ScrollReveal>
-                <div className="flex gap-5 mt-2  transition-all duration-500 xl:px-8">
+                <div className="flex gap-5 mt-4  transition-all duration-500 xl:px-8">
                     <div className="flex flex-col gap-4  flex-wrap items-center">
                         <button className="border-2 border-black w-7 h-7 rounded-3xl xl:w-12 lg:w-10 md:w-9 sm:w-8 xl:h-12 lg:h-10 md:h-9 sm:h-8 sm:rounded-full xl:text-xl lg:text-lg sm:text-base">1</button>
                         <div className="w-[5px] flex-auto bg-blue-200 rounded-sm"></div>
