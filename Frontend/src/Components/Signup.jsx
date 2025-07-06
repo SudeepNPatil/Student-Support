@@ -10,7 +10,24 @@ export default function Signup() {
 
     const [nextStep, setNextStep] = useState(false);
 
-    console.log(nextStep)
+
+    const [formData, setFormData] = useState({
+        firstname: '',
+        lastname: '',
+        email: '',
+        password: ''
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    console.log(formData)
+
     return (
         <div className="mx-auto flex flex-row rounded-lg bg-white lg:w-[80vw] sm:w-[100vw] lg:border relative">
 
@@ -45,7 +62,7 @@ export default function Signup() {
 
             </div>
 
-            {nextStep ? <SignupCom2 /> : <SignupCom1 setNextStep={setNextStep} />}
+            {nextStep ? <SignupCom2 formData={formData} handleChange={handleChange} /> : <SignupCom1 setNextStep={setNextStep} formData={formData} handleChange={handleChange} />}
 
         </div>
 
