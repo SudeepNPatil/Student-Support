@@ -10,6 +10,8 @@ export default function Navbar() {
 
     const [isopen, setopen] = useState(false);
 
+    const [login, setlogin] = useState(true);
+
     const clickfunction = function () {
         setopen(true)
     }
@@ -28,7 +30,10 @@ export default function Navbar() {
                 <Link to='/Project' className='hover:text-yellow-400'>Project</Link >
                 <Link to='/Contact' className='hover:text-yellow-400'>Contact</Link >
                 <Link to='/Admin' className='hover:text-yellow-400'>Admin</Link >
-                <Link to='/login' className='hover:text-yellow-400'>login</Link>
+                <Link to='/login' className='hover:text-yellow-400'>{login ? "login" :
+                    <span className='rounded-full text-xl border flex flex-col justify-center w-12 h-12  bg-gray-100 text-center'>
+                        S
+                    </span>}</Link>
             </div>
 
 
