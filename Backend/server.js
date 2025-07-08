@@ -5,11 +5,16 @@ import cors from "cors";
 import dotenv from "dotenv"
 
 
+
 dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}));
+
 
 app.use(express.json());
 
@@ -19,6 +24,8 @@ db()
 app.post("/User", async (req, res) => {
 
     const { firstname, lastname, email, password } = req.body;
+
+    console.log(req.body)
 
     try {
         const newuser = new User({
