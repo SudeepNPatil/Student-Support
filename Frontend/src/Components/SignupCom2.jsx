@@ -1,27 +1,7 @@
 import React from "react";
 import { LuLockKeyhole } from "react-icons/lu";
 
-export default function SignupCom2({ formData, handleChange }) {
-
-
-    const handlesubmit = function (e) {
-        e.preventDefault();
-
-        let response = fetch("http://localhost:5000/User", {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-
-        let result = response.json();
-
-        console.log(result)
-    }
-
-
-
+export default function SignupCom2({ formData, handleChange, handlesubmit }) {
 
     return (
         <div className="xl:w-96 lg:w-[62%] md:w-[60%] sm:w-[60%] w-[100vw] mx-auto pt-16 pb-28 xl:px-0 lg:px-20 md:px-14 sm:px-12 px-12 sm:mt-0 mt-20">
@@ -38,7 +18,7 @@ export default function SignupCom2({ formData, handleChange }) {
                 <label htmlFor="confirm" className="mt-4 font-semibold">Confirm password</label>
                 <input type="password" id="confirm" className="pl-3 rounded-md h-10 border" />
 
-                <button className="h-10 mt-6 bg-blue-500 rounded-md font-semibold" onClick={() => handlesubmit}>Complete signup</button>
+                <button className="h-10 mt-6 bg-blue-500 rounded-md font-semibold" onClick={handlesubmit}>Complete signup</button>
 
             </form>
         </div>

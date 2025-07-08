@@ -12,7 +12,8 @@ export default function Navbar() {
 
     const [login, setlogin] = useState(true);
 
-    const clickfunction = function () {
+    const clickfunction = function (e) {
+        e.preventDefault();
         setopen(true)
     }
 
