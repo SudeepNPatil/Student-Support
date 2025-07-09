@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 const ModalSignup = ({ isOpen, onClose, children }) => {
 
     if (!isOpen) return null

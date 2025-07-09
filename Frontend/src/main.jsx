@@ -17,6 +17,7 @@ import Cart from './Components/Cart.jsx'
 import Wishlist from './Components/Wishlist.jsx'
 import OrderTrack from './Components/OrderTrack.jsx'
 import Product from './Components/Product.jsx'
+import { LoginContextProvider } from "./Context/LoginContext.jsx"
 
 
 const router = createBrowserRouter([
@@ -83,4 +84,10 @@ const router = createBrowserRouter([
     },
 ])
 
-createRoot(document.getElementById('root')).render(<RouterProvider router={router} />)
+createRoot(document.getElementById('root'))
+    .render(
+
+        <LoginContextProvider>
+            <RouterProvider router={router} />
+        </LoginContextProvider>
+    )

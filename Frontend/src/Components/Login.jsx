@@ -1,10 +1,51 @@
 import { IoPersonAddOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
-
-
+import { useState } from "react";
+import ModalSignup from "./ModalSignup";
+import { useContext } from "react";
+import { LoginContext } from "../Context/LoginContext"
 
 export default function Login() {
+
+    const { isLogin, setisLogin } = useContext(LoginContext);
+
+    const [logindata, setlogindata] = useState({
+        email: "",
+        password: ""
+    });
+
+    const [ismodalopen, setmodalopen] = useState(false)
+
+    const handlechange = function (e) {
+        setlogindata((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+    }
+
+    console.log(logindata)
+
+    const handlelogin = async (e) => {
+
+        e.preventDefault();
+
+        const res = await fetch("http://localhost:5000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(logindata)
+        });
+
+        const data = await res.json();
+
+        if (res.status == 200) {
+
+            setisLogin(true);
+            setmodalopen(true);
+        }
+
+        console.log(data);
+    }
+
     return (
 
         <div className="mx-auto flex flex-col  sm:flex-row rounded-lg bg-white xl:w-[75vw] lg:w-[85vw] sm:w-[100vw] lg:border relative">
@@ -43,21 +84,28 @@ export default function Login() {
 
                 <p className="text-sm text-gray-700 text-center mt-2">Please Enter the valid details below</p>
 
-                <form action="submit" className="flex flex-col gap-1 flex-wrap">
+                <form className="flex flex-col gap-1 flex-wrap">
 
                     <label htmlFor="name" className="mt-8 font-semibold">Username</label>
-                    <input type="text" id="name" className="pl-3 rounded-md  h-10 border" />
+                    <input type="text" id="name" name="email" className="pl-3 rounded-md  h-10 border" onChange={handlechange} />
 
                     <label htmlFor="password" className="mt-4 font-semibold">Password</label>
-                    <input type="password" id="password" className="pl-3 rounded-md  h-10 border" />
+                    <input type="password" id="password" name="password" className="pl-3 rounded-md  h-10 border" onChange={handlechange} />
 
-                    <button className="h-10 mt-6 bg-blue-500 rounded-md">Login</button>
+                    <button onClick={handlelogin} className="h-10 mt-6 bg-blue-500 rounded-md">Login</button>
 
                     <p className="text-black text-center mt-6">Can't login? <Link to={`/Signup`} className="text-blue-800 cursor-pointer">Create an Account</Link></p>
 
                 </form>
             </div>
 
+            <ModalSignup isOpen={ismodalopen} onClose={() => setmodalopen(false)}>
+                <div className="flex flex-col justify-center">
+                    <h1 className="text-xl text-center font-semibold">Loged in successfully✅</h1>
+
+                    <Link to="/Home" className="px-10 py-2 rounded-lg mt-5 bg-black bg-opacity-80 text-white text-center mx-auto">Go to Main</Link>
+                </div>
+            </ModalSignup>
         </div>
 
     )

@@ -4,13 +4,18 @@ import { useState } from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import { Link } from 'react-router-dom';
-
+import { useContext } from 'react';
+import { LoginContext } from '../Context/LoginContext';
+import { HiOutlineDotsVertical } from "react-icons/hi";
+import Modalmain from './Modalmain';
 
 export default function Navbar() {
 
     const [isopen, setopen] = useState(false);
 
-    const [login, setlogin] = useState(true);
+    const [isclicked, setisclicked] = useState(false)
+
+    const { isLogin, setisLogin } = useContext(LoginContext);
 
     const clickfunction = function (e) {
         e.preventDefault();
@@ -19,7 +24,7 @@ export default function Navbar() {
 
 
     return (
-        <div className="flex justify-between h-20 border-b fixed bg-white w-full z-50">
+        <div onClick={(e) => (e.stopPropagation(), setisclicked(false))} className="flex justify-between h-20 border-b fixed bg-white w-full z-50">
 
             <div className='flex '>
                 <img src={logo} alt="logo" className='ml-2 rounded-full xl:ml-16 lg:ml-10 md:ml-6 sm:ml-4  w-16 h-16 mt-2 hover:scale-125 duration-500 ease-in-out cursor-pointer' />
@@ -31,12 +36,20 @@ export default function Navbar() {
                 <Link to='/Project' className='hover:text-yellow-400'>Project</Link >
                 <Link to='/Contact' className='hover:text-yellow-400'>Contact</Link >
                 <Link to='/Admin' className='hover:text-yellow-400'>Admin</Link >
-                <Link to='/login' className='hover:text-yellow-400'>{login ? "login" :
-                    <span className='rounded-full text-xl border flex flex-col justify-center w-12 h-12  bg-gray-100 text-center'>
-                        S
-                    </span>}</Link>
+                {isLogin ?
+                    <div className='flex flex-row justify-between sm:gap-2 lg:gap-5 items-center'>
+                        <span className='rounded-full text-xl border flex flex-col justify-center w-12 h-12  bg-gray-100 text-center'>
+                            S
+                        </span>
+                        <HiOutlineDotsVertical size={35} onClick={(e) => (e.stopPropagation(), setisclicked(true))} className='md:-mr-10 lg:-mr-6 text-gray-600 hover:bg-black/5 rounded-full p-1 cursor-pointer' />
+                    </div>
+                    :
+                    <Link to='/login' className='hover:text-yellow-400'>login</Link>
+                }
+
             </div>
 
+            <Modalmain isOpen={isclicked} onClose={() => setisclicked(false)}></Modalmain>
 
             <div className={`mt-5 bg-slate-100 fixed right-0 transform transition-transform duration-300 ease-in-out ${isopen ? 'translate-x-0' : 'translate-x-full'} `}>
                 <RxCross2 size={30} className='relative left-32 p-1' onClick={() => setopen(false)} />
