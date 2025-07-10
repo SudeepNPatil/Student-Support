@@ -7,13 +7,17 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { LoginContext } from '../Context/LoginContext';
 import { HiOutlineDotsVertical } from "react-icons/hi";
-import Modalmain from './Modalmain';
+import Modalmain from '../Modals/Modalmain';
+import { HiChevronRight } from "react-icons/hi";
+import ModalAccountinfo from '../Modals/ModalAccoutinfo';
 
 export default function Navbar() {
 
     const [isopen, setopen] = useState(false);
 
     const [isclicked, setisclicked] = useState(false)
+
+    const [modal, setmodal] = useState(false)
 
     const { isLogin, setisLogin } = useContext(LoginContext);
 
@@ -37,11 +41,17 @@ export default function Navbar() {
                 <Link to='/Contact' className='hover:text-yellow-400'>Contact</Link >
                 <Link to='/Admin' className='hover:text-yellow-400'>Admin</Link >
                 {isLogin ?
-                    <div className='flex flex-row justify-between sm:gap-2 lg:gap-5 items-center'>
+                    <div onClick={() => setmodal(true)} className='flex flex-row justify-between sm:gap-2 lg:gap-5 items-center'>
                         <span className='rounded-full text-xl border flex flex-col justify-center w-12 h-12  bg-gray-100 text-center'>
                             S
                         </span>
                         <HiOutlineDotsVertical size={35} onClick={(e) => (e.stopPropagation(), setisclicked(true))} className='md:-mr-10 lg:-mr-6 text-gray-600 hover:bg-black/5 rounded-full p-1 cursor-pointer' />
+
+                        {/* <ModalAccountinfo isOpen={modal} onClose={() => setmodal(false)}>
+                            <div className='h-96 w-52 bg-green-300'>
+
+                            </div>
+                        </ModalAccountinfo> */}
                     </div>
                     :
                     <Link to='/login' className='hover:text-yellow-400'>login</Link>
@@ -49,16 +59,28 @@ export default function Navbar() {
 
             </div>
 
+
+
+
             <Modalmain isOpen={isclicked} onClose={() => setisclicked(false)}></Modalmain>
 
-            <div className={`mt-5 bg-slate-100 fixed right-0 transform transition-transform duration-300 ease-in-out ${isopen ? 'translate-x-0' : 'translate-x-full'} `}>
-                <RxCross2 size={30} className='relative left-32 p-1' onClick={() => setopen(false)} />
-                <div className='flex flex-col w-auto scale-x-100 h-auto relative min-w-40 bg-slate-100 font-semibold rounded-sm'>
-                    <Link to='/Home' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Home</Link >
-                    <Link to='/Project' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Project</Link >
-                    <Link to='/Contact' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Contact</Link >
-                    <Link to='/Admin' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>Admin</Link>
-                    <Link to='/login' className='p-2 w-auto h-auto block rounded-md hover:bg-blue-500 hover:text-yellow-400'>login</Link >
+            <div className={`mt-5 bg-white border rounded-md px-5 pb-3 fixed right-0 transform transition-transform duration-300 ease-in-out ${isopen ? 'translate-x-0' : 'translate-x-full'} `}>
+                <RxCross2 size={30} className='relative left-36 p-1' onClick={() => setopen(false)} />
+                <div className='flex flex-col gap-4 w-auto scale-x-100 h-auto relative min-w-40 bg-white font-semibold rounded-sm'>
+                    <Link to='/Home' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600'>Home</Link >
+                    <Link to='/Project' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600 '>Project</Link >
+                    <Link to='/Contact' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600 '>Contact</Link >
+                    <Link to='/Admin' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600'>Admin</Link>
+                    {isLogin ?
+                        <div className='flex flex-row mt-2 hover:bg-blue-600 bg-[#00000004] justify-between px-2 py-2 rounded-xl items-center'>
+                            <p className='text-center bg-blue-300 rounded-full w-7 h-7 text-[12px] pt-1'>S</p>
+                            <p className='text-[12px]'>Account info</p>
+                            <HiChevronRight className='text-base' />
+                        </div>
+                        :
+                        <Link to='/login' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600'>login</Link >
+                    }
+
                 </div>
             </div>
 

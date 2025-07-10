@@ -4,7 +4,7 @@ import { GoArrowLeft } from "react-icons/go";
 import SignupCom1 from "./SignupCom1";
 import SignupCom2 from "./SignupCom2";
 import { useState } from "react";
-import ModalSignup from "./ModalSignup";
+import ModalSignup from "../Modals/ModalSignup";
 
 export default function Signup() {
 

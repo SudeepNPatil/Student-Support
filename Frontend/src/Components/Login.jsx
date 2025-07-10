@@ -2,7 +2,7 @@ import { IoPersonAddOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
 import { useState } from "react";
-import ModalSignup from "./ModalSignup";
+import ModalSignup from "../Modals/ModalSignup";
 import { useContext } from "react";
 import { LoginContext } from "../Context/LoginContext"
 
