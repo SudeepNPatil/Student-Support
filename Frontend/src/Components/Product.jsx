@@ -1,12 +1,21 @@
 import React from "react"
-import { data } from "../data/E-commerce_collection";
+import useProductdetails from "../Hooks/useProductdetails"
+import Loding from "./Loding";
+
 
 export default function Product() {
+
+    const targetdata = useProductdetails();
+
+    if (targetdata.length == 0) {
+        return <Loding />
+    }
+
     return (
         <>
             <div className="hidden sm:flex flex-row flex-wrap gap-10 py-10 justify-center max-h-screen overflow-y-scroll scroll-smooth no-scrollbar">
 
-                {data.map((item, index) => (
+                {targetdata.map((item, index) => (
                     <div key={index} className="w-52 rounded-2xl shadow-lg cursor-pointer hover:scale-95 duration-500 ease-in-out">
                         <img src={`${item.image_url}`} alt={`${item.title}`} className="w-fit object-cover rounded-2xl" />
                         <div className="px-4 py-3 text-sm">
@@ -24,7 +33,7 @@ export default function Product() {
 
             <div className="flex flex-wrap justify-center gap-10 py-7 h-[75vh] overflow-y-scroll no-scrollbar sm:hidden">
 
-                {data.map((item, index) => (
+                {targetdata.map((item, index) => (
                     <div key={index} className="w-40 flex flex-col flex-wrap  justify-center rounded-2xl shadow-xl">
                         <img src={`${item.image_url}`} alt={`${item.title}`} className="w-full object-cover rounded-2xl" />
 

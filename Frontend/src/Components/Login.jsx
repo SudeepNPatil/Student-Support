@@ -10,6 +10,8 @@ export default function Login() {
 
     const { isLogin, setisLogin } = useContext(LoginContext);
 
+    const [afterlogin, setafterlogin] = useState(false);
+
     const [logindata, setlogindata] = useState({
         email: "",
         password: ""
@@ -38,9 +40,14 @@ export default function Login() {
         const data = await res.json();
 
         if (res.status == 200) {
-
             setisLogin(true);
             setmodalopen(true);
+        }
+        else if (res.status == 400) {
+            setafterlogin(true);
+        }
+        else {
+            console.log("server error");
         }
 
         console.log(data);
@@ -104,6 +111,15 @@ export default function Login() {
                     <h1 className="text-xl text-center font-semibold">Loged in successfully✅</h1>
 
                     <Link to="/Home" className="px-10 py-2 rounded-lg mt-5 bg-black bg-opacity-80 text-white text-center mx-auto">Go to Main</Link>
+                </div>
+            </ModalSignup>
+
+
+            <ModalSignup isOpen={afterlogin} onClose={() => setafterlogin(false)}>
+                <div className="flex flex-col justify-center shadow-lg shadow-red-600">
+                    <h1 className="text-xl text-center font-semibold">invalid email or password</h1>
+
+                    <Link onClick={() => setafterlogin(false)} className="px-10 py-2 rounded-lg mt-5 bg-black bg-opacity-80 text-white text-center mx-auto">Try again</Link>
                 </div>
             </ModalSignup>
         </div>

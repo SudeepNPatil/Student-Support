@@ -22,12 +22,12 @@ export default function Project() {
                     <div className="xl:w-[20%] sm:w-full xl:gap-0 sm:gap-10 xl:px-0 lg:px-12 md:px-8 sm:px-7  overflow-x-scroll no-scrollbar bg-green-50 sm:flex xl:flex-col sm:flex-row items-center xl:border-r xl:pb-20 sm:pb-5">
                         <h2 className="xl:mt-8 sm:mt-5 font-bold text-xl text-center">Catagories</h2>
                         <hr className="hidden xl:block xl:w-full mt-5" />
-                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">E-commerce</p>
-                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">IOT</p>
-                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">AI/ML</p>
-                        <p className="text-center mt-5 border font-semibold opacity-80 sm:min-w-80 xl:min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</p>
-                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Portfolio</p>
-                        <p className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Others</p>
+                        <Link to="/Project/ecommerce" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">E-commerce</Link>
+                        <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">IOT</Link>
+                        <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">AI/ML</Link>
+                        <Link to="/Project/business" className="text-center mt-5 border font-semibold opacity-80 sm:min-w-80 xl:min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</Link>
+                        <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Portfolio</Link>
+                        <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Others</Link>
                     </div>
                     <div className="flex-1">
                         <div className="flex xl:px-20 lg:px-12 md:px-10 sm:px-9 sm:justify-between h-20 border-b items-center ">

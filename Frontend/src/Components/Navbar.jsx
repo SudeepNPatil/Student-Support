@@ -33,7 +33,7 @@ export default function Navbar() {
 
             <div className='hidden md:flex justify-end xl:gap-28 md:gap-12 lg:gap-16 items-center font-semibold mr-10'>
                 <Link to='/Home' className='hover:text-yellow-400'>Home</Link >
-                <Link to='/Project' className='hover:text-yellow-400'>Project</Link >
+                <Link to='/Project/ecommerce' className='hover:text-yellow-400'>Project</Link >
                 <Link to='/Contact' className='hover:text-yellow-400'>Contact</Link >
                 <Link to='/Admin' className='hover:text-yellow-400'>Admin</Link >
                 {isLogin ?

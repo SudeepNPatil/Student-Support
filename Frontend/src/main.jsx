@@ -1,4 +1,3 @@
-
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter } from 'react-router-dom'
@@ -6,18 +5,23 @@ import { RouterProvider } from 'react-router-dom'
 import App from './App.jsx'
 import Project from './Components/Project.jsx'
 import Home from './Components/Home.jsx'
-import Contact from './Components/Contact.jsx'
-import Custom_Build_Service from './Components/Custom_Build_Service.jsx'
-import Project_Navigator from './Components/Project_Navigator.jsx'
-import Debug_Rescue from './Components/Debug_Rescue.jsx'
 import ErrorElement from './Components/ErrorElement.jsx'
-import Login from './Components/Login.jsx'
-import Signup from './Components/Signup.jsx'
 import Cart from './Components/Cart.jsx'
 import Wishlist from './Components/Wishlist.jsx'
 import OrderTrack from './Components/OrderTrack.jsx'
 import Product from './Components/Product.jsx'
 import { LoginContextProvider } from "./Context/LoginContext.jsx"
+import { lazy, Suspense } from 'react'
+import Loding from './Components/Loding.jsx'
+
+const Contact = lazy(() => import('./Components/Contact.jsx'));
+const Custom_Build_Service = lazy(() => import('./Components/Custom_Build_Service.jsx'));
+const Project_Navigator = lazy(() => import('./Components/Project_Navigator.jsx'));
+const Debug_Rescue = lazy(() => import('./Components/Debug_Rescue.jsx'));
+const Login = lazy(() => import('./Components/Login.jsx'));
+const Signup = lazy(() => import('./Components/Signup.jsx'));
+const Admin = lazy(() => import('./Components/Admin.jsx'));
+
 
 
 const router = createBrowserRouter([
@@ -38,8 +42,12 @@ const router = createBrowserRouter([
                 path: '/Project',
                 element: <Project />,
                 children: [
-                    {
+                    /* {
                         index: true,
+                        element: <Product />
+                    }, */
+                    {
+                        path: ':category',
                         element: <Product />
                     },
                     {
@@ -58,29 +66,61 @@ const router = createBrowserRouter([
             },
             {
                 path: "/Contact",
-                element: <Contact />
+                element: (
+                    <Suspense fallback={<Loding />}>
+                        <Contact />
+                    </Suspense>
+                )
+            },
+            {
+                path: "/Admin",
+                element: (
+                    <Suspense fallback={<Loding />}>
+                        <Admin />
+                    </Suspense>
+                )
             },
             {
                 path: "/Custom_Build_Service",
-                element: <Custom_Build_Service />
+                element: (
+                    <Suspense fallback={<Loding />}>
+                        <Custom_Build_Service />
+                    </Suspense>
+                )
             },
             {
                 path: "/Project_Navigator",
-                element: <Project_Navigator />
+                element: (
+                    <Suspense fallback={<Loding />}>
+                        <Project_Navigator />
+                    </Suspense>
+                )
             },
             {
                 path: "/Debug_Rescue",
-                element: <Debug_Rescue />
+                element: (
+                    <Suspense fallback={<Loding />}>
+                        <Debug_Rescue />
+                    </Suspense>
+                )
             },
         ]
     },
     {
         path: "/Login",
-        element: <Login />
+        element: (
+            <Suspense fallback={<Loding />}>
+                <Login />
+            </Suspense>
+        )
     },
     {
         path: "/Signup",
-        element: <Signup />
+        element: (
+            <Suspense fallback={<Loding />}>
+                <Signup />
+            </Suspense>
+        )
     },
 ])
 
