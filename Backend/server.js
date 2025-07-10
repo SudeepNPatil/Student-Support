@@ -3,6 +3,7 @@ import db from "./db.js"
 import User from "./models/User.model.js";
 import cors from "cors";
 import dotenv from "dotenv"
+import Project from "./models/Project.model.js";
 
 
 
@@ -44,7 +45,7 @@ app.post("/User", async (req, res) => {
         res.status(500).json({ message: "server error" });
     }
 
-})
+});
 
 app.post('/login', async (req, res) => {
 
@@ -66,6 +67,22 @@ app.post('/login', async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     }
 });
+
+
+app.get("/Project/:category", async (req, res) => {
+    const { category } = req.params;
+
+    console.log(category)
+
+    try {
+        const projects = await Project.find({ category });
+        res.json(projects);
+    } catch (error) {
+        console.error("Error fetching projects:", error);
+        res.status(500).json({ message: "Failed to fetch projects" });
+    }
+});
+
 
 app.listen(process.env.PORT, () => {
     console.log(`server is running on  http://localhost:${process.env.PORT}`);
