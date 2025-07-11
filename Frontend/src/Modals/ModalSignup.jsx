@@ -1,4 +1,5 @@
 import React from "react";
+import { RxCross2 } from "react-icons/rx";
 
 const ModalSignup = ({ isOpen, onClose, children }) => {
 
@@ -9,7 +10,7 @@ const ModalSignup = ({ isOpen, onClose, children }) => {
 
             <div className="bg-white rounded-xl p-6 w-[90%] max-w-md relative shadow-lg">
 
-                <button onClick={onClose} className="absolute right-2 top-2 text-gray-200 hover:text-black">✖</button>
+                <RxCross2 onClick={onClose} className="absolute right-2 top-2 text-xl cursor-pointer text-gray-500 hover:text-black"></RxCross2>
                 {children}
             </div>
 

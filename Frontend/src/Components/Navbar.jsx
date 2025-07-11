@@ -15,11 +15,20 @@ export default function Navbar() {
 
     const [isopen, setopen] = useState(false);
 
-    const [isclicked, setisclicked] = useState(false)
+    const [isclicked, setisclicked] = useState(false);
 
-    const [modal, setmodal] = useState(false)
+    const [modal, setmodal] = useState(false);
 
-    const { isLogin, setisLogin } = useContext(LoginContext);
+
+    const { isLogin, setisLogin, data, setdata } = useContext(LoginContext);
+
+    const local = localStorage.getItem("islogedin");
+    const name = localStorage.getItem("name");
+
+    if (local) {
+        setdata(name)
+        setisLogin(true);
+    }
 
     const clickfunction = function (e) {
         e.preventDefault();
@@ -41,17 +50,12 @@ export default function Navbar() {
                 <Link to='/Contact' className='hover:text-yellow-400'>Contact</Link >
                 <Link to='/Admin' className='hover:text-yellow-400'>Admin</Link >
                 {isLogin ?
-                    <div onClick={() => setmodal(true)} className='flex flex-row justify-between sm:gap-2 lg:gap-5 items-center'>
+                    <div className='flex flex-row justify-between sm:gap-2 lg:gap-5 items-center'>
                         <span className='rounded-full text-xl border flex flex-col justify-center w-12 h-12  bg-gray-100 text-center'>
-                            S
+                            {data.toUpperCase()}
                         </span>
                         <HiOutlineDotsVertical size={35} onClick={(e) => (e.stopPropagation(), setisclicked(true))} className='md:-mr-10 lg:-mr-6 text-gray-600 hover:bg-black/5 rounded-full p-1 cursor-pointer' />
 
-                        {/* <ModalAccountinfo isOpen={modal} onClose={() => setmodal(false)}>
-                            <div className='h-96 w-52 bg-green-300'>
-
-                            </div>
-                        </ModalAccountinfo> */}
                     </div>
                     :
                     <Link to='/login' className='hover:text-yellow-400'>login</Link>
@@ -59,10 +63,10 @@ export default function Navbar() {
 
             </div>
 
-
-
-
             <Modalmain isOpen={isclicked} onClose={() => setisclicked(false)}></Modalmain>
+
+
+            {/* mobile view */}
 
             <div className={`mt-5 bg-white border rounded-md px-5 pb-3 fixed right-0 transform transition-transform duration-300 ease-in-out ${isopen ? 'translate-x-0' : 'translate-x-full'} `}>
                 <RxCross2 size={30} className='relative left-36 p-1' onClick={() => setopen(false)} />
@@ -72,8 +76,8 @@ export default function Navbar() {
                     <Link to='/Contact' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600 '>Contact</Link >
                     <Link to='/Admin' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600'>Admin</Link>
                     {isLogin ?
-                        <div className='flex flex-row mt-2 hover:bg-blue-600 bg-[#00000004] justify-between px-2 py-2 rounded-xl items-center'>
-                            <p className='text-center bg-blue-300 rounded-full w-7 h-7 text-[12px] pt-1'>S</p>
+                        <div onClick={() => setmodal(true)} className='flex flex-row mt-2 hover:bg-blue-600 bg-[#00000004] justify-between px-2 py-2 rounded-xl items-center'>
+                            <p className='text-center bg-blue-300 rounded-full w-7 h-7 text-[12px] pt-1'> {data}</p>
                             <p className='text-[12px]'>Account info</p>
                             <HiChevronRight className='text-base' />
                         </div>
@@ -81,12 +85,27 @@ export default function Navbar() {
                         <Link to='/login' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600'>login</Link >
                     }
 
+                    <ModalAccountinfo isOpen={modal} onClose={() => setmodal(false)}>
+
+                        <h1 className='text-sm border pl-5 mt-10 px-5 py-2 rounded-lg bg-[#00000002]  hover:border-blue-500'>
+                            Account info
+                        </h1>
+                        <h1 className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-blue-500'>
+                            Your Orders
+                        </h1>
+                        <Link onClick={() => (localStorage.clear(), window.location.reload())} className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-red-500 hover:shadow-inner hover:shadow-red-300'>
+                            Logout
+                        </Link>
+
+                    </ModalAccountinfo>
+
                 </div>
             </div>
 
             <button className='md:hidden border-2 bg-gray-50 rounded-md w-10 block h-10 text-center text-3xl pl-1 mr-4 mt-5' onClick={clickfunction}>
                 <RxHamburgerMenu />
             </button>
+
 
 
         </div>

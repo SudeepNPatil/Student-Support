@@ -13,7 +13,7 @@ export default function Productdetails() {
 
         if (!category) return;
 
-        fetch(`http://localhost:5000/Project/${category}`)
+        fetch(`https://student-support-s0xt.onrender.com/Project/${category}`)
             .then(data => data.json())
             .then(data => gettargetdata(data))
             .catch(error => console.error("failed to load the data"));

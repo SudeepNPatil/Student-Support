@@ -8,7 +8,7 @@ import { LoginContext } from "../Context/LoginContext"
 
 export default function Login() {
 
-    const { isLogin, setisLogin } = useContext(LoginContext);
+    const { isLogin, setisLogin, setdata } = useContext(LoginContext);
 
     const [afterlogin, setafterlogin] = useState(false);
 
@@ -23,13 +23,11 @@ export default function Login() {
         setlogindata((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
-    console.log(logindata)
-
     const handlelogin = async (e) => {
 
         e.preventDefault();
 
-        const res = await fetch("http://localhost:5000/login", {
+        const res = await fetch("https://student-support-s0xt.onrender.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -41,7 +39,10 @@ export default function Login() {
 
         if (res.status == 200) {
             setisLogin(true);
+            setdata(data?.user?.firstname[0]);
             setmodalopen(true);
+            localStorage.setItem("islogedin", true);
+            localStorage.setItem("name", data?.user?.firstname[0]);
         }
         else if (res.status == 400) {
             setafterlogin(true);
@@ -50,7 +51,6 @@ export default function Login() {
             console.log("server error");
         }
 
-        console.log(data);
     }
 
     return (

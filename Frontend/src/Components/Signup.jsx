@@ -37,7 +37,7 @@ export default function Signup() {
 
         console.log('requested')
 
-        let response = await fetch("http://localhost:5000/User", {
+        let response = await fetch("https://student-support-s0xt.onrender.com/User", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
