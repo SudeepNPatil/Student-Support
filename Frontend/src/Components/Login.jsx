@@ -5,12 +5,15 @@ import { useState } from "react";
 import ModalSignup from "../Modals/ModalSignup";
 import { useContext } from "react";
 import { LoginContext } from "../Context/LoginContext"
+import ModalLoading from "../Modals/ModalLoading.jsx";
 
 export default function Login() {
 
     const { isLogin, setisLogin, setdata } = useContext(LoginContext);
 
     const [afterlogin, setafterlogin] = useState(false);
+
+    const [loadingmodal, setloadingmodal] = useState(false);
 
     const [logindata, setlogindata] = useState({
         email: "",
@@ -27,6 +30,8 @@ export default function Login() {
 
         e.preventDefault();
 
+        setloadingmodal(true)
+
         const res = await fetch("https://student-support-s0xt.onrender.com/login", {
             method: "POST",
             headers: {
@@ -40,9 +45,10 @@ export default function Login() {
         if (res.status == 200) {
             setisLogin(true);
             setdata(data?.user?.firstname[0]);
-            setmodalopen(true);
             localStorage.setItem("islogedin", true);
             localStorage.setItem("name", data?.user?.firstname[0]);
+            setloadingmodal(false)
+            setmodalopen(true);
         }
         else if (res.status == 400) {
             setafterlogin(true);
@@ -122,6 +128,12 @@ export default function Login() {
                     <Link onClick={() => setafterlogin(false)} className="px-10 py-2 rounded-lg mt-5 bg-black bg-opacity-80 text-white text-center mx-auto">Try again</Link>
                 </div>
             </ModalSignup>
+
+            <ModalLoading isOpen={loadingmodal} onClose={() => setloadingmodal(false)}>
+                <div className="flex justify-center items-center z-50 ">
+                    <div className="w-12 h-12 border-4  border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </ModalLoading>
         </div>
 
     )

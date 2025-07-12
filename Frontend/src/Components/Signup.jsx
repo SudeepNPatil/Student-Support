@@ -5,6 +5,7 @@ import SignupCom1 from "./SignupCom1";
 import SignupCom2 from "./SignupCom2";
 import { useState } from "react";
 import ModalSignup from "../Modals/ModalSignup";
+import ModalLoading from "../Modals/ModalLoading";
 
 export default function Signup() {
 
@@ -12,6 +13,8 @@ export default function Signup() {
     const [nextStep, setNextStep] = useState(false);
 
     const [ismodalopen, setmodalopen] = useState(false);
+
+    const [loadingmodal, setloadingmodal] = useState(false);
 
 
     const [formData, setFormData] = useState({
@@ -35,6 +38,8 @@ export default function Signup() {
 
         e.preventDefault();
 
+        setloadingmodal(true);
+
         console.log('requested')
 
         let response = await fetch("https://student-support-s0xt.onrender.com/User", {
@@ -50,8 +55,10 @@ export default function Signup() {
         console.log(result)
 
         if (response.status == 201) {
+            setloadingmodal(false);
             setmodalopen(true);
         }
+
     }
 
 
@@ -106,6 +113,12 @@ export default function Signup() {
                     <Link to="/Login" className="px-10 py-2 rounded-lg mt-5 bg-black bg-opacity-80 text-white text-center mx-auto">Go to Login</Link>
                 </div>
             </ModalSignup>
+
+            <ModalLoading isOpen={loadingmodal} onClose={() => setloadingmodal(false)}>
+                <div className="flex justify-center items-center z-50 ">
+                    <div className="w-12 h-12 border-4  border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </ModalLoading>
 
         </>
 

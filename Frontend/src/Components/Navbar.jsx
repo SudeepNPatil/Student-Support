@@ -93,7 +93,7 @@ export default function Navbar() {
                         <h1 className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-blue-500'>
                             Your Orders
                         </h1>
-                        <Link onClick={() => (localStorage.clear(), window.location.reload())} className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-red-500 hover:shadow-inner hover:shadow-red-300'>
+                        <Link onClick={() => (localStorage.clear(), window.reload())} className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-red-500 hover:shadow-inner hover:shadow-red-300'>
                             Logout
                         </Link>
 
