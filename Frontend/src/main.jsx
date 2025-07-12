@@ -13,6 +13,9 @@ import Product from './Components/Product.jsx'
 import { LoginContextProvider } from "./Context/LoginContext.jsx"
 import { lazy, Suspense } from 'react'
 import Loding from './Components/Loding.jsx'
+import Admin from './Components/Admin/Admin.jsx'
+import User from './Components/Admin/Users.jsx'
+import Orders from './Components/Admin/Orders.jsx'
 
 const Contact = lazy(() => import('./Components/Contact.jsx'));
 const Custom_Build_Service = lazy(() => import('./Components/Custom_Build_Service.jsx'));
@@ -20,7 +23,7 @@ const Project_Navigator = lazy(() => import('./Components/Project_Navigator.jsx'
 const Debug_Rescue = lazy(() => import('./Components/Debug_Rescue.jsx'));
 const Login = lazy(() => import('./Components/Login.jsx'));
 const Signup = lazy(() => import('./Components/Signup.jsx'));
-const Admin = lazy(() => import('./Components/Admin.jsx'));
+const AdminLogin = lazy(() => import('./Components/Admin/AdminLogin.jsx'));
 
 
 
@@ -73,14 +76,6 @@ const router = createBrowserRouter([
                 )
             },
             {
-                path: "/Admin",
-                element: (
-                    <Suspense fallback={<Loding />}>
-                        <Admin />
-                    </Suspense>
-                )
-            },
-            {
                 path: "/Custom_Build_Service",
                 element: (
                     <Suspense fallback={<Loding />}>
@@ -121,6 +116,28 @@ const router = createBrowserRouter([
                 <Signup />
             </Suspense>
         )
+    },
+    {
+        path: "/Admin",
+        element: (
+            <Suspense fallback={<Loding />}>
+                <AdminLogin />
+            </Suspense>
+        ),
+    },
+    {
+        path: "AdminDashboard",
+        element: <Admin />,
+        children: [
+            {
+                path: "Users",
+                element: <User />
+            },
+            {
+                path: "Orders",
+                element: <Orders />
+            }
+        ]
     },
 ])
 
