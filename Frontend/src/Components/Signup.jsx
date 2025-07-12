@@ -66,7 +66,7 @@ export default function Signup() {
     console.log(formData)
 
     return (
-        <>
+        <div className="flex flex-col justify-center items-center 2xl:h-screen">
             <div className="mx-auto flex flex-row rounded-lg bg-white lg:w-[80vw] sm:w-[100vw] lg:border relative">
 
                 <Link to={`/Home`}><GoArrowLeft size={30} className="hidden sm:absolute sm:block top-0 lg:-left-9 md:left-0 border rounded-full" /></Link>
@@ -120,7 +120,7 @@ export default function Signup() {
                 </div>
             </ModalLoading>
 
-        </>
+        </div>
 
     )
 }
