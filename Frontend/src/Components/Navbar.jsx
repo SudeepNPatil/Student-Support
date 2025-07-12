@@ -72,7 +72,7 @@ export default function Navbar() {
                 <RxCross2 size={30} className='relative left-36 p-1' onClick={() => setopen(false)} />
                 <div className='flex flex-col gap-4 w-auto scale-x-100 h-auto relative min-w-40 bg-white font-semibold rounded-sm'>
                     <Link to='/Home' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600'>Home</Link >
-                    <Link to='/Project' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600 '>Project</Link >
+                    <Link to='/Project/ecommerce' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600 '>Project</Link >
                     <Link to='/Contact' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600 '>Contact</Link >
                     <Link to='/Admin' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600'>Admin</Link>
                     {isLogin ?
@@ -93,7 +93,7 @@ export default function Navbar() {
                         <h1 className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-blue-500'>
                             Your Orders
                         </h1>
-                        <Link onClick={() => (localStorage.clear(), window.reload())} className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-red-500 hover:shadow-inner hover:shadow-red-300'>
+                        <Link to="/" onClick={() => (localStorage.clear())} className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-red-500 hover:shadow-inner hover:shadow-red-300'>
                             Logout
                         </Link>
 

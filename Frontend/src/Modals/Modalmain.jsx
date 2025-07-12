@@ -14,7 +14,7 @@ const Modalmain = ({ isOpen, onClose, children }) => {
 
             <Link to={`#`} className="px-6  py-2 font-semibold opacity-80 hover:bg-gray-200 rounded-xl  mt-2">Your Orders</Link>
 
-            <Link onClick={() => (localStorage.clear(), window.reload())} className="px-6  py-2 font-semibold opacity-80 hover:bg-gray-200 rounded-xl  mt-2">Logout</Link>
+            <Link to="/" onClick={() => (localStorage.clear())} className="px-6  py-2 font-semibold opacity-80 hover:bg-gray-200 rounded-xl  mt-2">Logout</Link>
 
 
         </div>

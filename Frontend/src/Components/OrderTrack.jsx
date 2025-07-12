@@ -6,8 +6,6 @@ export default function OrderTrack() {
 
             <p className="text-center text-gray-700">You not ordered yet</p>
 
-
-
         </div>
     )
 }
