@@ -4,6 +4,7 @@ import User from "./models/User.model.js";
 import cors from "cors";
 import dotenv from "dotenv"
 import Project from "./models/Project.model.js";
+import Contactinfo from "./models/Contactinfo.model.js";
 
 
 
@@ -43,6 +44,35 @@ app.post("/User", async (req, res) => {
     }
 
 });
+
+
+app.post('/Contactinfo', async (req, res) => {
+
+    const { name, service, Budget, Email, text } = req.body;
+
+    console.log(req.body)
+
+    try {
+
+        const newcontactinfo = new Contactinfo({
+            name,
+            Email,
+            service,
+            Budget,
+            text
+        })
+
+        await newcontactinfo.save();
+
+        res.status(201).json({ message: "We Review your request and will connect with you soon..!" })
+
+    }
+    catch (error) {
+        console.error("Signup error", error.message);
+        res.status(500).json({ message: "server error" });
+    }
+})
+
 
 app.post('/login', async (req, res) => {
 
