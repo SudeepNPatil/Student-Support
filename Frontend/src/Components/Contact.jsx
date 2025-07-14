@@ -1,11 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaInstagram } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
+import ModalLoading from "../Modals/ModalLoading";
 
 
 export default function Contact() {
+
+    const [serverinfo, setserverinfo] = useState(null);
+
+    const [modalstate, setmodalstate] = useState(false)
+
+    const [contact, setcontact] = useState({
+
+        name: "",
+        Email: "",
+        service: "",
+        Budget: "",
+        text: ""
+    });
+
+    const handlechange = (e) => {
+
+        const { name, value } = e.target;
+
+        setcontact((prev) => ({
+            ...prev,
+            [name]: value
+        }))
+
+    }
+
+    console.log(contact)
+
+    const handlesubmit = async (e) => {
+
+        e.preventDefault();
+
+        setmodalstate(true);
+
+        let res = await fetch("https://student-support-s0xt.onrender.com/Contactinfo", {
+
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(contact)
+        })
+
+        let result = await res.json();
+
+        setmodalstate(false)
+
+        setserverinfo(result.message);
+
+        console.log(result);
+
+    }
+
+
     return (
         <>
             <div className="flex justify-center mb-8">
@@ -38,15 +92,15 @@ export default function Contact() {
 
                         <label htmlFor="name" >Name </label>
 
-                        <input type="text" className="border mt-1 mb-4 h-10 rounded-md pl-2 block text-sm" placeholder='Enter your Name' />
+                        <input onChange={handlechange} type="text" id="name" name="name" className="border mt-1 mb-4 h-10 rounded-md pl-2 block text-sm" placeholder='Enter your Name' />
 
                         <label htmlFor="Email" >Email </label>
 
-                        <input type="Email" className="border mt-1 mb-4   h-10 rounded-md pl-2 block text-sm" placeholder="Enter your Email id" />
+                        <input onChange={handlechange} type="Email" id="Email" name="Email" className="border mt-1 mb-4   h-10 rounded-md pl-2 block text-sm" placeholder="Enter your Email id" />
 
-                        <label htmlFor="Email">What service are you interested in </label>
+                        <label htmlFor="service">What service are you interested in </label>
 
-                        <select name="service" id="service" className="pl-2 h-10 opacity-75 mt-1 mb-4 border rounded-md text-sm">
+                        <select onChange={handlechange} name="service" id="service" className="pl-2 h-10 opacity-75 mt-1 mb-4 border rounded-md text-sm">
                             <option value="select">Select option </option>
                             <option value="Build Project">Build Project</option>
                             <option value="Buy Project">Buy Project</option>
@@ -59,7 +113,7 @@ export default function Contact() {
 
                         <label htmlFor="Budget" className="block">Budget </label>
 
-                        <select name="amount" id="amount" className="pl-2 h-10 mt-1 mb-4 opacity-75 border rounded-md text-sm">
+                        <select onChange={handlechange} name="Budget" id="Budget" className="pl-2 h-10 mt-1 mb-4 opacity-75 border rounded-md text-sm">
                             <option value="choose amount">choose amount</option>
                             <option value="500">Less than 500</option>
                             <option value="800">Less than 800</option>
@@ -72,13 +126,23 @@ export default function Contact() {
 
                         <label htmlFor="message" className="block">Message </label>
 
-                        <textarea name="text" id="text" placeholder="write what you want to ask about..." className="text-sm  pl-3 pt-2 mt-1 mb-4 min-h-28 border rounded-md"></textarea>
+                        <textarea onChange={handlechange} name="text" id="text" placeholder="write what you want to ask about..." className="text-sm  pl-3 pt-2 mt-1 mb-4 min-h-28 border rounded-md"></textarea>
 
-                        <button className="bg-black text-white block h-10 rounded-md mb-4">Submit</button>
+                        <button type="button" onClick={handlesubmit} className="bg-black text-white block h-10 rounded-md mb-4">Submit</button>
+
                     </div>
 
                 </div>
+
             </div>
+
+            <h1 className="text-center text-green-500 font-semibold text-lg mb-10">{serverinfo}</h1>
+
+            <ModalLoading isOpen={modalstate} onClose={() => setmodalstate(false)}>
+                <div className="flex justify-center items-center z-50 ">
+                    <div className="w-12 h-12 border-4  border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </ModalLoading>
 
         </>
     )
