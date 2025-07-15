@@ -94,7 +94,6 @@ export default function Signup() {
                         <p className="text-gray-700 xl:ml-[76px] lg:ml-[65px] md:ml-[58px] sm:ml-[47px] mt-1 text-base xl:pr-10 lg:pr-3 sm:pr-2">Must be at least 8 characters</p>
                     </div>
 
-
                 </div>
 
                 {nextStep ? <SignupCom2 formData={formData} handleChange={handleChange} handlesubmit={handlesubmit} /> : <SignupCom1 setNextStep={setNextStep} formData={formData} handleChange={handleChange} />}
