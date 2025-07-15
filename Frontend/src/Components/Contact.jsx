@@ -32,8 +32,6 @@ export default function Contact() {
 
     }
 
-    console.log(contact)
-
     const handlesubmit = async (e) => {
 
         e.preventDefault();
@@ -54,8 +52,6 @@ export default function Contact() {
         setmodalstate(false)
 
         setserverinfo(result.message);
-
-        console.log(result);
 
     }
 

@@ -20,7 +20,5 @@ export default function Productdetails() {
 
     }, [category]);
 
-    console.log(targetdata);
-
     return targetdata;
 }

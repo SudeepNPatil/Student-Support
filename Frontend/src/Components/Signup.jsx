@@ -6,6 +6,7 @@ import SignupCom2 from "./SignupCom2";
 import { useState } from "react";
 import ModalSignup from "../Modals/ModalSignup";
 import ModalLoading from "../Modals/ModalLoading";
+import ModalWarning from "../Modals/ModalWarning";
 
 export default function Signup() {
 
@@ -15,6 +16,8 @@ export default function Signup() {
     const [ismodalopen, setmodalopen] = useState(false);
 
     const [loadingmodal, setloadingmodal] = useState(false);
+
+    const [warnig, setwarning] = useState(false);
 
 
     const [formData, setFormData] = useState({
@@ -33,14 +36,11 @@ export default function Signup() {
         }));
     };
 
-
     const handlesubmit = async function (e) {
 
         e.preventDefault();
 
         setloadingmodal(true);
-
-        console.log('requested')
 
         let response = await fetch("https://student-support-s0xt.onrender.com/User", {
             method: "POST",
@@ -52,18 +52,15 @@ export default function Signup() {
 
         let result = await response.json();
 
-        console.log(result)
-
         if (response.status == 201) {
             setloadingmodal(false);
             setmodalopen(true);
         }
+        if (response.status == 429) {
+            setwarning(true);
+        }
 
     }
-
-
-
-    console.log(formData)
 
     return (
         <div className="flex flex-col justify-center items-center 2xl:h-screen">
@@ -87,7 +84,6 @@ export default function Signup() {
                         </div>
                         <p className="text-gray-700 xl:ml-[76px] lg:ml-[65px] md:ml-[56px] sm:ml-[47px] mt-1 text-base xl:pr-10 lg:pr-3 sm:pr-2">Please provide your valid name and email</p>
                     </div>
-
 
                     <div className={`flex flex-col  ${nextStep ? 'opacity-100' : 'opacity-50'}`}>
                         <div className="flex flex-wrap gap-2 mt-5 items-center">
@@ -119,6 +115,14 @@ export default function Signup() {
                     <div className="w-12 h-12 border-4  border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             </ModalLoading>
+
+            <ModalWarning isOpen={warnig} onClose={() => setwarning(false)}>
+                <div className="flex flex-col">
+                    <h1 className="text-lg text-red-500">
+                        Too many signup attempts. Please try again after 1 Hour
+                    </h1>
+                </div>
+            </ModalWarning>
 
         </div>
 
