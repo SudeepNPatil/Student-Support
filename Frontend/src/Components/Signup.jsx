@@ -57,6 +57,7 @@ export default function Signup() {
             setmodalopen(true);
         }
         if (response.status == 429) {
+            setloadingmodal(false);
             setwarning(true);
         }
 
