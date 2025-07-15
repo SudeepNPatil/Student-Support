@@ -5,6 +5,7 @@ import cors from "cors";
 import dotenv from "dotenv"
 import Project from "./models/Project.model.js";
 import Contactinfo from "./models/Contactinfo.model.js";
+import rateLimit from 'express-rate-limit'
 
 
 
@@ -20,7 +21,17 @@ app.use(express.json());
 
 db()
 
-app.post("/User", async (req, res) => {
+const signupLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000,
+    max: 5,
+    message: {
+        status: 429,
+        message: "Too many signup attempts. Please try again after 1 Hour.",
+    },
+});
+
+
+app.post("/User", signupLimiter, async (req, res) => {
 
     const { firstname, lastname, email, password } = req.body;
 
