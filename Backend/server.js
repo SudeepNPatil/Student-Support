@@ -125,6 +125,7 @@ app.post('/admin', async (req, res) => {
 app.get("/Project/:category", async (req, res) => {
     const { category } = req.params;
 
+    console.log("requested")
     try {
         const projects = await Project.find({ category });
         res.json(projects);
@@ -134,11 +135,13 @@ app.get("/Project/:category", async (req, res) => {
     }
 });
 
-app.get("/Project/:projectId", async (req, res) => {
-    const { projectId } = req.params;
+app.get("/Project/:category/:projectId", async (req, res) => {
+    const { category, projectId } = req.params;
+
+    console.log("requested");
 
     try {
-        const projects = await Project.find({ projectId });
+        const projects = await Project.find({ category, projectId });
         res.json(projects);
     } catch (error) {
         console.error("Error fetching projects:", error);
