@@ -122,12 +122,17 @@ app.post('/admin', async (req, res) => {
 });
 
 
-app.get("/Project/:category", async (req, res) => {
-    const { category } = req.params;
 
-    console.log("requested")
+app.get("/Project/:category/:projectId", async (req, res) => {
+    const { category, projectId } = req.params;
+
+    console.log("requested from both ctegory and projectid");
+
+    console.log(category, projectId)
+
     try {
-        const projects = await Project.find({ category });
+        const projects = await Project.findOne({ category, projectId: Number(projectId) });
+        console.log(projects);
         res.json(projects);
     } catch (error) {
         console.error("Error fetching projects:", error);
@@ -135,13 +140,13 @@ app.get("/Project/:category", async (req, res) => {
     }
 });
 
-app.get("/Project/:category/:projectId", async (req, res) => {
-    const { category, projectId } = req.params;
 
-    console.log("requested");
+app.get("/Project/:category", async (req, res) => {
+    const { category } = req.params;
 
+    console.log("requested from only category")
     try {
-        const projects = await Project.find({ category, projectId });
+        const projects = await Project.find({ category });
         res.json(projects);
     } catch (error) {
         console.error("Error fetching projects:", error);
