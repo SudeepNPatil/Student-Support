@@ -16,6 +16,7 @@ import Loding from './Components/Loding.jsx'
 import Admin from './Components/Admin/Admin.jsx'
 import User from './Components/Admin/Users.jsx'
 import Orders from './Components/Admin/Orders.jsx'
+import ProductDetails from './Components/ProductDetails.jsx'
 
 const Contact = lazy(() => import('./Components/Contact.jsx'));
 const Custom_Build_Service = lazy(() => import('./Components/Custom_Build_Service.jsx'));
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
                         element: <Product />
                     },
                     {
+                        path: ':category/:projectId',
+                        element: <ProductDetails />
+                    },
+                    {
                         path: 'Cart',
                         element: <Cart />
                     },
@@ -64,7 +69,7 @@ const router = createBrowserRouter([
                     {
                         path: 'Order',
                         element: <OrderTrack />
-                    }
+                    },
                 ]
             },
             {
@@ -147,4 +152,5 @@ createRoot(document.getElementById('root'))
         <LoginContextProvider>
             <RouterProvider router={router} />
         </LoginContextProvider>
+
     )

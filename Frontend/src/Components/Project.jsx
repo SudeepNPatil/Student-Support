@@ -23,8 +23,8 @@ export default function Project() {
                         <h2 className="xl:mt-8 sm:mt-5 font-bold text-xl text-center">Catagories</h2>
                         <hr className="hidden xl:block xl:w-full mt-5" />
                         <Link to="/Project/ecommerce" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">E-commerce</Link>
-                        <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">IOT</Link>
-                        <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">AI/ML</Link>
+                        <Link to="/Project/IOT" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">IOT</Link>
+                        <Link to="/Project/AI_ML" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">AI/ML</Link>
                         <Link to="/Project/business" className="text-center mt-5 border font-semibold opacity-80 sm:min-w-80 xl:min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</Link>
                         <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Portfolio</Link>
                         <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Others</Link>
@@ -80,12 +80,12 @@ export default function Project() {
                 <div className={`bg-green-50 rounded-xl h-screen w-1/2 absolute left-0 top-24 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
 
                     <MdArrowBackIosNew size={30} className="absolute top-1/2 right-0 border rounded-full p-2" />
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">E-commerce</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">IOT</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">AI/ML</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Portfolio</p>
-                    <p className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">Others</p>
+                    <Link to={`/Project/ecommerce`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">E-commerce</Link>
+                    <Link to={`/Project/IOT`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">IOT</Link>
+                    <Link to={`/Project/AI_ML`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">AI/ML</Link>
+                    <Link to={`/Project/busines`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</Link>
+                    <Link to={`#`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Portfolio</Link>
+                    <Link to={`#`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">Others</Link>
 
                 </div>
 
