@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import Project from "./models/Project.model.js";
-import ecommerceCollection from "./data/E-commerce_collection.js";
-import businessCollection from "./data/Business_dashboards.js";
+import Iot from "./data/IOT_collection.js";
+import AI_ml from "./data/AI_ML_Collection.js";
 
 dotenv.config();
 
@@ -11,14 +11,12 @@ const seedProjects = async () => {
         await mongoose.connect(process.env.DB_URL);
         console.log("✅ MongoDB connected");
 
-        await Project.deleteMany({});
-        console.log("🗑️ Old project data deleted");
 
-        const ecommerceData = ecommerceCollection.map(p => ({ ...p, category: "ecommerce" }));
-        const businessData = businessCollection.map(p => ({ ...p, category: "business" }));
+        const IotData = Iot.map(p => ({ ...p, category: "IOT" }));
+        const AI_mlData = AI_ml.map(p => ({ ...p, category: "AI_ML" }));
 
 
-        const allProjects = [...ecommerceData, ...businessData];
+        const allProjects = [...IotData, ...AI_mlData];
         await Project.insertMany(allProjects);
 
         console.log("🌱 All project data seeded (E-commerce + Business)");
@@ -30,3 +28,4 @@ const seedProjects = async () => {
 };
 
 seedProjects();
+

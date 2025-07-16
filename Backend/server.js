@@ -134,6 +134,18 @@ app.get("/Project/:category", async (req, res) => {
     }
 });
 
+app.get("/Project/:projectId", async (req, res) => {
+    const { projectId } = req.params;
+
+    try {
+        const projects = await Project.find({ projectId });
+        res.json(projects);
+    } catch (error) {
+        console.error("Error fetching projects:", error);
+        res.status(500).json({ message: "Failed to fetch projects" });
+    }
+});
+
 
 app.listen(process.env.PORT, () => {
     console.log(`server is running on  http://localhost:${process.env.PORT}`);
