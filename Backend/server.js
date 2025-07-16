@@ -122,17 +122,11 @@ app.post('/admin', async (req, res) => {
 });
 
 
-
 app.get("/Project/:category/:projectId", async (req, res) => {
     const { category, projectId } = req.params;
 
-    console.log("requested from both ctegory and projectid");
-
-    console.log(category, projectId)
-
     try {
         const projects = await Project.findOne({ category, projectId: Number(projectId) });
-        console.log(projects);
         res.json(projects);
     } catch (error) {
         console.error("Error fetching projects:", error);
@@ -144,7 +138,6 @@ app.get("/Project/:category/:projectId", async (req, res) => {
 app.get("/Project/:category", async (req, res) => {
     const { category } = req.params;
 
-    console.log("requested from only category")
     try {
         const projects = await Project.find({ category });
         res.json(projects);
@@ -153,7 +146,6 @@ app.get("/Project/:category", async (req, res) => {
         res.status(500).json({ message: "Failed to fetch projects" });
     }
 });
-
 
 app.listen(process.env.PORT, () => {
     console.log(`server is running on  http://localhost:${process.env.PORT}`);
