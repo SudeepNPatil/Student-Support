@@ -9,11 +9,13 @@ import { MdArrowBackIosNew } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
+import { WishlistContext } from "../Context/WishlistContext";
 
 export default function Project() {
 
     const { Cartitem } = useContext(CartContext);
     const [stretch, setstretch] = useState(false)
+    const { WishlistItem } = useContext(WishlistContext);
 
     const [isOpen, setIsopen] = useState(false)
 
@@ -45,8 +47,14 @@ export default function Project() {
                                     null
                                 }
                             </div>
-                            <Link to={`/Project/Wishlist`}> <FaRegHeart className="w-7 h-7 cursor-pointer" /></Link>
-
+                            <div className="relative">
+                                <Link to={`/Project/Wishlist`}> <FaRegHeart className="w-7 h-7 cursor-pointer" /></Link>
+                                {WishlistItem.length > 0 ?
+                                    <span className="bg-pink-500 text-black font-semibold text-center absolute -top-3 -right-2 rounded-full w-6 h-6">{WishlistItem.length}</span>
+                                    :
+                                    null
+                                }
+                            </div>
                             <Link to={`/Project/Order`}> <BsTruck className="w-7 h-7 cursor-pointer" /></Link>
                         </div>
 

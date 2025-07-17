@@ -18,6 +18,7 @@ import User from './Components/Admin/Users.jsx'
 import Orders from './Components/Admin/Orders.jsx'
 import ProductDetails from './Components/ProductDetails.jsx'
 import { CartContextProvider } from './Context/CartContext.jsx'
+import { WishlistContextProvider } from './Context/WishlistContext.jsx'
 
 const Contact = lazy(() => import('./Components/Contact.jsx'));
 const Custom_Build_Service = lazy(() => import('./Components/Custom_Build_Service.jsx'));
@@ -149,10 +150,13 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root'))
     .render(
-        <CartContextProvider>
-            <LoginContextProvider>
-                <RouterProvider router={router} />
-            </LoginContextProvider>
-        </CartContextProvider>
+        <WishlistContextProvider>
+            <CartContextProvider>
+                <LoginContextProvider>
+                    <RouterProvider router={router} />
+                </LoginContextProvider>
+            </CartContextProvider>
+        </WishlistContextProvider>
+
 
     )

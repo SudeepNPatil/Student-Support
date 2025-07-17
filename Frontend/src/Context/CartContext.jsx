@@ -12,8 +12,16 @@ export const CartContextProvider = ({ children }) => {
         setCartitem((prev) => [...prev, item]);
     }
 
+    const RemoveCartItem = (item) => {
 
-    return <CartContext.Provider value={{ Cartitem, addToCart }} >
+        const afterremove = Cartitem.filter((filitem) => filitem.projectId != item.projectId);
+
+        setCartitem(afterremove)
+
+    }
+
+
+    return <CartContext.Provider value={{ Cartitem, addToCart, RemoveCartItem }} >
         {children}
     </CartContext.Provider>
 }

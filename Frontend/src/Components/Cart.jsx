@@ -2,15 +2,16 @@ import React from "react";
 import { LiaCartArrowDownSolid } from "react-icons/lia";
 import { CartContext } from "../Context/CartContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 
 export default function Cart() {
 
-    const { Cartitem } = useContext(CartContext);
+    const { Cartitem, RemoveCartItem } = useContext(CartContext);
 
     return (
         <>
-            {Cartitem != null ?
+            {Cartitem.length > 0 ?
                 <div className="flex flex-col gap-10 mt-10">
                     {Cartitem.map((item, intex) => (
                         <div className="flex flex-row shadow-md hover:scale-y-105 cursor-pointer duration-500 ease-in-out rounded-lg w-3/4 mx-auto justify-between">
@@ -21,8 +22,8 @@ export default function Cart() {
                                 <p>{item.Tech_Stack_Badges.join(" ,")}</p>
                             </div>
                             <div className="flex flex-col justify-between items-center py-2 px-2">
-                                <p className="text-xl font-semibold text-gray-950 mt-2">$ 650</p>
-                                <button className="text-center h-10 px-5 rounded-md bg-red-500">Remove</button>
+                                <p className="text-xl font-semibold text-gray-950 mt-2">₹ 650</p>
+                                <button onClick={() => RemoveCartItem(item)} className="text-center h-10 px-5 rounded-md bg-red-500">Remove</button>
                             </div>
                         </div>
                     ))
@@ -36,7 +37,7 @@ export default function Cart() {
 
                     <p className="mt-2 text-base text-gray-700">Your cart is empty</p>
 
-                    <button className="h-10 mt-4 w-60 bg-black text-white text-center rounded-md">Go to project</button>
+                    <Link to={`/Project/ecommerce`} className="h-10 mt-4 w-60 bg-black block pt-1.5 text-white text-center rounded-md">Go to project</Link>
 
                 </div>
             }

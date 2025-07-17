@@ -1,12 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import useProductdetails from "../Hooks/useProductdetails"
 import Loding from "./Loding";
 import { Link } from "react-router-dom";
+import { RiHeartAdd2Fill } from "react-icons/ri";
 
 
 export default function Product() {
 
     const targetdata = useProductdetails();
+
+    const [status, setstatus] = useState(false);
 
     if (targetdata.length == 0) {
         return <Loding />
@@ -18,7 +21,7 @@ export default function Product() {
             <div className="hidden sm:flex flex-row flex-wrap gap-10 py-10 justify-center max-h-screen overflow-y-scroll scroll-smooth no-scrollbar">
 
                 {targetdata.map((item, index) => (
-                    <Link to={`/Project/${item.category}/${item.projectId}`} key={index} className="w-52 rounded-2xl shadow-lg cursor-pointer hover:scale-95 duration-500 ease-in-out">
+                    <Link to={`/Project/${item.category}/${item.projectId}`} key={index} className="w-52 rounded-2xl shadow-lg cursor-pointer relative hover:scale-95 duration-500 ease-in-out">
 
                         <div className="w-fit h-fit overflow-hidden">
                             <img src={`${item.image_url}`} alt={`${item.title}`} className="w-full h-full object-cover rounded-2xl" />
@@ -28,6 +31,9 @@ export default function Product() {
                             <p className="truncate">{item.Category_Badge}</p>
                             <p className="truncate">{item.Tech_Stack_Badges.join(" ,")}</p>
                         </div>
+
+                        <RiHeartAdd2Fill onClick={() => setstatus(true)} className={`text-2xl fixed top-1 right-1 ${status ? "text-red-600" : "text-gray-500"}`} />
+
                     </Link>
                 ))
 
