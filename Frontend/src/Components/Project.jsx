@@ -7,10 +7,12 @@ import { IoArrowForwardCircleOutline } from "react-icons/io5";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { Link, Outlet } from "react-router-dom";
-
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContext";
 
 export default function Project() {
 
+    const { Cartitem } = useContext(CartContext);
     const [stretch, setstretch] = useState(false)
 
     const [isOpen, setIsopen] = useState(false)
@@ -35,8 +37,16 @@ export default function Project() {
                                 <BsSearch size={20} className="-mr-8 self-center z-10 cursor-pointer" />
                                 <input type="text" name="text" id="some" className="h-10 w-80 border rounded-md pl-12" placeholder="Search..." />
                             </div>
-                            <Link to={`/Project/Cart`}> <BsCart2 className="w-7 h-7 cursor-pointer" /></Link>
+                            <div className="relative">
+                                <Link to={`/Project/Cart`}> <BsCart2 className="w-7 h-7 cursor-pointer" /></Link>
+                                {Cartitem.length > 0 ?
+                                    <span className="bg-pink-500 text-black font-semibold text-center absolute -top-3 -right-2 rounded-full w-6 h-6">{Cartitem.length}</span>
+                                    :
+                                    null
+                                }
+                            </div>
                             <Link to={`/Project/Wishlist`}> <FaRegHeart className="w-7 h-7 cursor-pointer" /></Link>
+
                             <Link to={`/Project/Order`}> <BsTruck className="w-7 h-7 cursor-pointer" /></Link>
                         </div>
 

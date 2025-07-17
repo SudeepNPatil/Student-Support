@@ -1,21 +1,28 @@
 import React from "react";
 import useGetProduct from "../Hooks/useGetProduct";
 import { RiHeartAdd2Line } from "react-icons/ri";
-
+import { useContext } from "react";
+import { CartContext } from "../Context/CartContext";
 
 export default function ProductDetails() {
 
     const getdata = useGetProduct();
 
+    const { addToCart } = useContext(CartContext);
+
+    /*   let myimg = getdata?.image_url?.split("?")[0] + "?tr=w-auto,h-auto,fo-auto"; */
+
+    /*  let newmyimg = `${myimg[0]}?tr=w-auto,h-auto,fo-auto` */
+
 
     return (
-        <div className="flex flex-row my-10 gap-16 mx-auto px-20">
-            <div className="relative w-96 max-h-fit">
-                <img src={`${getdata?.image_url}`} alt={getdata?.projectId} className="w-full h-full object-cover" />
+        <div className="flex flex-row my-10 gap-16 justify-center">
+            <div className="relative w-96 rounded-xl">
+                <img src={getdata?.image_url?.split("?")[0] + "?tr=w-auto,h-auto,fo-auto"} alt={getdata?.projectId} className="w-full h-fit object-cover rounded-xl" />
                 <RiHeartAdd2Line className="text-5xl top-2 absolute right-0 rounded-full bg-[#00000006] hover:bg-gray-300 p-3 cursor-pointer" />
             </div>
 
-            <div className="flex flex-col gap-4 py-1">
+            <div className="flex flex-col gap-4">
 
                 <h1 className="text-xl font-bold text-gray-800">{getdata?.title}</h1>
 
@@ -52,9 +59,9 @@ export default function ProductDetails() {
                     <span className="text-sm text-gray-700">( Optional )</span>
                 </div>
 
-                <div className="flex gap-10 my-8">
-                    <button className="py-2 px-16 text-white bg-black rounded-lg">Add to Cart</button>
-                    <button className="py-2 px-20 text-black rounded-lg border bg-blue-600 font-semibold">Order</button>
+                <div className="flex gap-10 mt-8">
+                    <button onClick={() => addToCart(getdata)} className="py-2 px-16 text-white bg-black cursor-pointer hover:bg-slate-900 rounded-lg">Add to Cart</button>
+                    <button className="py-2 px-20 text-black rounded-lg cursor-pointer hover:bg-blue-400 border bg-blue-600 font-semibold">Order</button>
                 </div>
             </div>
         </div>
