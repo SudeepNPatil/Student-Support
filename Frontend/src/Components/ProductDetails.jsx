@@ -9,8 +9,6 @@ export default function ProductDetails() {
 
     const getdata = useGetProduct();
 
-    getdata.quantity = 1;
-
     const { addToCart } = useContext(CartContext);
 
     const { addToWishlist } = useContext(WishlistContext);
@@ -21,6 +19,7 @@ export default function ProductDetails() {
 
     /*  let newmyimg = `${myimg[0]}?tr=w-auto,h-auto,fo-auto` */
 
+    let qua = 1
 
     return (
         <div className="flex flex-row my-10 gap-16 justify-center">
@@ -54,14 +53,14 @@ export default function ProductDetails() {
                 <div>
                     <h1 className="text-lg text-gray-800 font-semibold py-1" >Hosting Service</h1>
                 </div>
-                <div>
+                {/*  <div>
                     <h1 className="text-lg text-gray-800 font-semibold py-1">Quantity</h1>
                     <div className="flex flex-row flex-wrap">
-                        <button onClick={() => Handledecrement(getdata.projectId)} className="w-10 h-8 border rounded text-xl text-center block pb-4 font-bold">-</button>
-                        <button className="w-10 h-8 border rounded text-base text-center block font-bold">1</button>
-                        <button className="w-10 h-8 border rounded text-xl text-center block pb-4 font-bold">+</button>
+                        <button onClick={() => qua = getdata.quantity -= 1} className="w-10 h-8 border rounded text-xl text-center block pb-4 font-bold">-</button>
+                        <button className="w-10 h-8 border rounded text-base text-center block font-bold">{qua}</button>
+                        <button onClick={() => qua = getdata.quantity += 1} className="w-10 h-8 border rounded text-xl text-center block pb-4 font-bold">+</button>
                     </div>
-                </div>
+                </div> */}
 
                 <div>
                     <h1 className="text-lg text-gray-800 font-semibold py-1">Description</h1>

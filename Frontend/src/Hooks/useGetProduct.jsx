@@ -18,5 +18,7 @@ export default function useGetProduct() {
 
     }, [projectId]);
 
+    getdata.quantity = 1;
+
     return getdata;
 }

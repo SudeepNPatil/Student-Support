@@ -1,15 +1,24 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import useProductdetails from "../Hooks/useProductdetails"
 import Loding from "./Loding";
 import { Link } from "react-router-dom";
 import { RiHeartAdd2Fill } from "react-icons/ri";
-
+import { useContext } from "react";
+import { ProductContext } from "../Context/ProductContext";
 
 export default function Product() {
 
+    const { setProducts } = useContext(ProductContext);
     const targetdata = useProductdetails();
 
     const [status, setstatus] = useState(false);
+
+    useEffect(() => {
+        if (targetdata.length > 0) {
+            setProducts(targetdata);
+        }
+    }, [targetdata]);
+
 
     if (targetdata.length == 0) {
         return <Loding />

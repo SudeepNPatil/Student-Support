@@ -19,6 +19,8 @@ import Orders from './Components/Admin/Orders.jsx'
 import ProductDetails from './Components/ProductDetails.jsx'
 import { CartContextProvider } from './Context/CartContext.jsx'
 import { WishlistContextProvider } from './Context/WishlistContext.jsx'
+import { ProductContextProvider } from './Context/ProductContext.jsx'
+import Search from './Components/Search.jsx'
 
 const Contact = lazy(() => import('./Components/Contact.jsx'));
 const Custom_Build_Service = lazy(() => import('./Components/Custom_Build_Service.jsx'));
@@ -48,10 +50,6 @@ const router = createBrowserRouter([
                 path: '/Project',
                 element: <Project />,
                 children: [
-                    /* {
-                        index: true,
-                        element: <Product />
-                    }, */
                     {
                         path: ':category',
                         element: <Product />
@@ -72,6 +70,10 @@ const router = createBrowserRouter([
                         path: 'Order',
                         element: <OrderTrack />
                     },
+                    {
+                        path: 'Search',
+                        element: <Search />
+                    }
                 ]
             },
             {
@@ -150,13 +152,15 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root'))
     .render(
-        <WishlistContextProvider>
-            <CartContextProvider>
-                <LoginContextProvider>
-                    <RouterProvider router={router} />
-                </LoginContextProvider>
-            </CartContextProvider>
-        </WishlistContextProvider>
+        <ProductContextProvider>
+            <WishlistContextProvider>
+                <CartContextProvider>
+                    <LoginContextProvider>
+                        <RouterProvider router={router} />
+                    </LoginContextProvider>
+                </CartContextProvider>
+            </WishlistContextProvider>
+        </ProductContextProvider>
 
 
     )

@@ -10,12 +10,14 @@ import { Link, Outlet } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
+import { ProductContext } from "../Context/ProductContext";
 
 export default function Project() {
 
     const { Cartitem } = useContext(CartContext);
     const [stretch, setstretch] = useState(false)
     const { WishlistItem } = useContext(WishlistContext);
+    const { setsearchProduct } = useContext(ProductContext);
 
     const [isOpen, setIsopen] = useState(false)
 
@@ -35,10 +37,10 @@ export default function Project() {
                     </div>
                     <div className="flex-1">
                         <div className="flex xl:px-20 lg:px-12 md:px-10 sm:px-9 sm:justify-between h-20 border-b items-center ">
-                            <div className="flex flex-row">
+                            <Link to={`/Project/Search`} className="flex flex-row">
                                 <BsSearch size={20} className="-mr-8 self-center z-10 cursor-pointer" />
-                                <input type="text" name="text" id="some" className="h-10 w-80 border rounded-md pl-12" placeholder="Search..." />
-                            </div>
+                                <input onChange={(e) => setsearchProduct(e.target.value)} type="text" name="text" id="some" className="h-10 w-80 border rounded-md pl-12" placeholder="Search..." />
+                            </Link>
                             <div className="relative">
                                 <Link to={`/Project/Cart`}> <BsCart2 className="w-7 h-7 cursor-pointer" /></Link>
                                 {Cartitem.length > 0 ?
@@ -75,14 +77,16 @@ export default function Project() {
                     <button className="w-2/3 min-w-[50px] max-w-[110px] h-8 border text-sm opacity-85 rounded-lg text-center bg-green-100" onClick={(e) => { e.stopPropagation(), setstretch(true) }}>Category<IoArrowForwardCircleOutline size={14} className="inline-block ml-0.5" /></button>
 
                     <BsSearch size={15} className="-mr-10 sl:-mr-11 ml-2 z-0 self-center flex-shrink-0" />
+                    <Link to={`/Project/Search`}>
+                        <input
+                            type="text"
+                            name="text"
+                            id="text"
+                            className="pl-8 border rounded-md h-8 w-2/3"
+                            placeholder="Search..."
 
-                    <input
-                        type="text"
-                        name="text"
-                        id="text"
-                        className="pl-8 border rounded-md h-8 w-2/3"
-                        placeholder="Search..."
-                    />
+                        />
+                    </Link>
 
                     <IoArrowBackCircleOutline size={35} onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
                     <div className={`bg-green-50 rounded-md h-full fixed right-0 top-24 w-auto transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
