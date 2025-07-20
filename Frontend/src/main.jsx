@@ -21,6 +21,8 @@ import { CartContextProvider } from './Context/CartContext.jsx'
 import { WishlistContextProvider } from './Context/WishlistContext.jsx'
 import { ProductContextProvider } from './Context/ProductContext.jsx'
 import Search from './Components/Search.jsx'
+import { Fragment } from 'react'
+import AllProduct from './Components/AllProduct.jsx'
 
 const Contact = lazy(() => import('./Components/Contact.jsx'));
 const Custom_Build_Service = lazy(() => import('./Components/Custom_Build_Service.jsx'));
@@ -50,6 +52,10 @@ const router = createBrowserRouter([
                 path: '/Project',
                 element: <Project />,
                 children: [
+                    {
+                        path: '',
+                        element: <AllProduct />
+                    },
                     {
                         path: ':category',
                         element: <Product />
