@@ -168,5 +168,4 @@ createRoot(document.getElementById('root'))
             </WishlistContextProvider>
         </ProductContextProvider>
 
-
     )

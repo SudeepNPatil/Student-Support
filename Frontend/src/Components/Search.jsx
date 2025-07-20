@@ -1,36 +1,60 @@
-import React, { createContext } from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
 import { ProductContext } from "../Context/ProductContext";
 import { RiHeartAdd2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { WishlistContext } from "../Context/WishlistContext";
 
 export default function Search() {
 
     const { Products, searchProduct } = useContext(ProductContext);
+    const { WishlistItem, addToWishlist, RemoveWishlistItem } = useContext(WishlistContext);
 
-    const Productfound = (Products || []).filter(product => product.title?.toLowerCase().includes(searchProduct?.toLowerCase()));
+    if (!Array.isArray(Products) || Products.length === 0) {
+        return <div></div>;
+    }
+
+    const Productfound = Products.filter(product =>
+        product?.title?.toLowerCase().includes(searchProduct?.toLowerCase?.() || "")
+    );
+
+
 
     return (
         <div className="flex flex-row my-10 px-10 flex-wrap gap-10 justify-center items-center max-h-screen overflow-y-scroll scroll-smooth no-scrollbar">
 
             {Productfound.length > 0 ?
                 (
-                    Productfound.map((item, index) => (
-                        <Link to={`/Project/${item.category}/${item.projectId}`} key={index} className="w-52 rounded-2xl mx-auto shadow-lg cursor-pointer relative hover:scale-95 duration-500 ease-in-out">
+                    Productfound.map((item, index) => {
 
-                            <div className="w-fit h-fit overflow-hidden">
-                                <img src={`${item.image_url}`} alt={`${item.title}`} className="w-full h-full object-cover rounded-2xl" />
+                        const isLiked = WishlistItem.some(wish => wish.projectId === item.projectId)
+
+                        return (
+                            <div key={index} className="w-52 rounded-2xl mx-auto shadow-lg cursor-pointer relative hover:scale-95 duration-500 ease-in-out">
+
+                                <div className="w-fit h-fit overflow-hidden relative">
+                                    <img src={`${item.image_url}`} alt={`${item.title}`} className="w-full h-full object-cover rounded-2xl" />
+                                    <Link to={`/Project/${item.category}/${item.projectId}`} className="absolute bottom-0 h-44 w-52"></Link>
+                                </div>
+                                <Link to={`/Project/${item.category}/${item.projectId}`} className="px-4 py-3 text-sm block">
+                                    <h1 className="text-base font-semibold truncate">{item.title}</h1>
+                                    <p className="truncate">{item.Category_Badge}</p>
+                                    <p className="truncate">{item.Tech_Stack_Badges.join(" ,")}</p>
+                                </Link>
+
+                                <RiHeartAdd2Fill onClick={() => {
+                                    if (isLiked) {
+                                        RemoveWishlistItem(item)
+                                    }
+                                    else {
+                                        addToWishlist(item)
+                                    }
+                                }}
+                                    className={`text-2xl fixed top-1 right-1 ${isLiked ? "text-red-600" : "text-gray-500"}`} />
+
                             </div>
-                            <div className="px-4 py-3 text-sm">
-                                <h1 className="text-base font-semibold truncate">{item.title}</h1>
-                                <p className="truncate">{item.Category_Badge}</p>
-                                <p className="truncate">{item.Tech_Stack_Badges.join(" ,")}</p>
-                            </div>
-
-                            <RiHeartAdd2Fill onClick={() => setstatus(true)} className={`text-2xl fixed top-1 right-1 ${status ? "text-red-600" : "text-gray-500"}`} />
-
-                        </Link>
-                    ))
+                        )
+                    })
 
                 ) : (
 

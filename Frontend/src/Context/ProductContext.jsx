@@ -5,7 +5,7 @@ export const ProductContext = createContext();
 
 export const ProductContextProvider = function ({ children }) {
 
-    const [Products, setProducts] = useState({})
+    const [Products, setProducts] = useState([])
 
     const [searchProduct, setsearchProduct] = useState("")
 
