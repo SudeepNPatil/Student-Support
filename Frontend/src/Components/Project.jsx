@@ -72,20 +72,24 @@ export default function Project() {
             {/* for mobile design */}
 
             <div className="sm:hidden w-screen h-auto pt-20 " onClick={(e) => { e.stopPropagation(), setstretch(false) }}>
-                <div className="flex justify-between items-center gap-4 pl-5 pr-5 pt-5 pb-3" >
+                <div className="flex justify-between items-center pt-5 pb-3 px-2 gap-2" >
 
                     <button className="w-2/3 min-w-[50px] max-w-[110px] h-8 border text-sm opacity-85 rounded-lg text-center bg-green-100" onClick={(e) => { e.stopPropagation(), setstretch(true) }}>Category<IoArrowForwardCircleOutline size={14} className="inline-block ml-0.5" /></button>
 
-                    <BsSearch size={15} className="-mr-10 sl:-mr-11 ml-2 z-0 self-center flex-shrink-0" />
-                    <Link to={`/Project/Search`}>
+                    <Link to={`/Project/Search`} className="relative">
+
+                        <BsSearch className="text-sm xss:text-base absolute left-2 top-2" />
+
                         <input
                             type="text"
                             name="text"
                             id="text"
-                            className="pl-8 border rounded-md h-8 w-2/3"
+                            className="pl-8 border rounded-md h-8 w-full"
                             placeholder="Search..."
 
                         />
+
+
                     </Link>
 
                     <IoArrowBackCircleOutline size={35} onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
@@ -99,7 +103,7 @@ export default function Project() {
 
                 </div>
 
-                <div className={`bg-green-50 rounded-xl h-screen w-1/2 absolute left-0 top-24 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className={`bg-green-50 flex flex-col px-10 rounded-xl h-screen w-1/2 absolute left-0 top-24 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
 
                     <MdArrowBackIosNew size={30} className="absolute top-1/2 right-0 border rounded-full p-2" />
                     <Link to={`/Project/ecommerce`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">E-commerce</Link>
