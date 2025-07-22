@@ -12,14 +12,14 @@ export default function Cart() {
     return (
         <>
             {Cartitem.length > 0 ?
-                <div className="flex flex-col gap-10 mt-10">
-                    {Cartitem.map((item, intex) => (
-                        <div className="flex flex-row shadow-md hover:scale-y-105 cursor-pointer duration-500 ease-in-out rounded-lg w-3/4 mx-auto justify-between">
+                <div className="flex flex-col gap-10 sm:mt-16 min-h-screen border sm:px-8 md:px-20 lg:px-32 xl:px-36">
+                    {Cartitem.map((item, index) => (
+                        <div key={index} className="flex flex-row shadow-md hover:scale-y-105 cursor-pointer duration-500 ease-in-out rounded-lg justify-between">
                             <img src={item.image_url} alt={item.title} className="w-40 h-fit object-cover  rounded-lg" />
                             <div className="flex flex-col mr-44 gap-2 text-gray-700 mt-1">
                                 <h1 className="text-xl font-semibold text-gray-900">{item.title}</h1>
-                                <p>{item.Category_Badge}</p>
-                                <p>{item.Tech_Stack_Badges.join(" ,")}</p>
+                                <p>{item?.Category_Badge}</p>
+                                <p>{item?.Tech_Stack_Badges?.join(" ,")}</p>
                             </div>
                             <div className="flex flex-col justify-between items-center py-2 px-2">
                                 <p className="text-xl font-semibold text-gray-950 mt-2">₹ 650</p>
@@ -31,7 +31,7 @@ export default function Cart() {
                     }
                 </div>
                 :
-                <div className="flex flex-col items-center pt-40">
+                <div className="flex flex-col items-center pt-40 min-h-screen">
 
                     <LiaCartArrowDownSolid size={100} className="opacity-75 " />
 

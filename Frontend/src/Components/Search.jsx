@@ -58,8 +58,8 @@ export default function Search() {
 
                 ) : (
 
-                    <div className="text-2xl flex-shrink mt-40">
-                        <h1 className="text-gray-700">Project Not Found...!☹</h1>
+                    <div className="text-xl sm:text-2xl flex flex-col justify-center items-center min-h-screen">
+                        <h1 className="text-gray-700 my-auto">Project Not Found...!☹</h1>
                     </div>
 
                 )

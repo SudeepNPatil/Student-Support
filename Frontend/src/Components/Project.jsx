@@ -71,7 +71,7 @@ export default function Project() {
 
             {/* for mobile design */}
 
-            <div className="sm:hidden w-screen h-auto pt-20 " onClick={(e) => { e.stopPropagation(), setstretch(false) }}>
+            <div className="sm:hidden w-screen h-auto pt-20" onClick={(e) => { e.stopPropagation(), setstretch(false) }}>
                 <div className="flex justify-between items-center pt-5 pb-3 px-2 gap-2" >
 
                     <button className="w-2/3 min-w-[50px] max-w-[110px] h-8 border text-sm opacity-85 rounded-lg text-center bg-green-100" onClick={(e) => { e.stopPropagation(), setstretch(true) }}>Category<IoArrowForwardCircleOutline size={14} className="inline-block ml-0.5" /></button>
@@ -86,24 +86,46 @@ export default function Project() {
                             id="text"
                             className="pl-8 border rounded-md h-8 w-full"
                             placeholder="Search..."
-
+                            onChange={(e) => setsearchProduct(e.target.value)}
                         />
 
 
                     </Link>
-
-                    <IoArrowBackCircleOutline size={35} onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
-                    <div className={`bg-green-50 rounded-md h-full fixed right-0 top-24 w-auto transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                    <div className="relative">
+                        <IoArrowBackCircleOutline size={35} onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
+                        {Cartitem.length > 0 || WishlistItem.length > 0 ?
+                            <span className="bg-pink-500 text-black font-semibold text-center absolute text-[10px] top-0  rounded-full px-1.5">{Cartitem.length + WishlistItem.length}</span>
+                            :
+                            null
+                        }
+                    </div>
+                    <div className={`bg-green-50 rounded-md h-full z-10 fixed right-0 top-24 w-auto transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
                         <IoArrowForwardCircleOutline size={25} className="m-1" onClick={(e) => { e.stopPropagation(), setIsopen(false) }} />
-                        <Link to={`/Project/Cart`} className="text-sm mb-2 block pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"> <BsCart2 size={30} className="cursor-pointer inline-block p-2" />Cart</Link>
-                        <Link to={`/Project/Wishlist`} className="text-sm block mb-2 pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"> <FaRegHeart size={30} className=" cursor-pointer inline-block p-2" />Wishlist</Link>
-                        <Link to={`/Project/Order`} className="text-sm mb-5 block pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"><BsTruck size={30} className=" cursor-pointer inline-block p-2" /> Order </Link>
+                        <div className="relative">
+                            <Link to={`/Project/Cart`} className="text-sm mb-2 block pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"> <BsCart2 size={30} className="cursor-pointer inline-block p-2" />Cart</Link>
+                            {Cartitem.length > 0 ?
+                                <span className="bg-pink-500 text-black font-semibold text-center absolute text-[10px] top-0 left-8  rounded-full px-1.5">{Cartitem.length}</span>
+                                :
+                                null
+                            }
+                        </div>
+                        <div className="relative">
+                            <Link to={`/Project/Wishlist`} className="text-sm block mb-2 pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"> <FaRegHeart size={30} className=" cursor-pointer inline-block p-2" />Wishlist</Link>
+                            {WishlistItem.length > 0 ?
+                                <span className="bg-pink-500 text-black font-semibold text-center absolute rounded-full text-[10px] top-0 left-8 px-1.5">{WishlistItem.length}</span>
+                                :
+                                null
+                            }
+                        </div>
 
+                        <div className="relative">
+                            <Link to={`/Project/Order`} className="text-sm mb-5 block pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"><BsTruck size={30} className=" cursor-pointer inline-block p-2" /> Order </Link>
+                        </div>
                     </div>
 
                 </div>
 
-                <div className={`bg-green-50 flex flex-col px-10 rounded-xl h-screen w-1/2 absolute left-0 top-24 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className={`bg-green-50 flex flex-col z-10 px-10 rounded-xl h-screen w-1/2 absolute left-0 top-24 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
 
                     <MdArrowBackIosNew size={30} className="absolute top-1/2 right-0 border rounded-full p-2" />
                     <Link to={`/Project/ecommerce`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">E-commerce</Link>
