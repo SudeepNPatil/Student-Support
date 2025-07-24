@@ -123,8 +123,6 @@ app.post('/cart', async (req, res) => {
     try {
         const { email, projectId } = req.body;
 
-        console.log(email, projectId);
-
         if (!email || !projectId) {
             return res.status(400).json({ message: "Email and projectId are required." });
         }
@@ -145,6 +143,39 @@ app.post('/cart', async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 
+});
+
+app.post("/cart/remove", async (req, res) => {
+    const { email, projectId } = req.body;
+
+    if (!email || !projectId) {
+        return res.status(400).json({ message: "Email and projectId are required" });
+    }
+
+    try {
+
+        const user = await User.findOneAndUpdate(
+            { email },
+            { $pull: { cart: projectId } },
+            { new: true }
+        );
+
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+
+        const cartProjectIds = (user.cart || []).map(id => Number(id));
+        const cartProjects = await Project.find({ projectId: { $in: cartProjectIds } });
+
+        const updatedUser = {
+            ...user._doc,
+            cartdetails: cartProjects
+        };
+
+        res.json(updatedUser);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Something went wrong" });
+    }
 });
 
 
