@@ -139,7 +139,11 @@ app.get("/me", async (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+        httpOnly: true,
+        sameSite: "None",
+        secure: true
+    });
     res.json({ message: "Logged out" });
 });
 
