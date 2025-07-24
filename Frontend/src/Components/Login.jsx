@@ -46,8 +46,8 @@ export default function Login() {
         if (res.status == 200) {
             setisLogin(true);
             setdata(data?.user?.firstname[0]);
-            localStorage.setItem("islogedin", true);
-            localStorage.setItem("name", data?.user?.firstname[0]);
+            /*  localStorage.setItem("islogedin", true);
+             localStorage.setItem("name", data?.user?.firstname[0]); */
             setloadingmodal(false)
             setmodalopen(true);
         }

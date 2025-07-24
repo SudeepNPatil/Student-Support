@@ -121,13 +121,13 @@ app.post('/login', async (req, res) => {
 });
 
 
-app.get("/me", (req, res) => {
+app.get("/me", async (req, res) => {
     const token = req.cookies.token;
     if (!token) return res.status(401).json({ message: "Not logged in" });
 
     try {
         const decoded = jwt.verify(token, "secret_Code");
-        const user = User.find(u => u.email === decoded.id);
+        const user = await User.findOne({ email: decoded.id });
         if (!user) return res.status(401).json({ message: "Invalid token" });
 
         res.json({ user: { email: user.email } });

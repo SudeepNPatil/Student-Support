@@ -23,18 +23,18 @@ export default function Navbar() {
 
     const { isLogin, setisLogin, data, setdata } = useContext(LoginContext);
 
-    const local = localStorage.getItem("islogedin");
-    const name = localStorage.getItem("name");
-
-    if (local) {
-        setdata(name)
-        setisLogin(true);
-    }
 
     const clickfunction = function (e) {
         e.preventDefault();
         setopen(true)
     }
+
+    const logout = async () => {
+        await fetch("https://student-support-s0xt.onrender.com/logout", {
+            credentials: "include"
+        }).then(data => data.json()).then(data => console.log(data));
+
+    };
 
 
     return (
@@ -94,7 +94,7 @@ export default function Navbar() {
                         <h1 className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-blue-500'>
                             Your Orders
                         </h1>
-                        <Link onClick={() => (localStorage.clear(), useNavigate('/'), window.location.reload())} className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-red-500 hover:shadow-inner hover:shadow-red-300'>
+                        <Link onClick={logout} className='text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-red-500 hover:shadow-inner hover:shadow-red-300'>
                             Logout
                         </Link>
 
