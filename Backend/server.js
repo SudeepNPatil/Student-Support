@@ -12,16 +12,9 @@ import cookieParser from "cookie-parser";
 
 dotenv.config();
 const app = express();
-const allowedOrigins = ["https://student-sup.netlify.app/"];
+
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin) return callback(null, false);
-        if (allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("Blocked by CORS"));
-        }
-    }, credentials: true
+    origin: ["http://localhost:5000", "https://student-sup.netlify.app/"], credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
