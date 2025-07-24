@@ -12,7 +12,17 @@ import cookieParser from "cookie-parser";
 
 dotenv.config();
 const app = express();
-app.use(cors({ origin: ["http://localhost:5173", "https://student-sup.netlify.app/"], credentials: true }));
+const allowedOrigins = ["https://student-sup.netlify.app/"];
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin) return callback(null, false);
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Blocked by CORS"));
+        }
+    }, credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -238,6 +248,11 @@ app.post('/admin', async (req, res) => {
 app.get("/Project/:category/:projectId", async (req, res) => {
     const { category, projectId } = req.params;
 
+    const origin = req.headers.origin;
+    if (origin !== "https://student-sup.netlify.app/") {
+        return res.status(403).json({ message: "Access Denied" });
+    }
+
     try {
         const projects = await Project.findOne({ category, projectId: Number(projectId) });
         res.json(projects);
@@ -251,6 +266,11 @@ app.get("/Project/:category/:projectId", async (req, res) => {
 app.get("/Project/:category", async (req, res) => {
     const { category } = req.params;
 
+    const origin = req.headers.origin;
+    if (origin !== "https://student-sup.netlify.app/") {
+        return res.status(403).json({ message: "Access Denied" });
+    }
+
     try {
         const projects = await Project.find({ category });
         res.json(projects);
@@ -261,6 +281,11 @@ app.get("/Project/:category", async (req, res) => {
 });
 
 app.get("/Project", async (req, res) => {
+
+    const origin = req.headers.origin;
+    if (origin !== "https://student-sup.netlify.app/") {
+        return res.status(403).json({ message: "Access Denied" });
+    }
 
     try {
         const projects = await Project.find();
