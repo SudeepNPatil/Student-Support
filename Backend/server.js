@@ -157,19 +157,18 @@ app.get("/me", async (req, res) => {
         const user = await User.findOne({ email: decoded.email });
         if (!user) return res.status(401).json({ message: "Invalid token" });
 
-        if (user.cart && user.cart.length > 0) {
-            // Fetch full project info from Projects collection
-            const cartProjects = await Project.find({
-                _id: { $in: user.cart }
-            });
+        const cartProjectIds = (user.cart || []).map(id => Number(id));
 
-            // Add the full project info to the user object
-            user.cartDetails = cartProjects;
-        } else {
-            user.cartDetails = []; // empty if cart is empty
-        }
+        const cartProjects = await Project.find({
+            projectId: { $in: cartProjectIds }
+        });
 
-        res.json(user);
+        const userData = {
+            ...user._doc,
+            cartdetails: cartProjects
+        };
+
+        res.json(userData);
     } catch (err) {
         res.status(401).json({ message: "Token invalid" });
     }
