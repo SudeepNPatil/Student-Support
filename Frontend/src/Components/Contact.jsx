@@ -41,6 +41,7 @@ export default function Contact() {
         let res = await fetch("https://student-support-s0xt.onrender.com/Contactinfo", {
 
             method: "POST",
+            credentials: "include",
             headers: {
                 'Content-Type': 'application/json'
             },

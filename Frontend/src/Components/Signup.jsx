@@ -44,6 +44,7 @@ export default function Signup() {
 
         let response = await fetch("https://student-support-s0xt.onrender.com/User", {
             method: "POST",
+            credentials: "include",
             headers: {
                 'Content-Type': 'application/json'
             },

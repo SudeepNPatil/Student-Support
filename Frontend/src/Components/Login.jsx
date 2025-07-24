@@ -34,6 +34,7 @@ export default function Login() {
 
         const res = await fetch("https://student-support-s0xt.onrender.com/login", {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json"
             },
