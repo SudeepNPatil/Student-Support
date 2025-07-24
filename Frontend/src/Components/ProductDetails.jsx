@@ -4,18 +4,35 @@ import { RiHeartAdd2Fill } from "react-icons/ri";
 import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
+import { Link } from "react-router-dom";
+import { LoginContext } from "../Context/LoginContext";
 
 export default function ProductDetails() {
+
 
     const getdata = useGetProduct();
 
     const { addToCart } = useContext(CartContext);
+    const { isLogin, setisLogin, data, setdata } = useContext(LoginContext)
 
     const { WishlistItem, addToWishlist, RemoveWishlistItem } = useContext(WishlistContext);
 
-    const [islogin, setlogin] = useState(false);
 
     const isLiked = WishlistItem?.some((wish) => wish?.projectId === getdata?.projectId);
+
+    const handlecart = async () => {
+
+        addToCart(getdata);
+
+        await fetch('https://student-support-s0xt.onrender.com/cart', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email: data?.email, projectId: getdata?.projectId })
+        })
+
+    }
 
 
     return (
@@ -79,15 +96,18 @@ export default function ProductDetails() {
                     </div>
 
                     <div className="flex sm:gap-10 gap-5  mt-8">
-                        <button onClick={() => addToCart(getdata)} className="py-2 w-full text-white bg-black cursor-pointer hover:bg-slate-900 rounded-lg">Add to Cart</button>
+                        <button onClick={handlecart} className="py-2 w-full text-white bg-black cursor-pointer hover:bg-slate-900 rounded-lg">Add to Cart</button>
                         <button className="py-2 w-full text-black rounded-lg cursor-pointer hover:bg-blue-400 border bg-blue-600 font-semibold">Order</button>
                     </div>
                 </div>
 
             </div>
-            <button onClick={() => setlogin(false)} className="border">tap</button>
-            <div className={`bg-gradient-to-b from-transparent via-white/80 to-white backdrop-blur-sm h-60 w-full absolute bottom-0 transition-transform duration-700 z-30 ease-in-out ${islogin ? "translate-y-full" : "-translate-y-0"}`}>
-                <button onClick={() => setlogin(true)} className="border">tap</button>
+
+            <div className={`bg-gradient-to-b from-transparent via-white/80 to-white backdrop-blur-sm h-52 w-full absolute bottom-0 transition-transform duration-700 z-30 ease-in-out ${isLogin ? "translate-y-full" : "-translate-y-0"}`}>
+                <div className="flex flex-col justify-center gap-5">
+                    <p className="text-black text-center mt-10 sm:text-xl font-semibold">Please login to view more about the Project</p>
+                    <Link to={`/Login`} className="py-2 px-2 w-fit block mx-auto rounded-lg text-white text-center bg-black">Go to Login</Link>
+                </div>
             </div>
 
         </div>

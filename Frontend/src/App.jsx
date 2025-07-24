@@ -5,29 +5,39 @@ import { Outlet } from "react-router-dom"
 import { useEffect } from "react";
 import { useContext } from "react";
 import { LoginContext } from "./Context/LoginContext.jsx";
+import { CartContext } from "./Context/CartContext.jsx";
 
 
 function App() {
 
-  const { isLogin, setisLogin, data, setdata } = useContext(LoginContext);
+  const { setisLogin, setdata } = useContext(LoginContext);
+  const { Cartitem, addToCart, RemoveCartItem } = useContext(CartContext);
 
   useEffect(() => {
     fetch("https://student-support-s0xt.onrender.com/me", {
       credentials: "include"
     })
-      .then(res => res.json())
-      .then(data => {
+      .then(async (res) => {
 
-        console.log(data);
+        if (res.status === 401) {
+          setisLogin(false);
+          setdata(null);
+          return;
+
+        }
+
+        const data = await res.json();
         setisLogin(true);
-        setdata(data?.user?.email[0])
+        setdata(data);
+        data.cartdetails.forEach(element => {
+          addToCart(element);
+        });
 
       })
       .catch(() => {
         console.log("error");
       });
   }, []);
-
 
   return (
     <>

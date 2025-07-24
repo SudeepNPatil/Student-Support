@@ -3,11 +3,16 @@ import { LiaCartArrowDownSolid } from "react-icons/lia";
 import { CartContext } from "../Context/CartContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { LoginContext } from "../Context/LoginContext";
+
 
 
 export default function Cart() {
 
     const { Cartitem, RemoveCartItem } = useContext(CartContext);
+
+    const { data } = useContext(LoginContext);
+
 
     return (
         <>
@@ -23,7 +28,20 @@ export default function Cart() {
                             </div>
                             <div className="flex flex-col justify-between items-center py-2 px-2">
                                 <p className="text-[12px] ls:text-[13px] sl:text-[14px] sm:text-xl font-semibold text-gray-950 sm:mt-2">₹ 650</p>
-                                <button onClick={() => RemoveCartItem(item)} className="text-center text-[12px] sm:text-base h-8 px-2 sm:h-10 sm:px-5 rounded-md bg-red-500">Remove</button>
+                                <button onClick={async () => {
+
+                                    RemoveCartItem(item)
+
+                                    await fetch('https://student-support-s0xt.onrender.com/cart/remove', {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({ email: data?.email, projectId: item?.projectId })
+                                    })
+
+                                }
+                                } className="text-center text-[12px] sm:text-base h-8 px-2 sm:h-10 sm:px-5 rounded-md bg-red-500">Remove</button>
                             </div>
                         </div>
                     ))
