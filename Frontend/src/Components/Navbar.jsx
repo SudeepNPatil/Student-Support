@@ -59,7 +59,7 @@ export default function Navbar() {
 
                     </div>
                     :
-                    <Link to='/login' className='hover:text-yellow-400'>login</Link>
+                    <Link to='/Login' className='hover:text-yellow-400'>login</Link>
                 }
 
             </div>
@@ -83,7 +83,7 @@ export default function Navbar() {
                             <HiChevronRight className='text-base' />
                         </div>
                         :
-                        <Link to='/login' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600'>login</Link >
+                        <Link to='/Login' className='w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600'>login</Link >
                     }
 
                     <ModalAccountinfo isOpen={modal} onClose={() => setmodal(false)}>
