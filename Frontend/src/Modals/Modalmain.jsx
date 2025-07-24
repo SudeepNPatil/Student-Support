@@ -1,15 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { RxCross2 } from "react-icons/rx";
+import { useContext } from "react";
+import { LoginContext } from "../Context/LoginContext";
 
 const Modalmain = ({ isOpen, onClose, children }) => {
 
     if (!isOpen) return null
 
+    const { isLogin, setisLogin, data, setdata } = useContext(LoginContext);
+
     const logout = async () => {
         await fetch("https://student-support-s0xt.onrender.com/logout", {
             credentials: "include"
-        }).then(data => data.json()).then(data => console.log(data));
+        }).then(data => data.json())
+            .then(data => {
+                setisLogin(false);
+                setdata(null);
+                console.log(data)
+            });
 
     };
 
