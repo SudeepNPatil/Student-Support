@@ -10,15 +10,11 @@ import Admin from "./models/Admin.model.js";
 import jwt from "jsonwebtoken"
 import cookieParser from "cookie-parser";
 
-
-
 dotenv.config();
-
 const app = express();
 app.use(cors({ origin: ["http://localhost:5173", "https://student-sup.netlify.app/"], credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
-
 
 db()
 
@@ -122,6 +118,35 @@ app.post('/login', async (req, res) => {
     }
 });
 
+app.post('/cart', async (req, res) => {
+
+    try {
+        const { email, projectId } = req.body;
+
+        console.log(email, projectId);
+
+        if (!email || !projectId) {
+            return res.status(400).json({ message: "Email and projectId are required." });
+        }
+
+        const updatedUser = await User.findOneAndUpdate(
+            { email },
+            { $addToSet: { cart: projectId } }, // prevents duplicate projectId
+            { new: true }
+        );
+
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        return res.status(200).json({ message: "Added to cart successfully", cart: updatedUser.cart });
+    } catch (err) {
+        console.error("Error in /cart route:", err);
+        res.status(500).json({ message: "Server error" });
+    }
+
+});
+
 
 app.get("/me", async (req, res) => {
     const token = req.cookies.token;
@@ -132,7 +157,7 @@ app.get("/me", async (req, res) => {
         const user = await User.findOne({ email: decoded.email });
         if (!user) return res.status(401).json({ message: "Invalid token" });
 
-        res.json({ user: { email: user.email } });
+        res.json(user);
     } catch (err) {
         res.status(401).json({ message: "Token invalid" });
     }
