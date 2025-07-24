@@ -9,7 +9,7 @@ const Modalmain = ({ isOpen, onClose, children }) => {
     const logout = async () => {
         await fetch("https://student-support-s0xt.onrender.com/logout", {
             credentials: "include"
-        }).then(data => data, json()).then(data => console.log(data));
+        }).then(data => data.json()).then(data => console.log(data));
         setUser(null);
     };
 
