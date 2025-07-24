@@ -7,17 +7,17 @@ import Project from "./models/Project.model.js";
 import Contactinfo from "./models/Contactinfo.model.js";
 import rateLimit from 'express-rate-limit'
 import Admin from "./models/Admin.model.js";
+import jwt from "jsonwebtoken"
+import cookieParser from "cookie-parser";
 
 
 
 dotenv.config();
 
 const app = express();
-
-app.use(cors());
-
-
+app.use(cors({ credentials: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 
 db()
@@ -30,6 +30,10 @@ const signupLimiter = rateLimit({
         message: "Too many signup attempts. Please try again after 1 Hour.",
     },
 });
+
+const createToken = (userId) => {
+    return jwt.sign({ id: userId }, "secret_Code", { expiresIn: "15d" });
+}
 
 
 app.post("/User", signupLimiter, async (req, res) => {
@@ -45,6 +49,13 @@ app.post("/User", signupLimiter, async (req, res) => {
         })
 
         await newuser.save();
+
+        const token = createToken(email);
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            maxAge: 15 * 24 * 60 * 60 * 1000
+        })
 
         res.status(201).json({ message: "user registered ssuccefully !" })
     }
@@ -91,6 +102,14 @@ app.post('/login', async (req, res) => {
         const user = await User.findOne({ email, password });
 
         if (user) {
+
+            const token = createToken(email);
+            res.cookie("token", token, {
+                httpOnly: true,
+                secure: true,
+                maxAge: 15 * 24 * 60 * 60 * 1000
+            })
+
             res.status(200).json({ message: "Login successful", user });
         } else {
             res.status(401).json({ message: "Invalid email or password" });
@@ -99,6 +118,27 @@ app.post('/login', async (req, res) => {
     catch (error) {
         res.status(500).json({ message: "Server error", error: error.message });
     }
+});
+
+
+app.get("/me", (req, res) => {
+    const token = req.cookies.token;
+    if (!token) return res.status(401).json({ message: "Not logged in" });
+
+    try {
+        const decoded = jwt.verify(token, "secret_Code");
+        const user = User.find(u => u.email === decoded.id);
+        if (!user) return res.status(401).json({ message: "Invalid token" });
+
+        res.json({ user: { email: user.email } });
+    } catch (err) {
+        res.status(401).json({ message: "Token invalid" });
+    }
+});
+
+app.get("/logout", (req, res) => {
+    res.clearCookie("token");
+    res.json({ message: "Logged out" });
 });
 
 
