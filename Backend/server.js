@@ -31,8 +31,8 @@ const signupLimiter = rateLimit({
     },
 });
 
-const createToken = (userId) => {
-    return jwt.sign({ id: userId }, "secret_Code", { expiresIn: "15d" });
+const createToken = (email) => {
+    return jwt.sign({ email: email }, "secret_Code", { expiresIn: "15d" });
 }
 
 
@@ -129,7 +129,7 @@ app.get("/me", async (req, res) => {
 
     try {
         const decoded = jwt.verify(token, "secret_Code");
-        const user = await User.findOne({ email: decoded.id });
+        const user = await User.findOne({ email: decoded.email });
         if (!user) return res.status(401).json({ message: "Invalid token" });
 
         res.json({ user: { email: user.email } });
