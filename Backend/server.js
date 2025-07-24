@@ -241,11 +241,6 @@ app.post('/admin', async (req, res) => {
 app.get("/Project/:category/:projectId", async (req, res) => {
     const { category, projectId } = req.params;
 
-    const origin = req.headers.origin;
-    if (origin !== "https://student-sup.netlify.app/") {
-        return res.status(403).json({ message: "Access Denied" });
-    }
-
     try {
         const projects = await Project.findOne({ category, projectId: Number(projectId) });
         res.json(projects);
@@ -259,10 +254,6 @@ app.get("/Project/:category/:projectId", async (req, res) => {
 app.get("/Project/:category", async (req, res) => {
     const { category } = req.params;
 
-    const origin = req.headers.origin;
-    if (origin !== "https://student-sup.netlify.app/") {
-        return res.status(403).json({ message: "Access Denied" });
-    }
 
     try {
         const projects = await Project.find({ category });
@@ -275,10 +266,6 @@ app.get("/Project/:category", async (req, res) => {
 
 app.get("/Project", async (req, res) => {
 
-    const origin = req.headers.origin;
-    if (origin !== "https://student-sup.netlify.app/") {
-        return res.status(403).json({ message: "Access Denied" });
-    }
 
     try {
         const projects = await Project.find();
