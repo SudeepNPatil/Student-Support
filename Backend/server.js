@@ -14,7 +14,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: ["http://localhost:5000", "https://student-sup.netlify.app/"], credentials: true
+    origin: ["http://localhost:5173", "https://student-sup.netlify.app"],
+    credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
