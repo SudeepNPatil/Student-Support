@@ -9,6 +9,7 @@ import rateLimit from 'express-rate-limit'
 import Admin from "./models/Admin.model.js";
 import jwt from "jsonwebtoken"
 import cookieParser from "cookie-parser";
+import { originCheck } from "./Middleware/originCheck.js";
 
 dotenv.config();
 const app = express();
@@ -239,7 +240,7 @@ app.post('/admin', async (req, res) => {
 });
 
 
-app.get("/Project/:category/:projectId", async (req, res) => {
+app.get("/Project/:category/:projectId", originCheck, async (req, res) => {
     const { category, projectId } = req.params;
 
     try {
@@ -252,7 +253,7 @@ app.get("/Project/:category/:projectId", async (req, res) => {
 });
 
 
-app.get("/Project/:category", async (req, res) => {
+app.get("/Project/:category", originCheck, async (req, res) => {
     const { category } = req.params;
 
 
@@ -265,7 +266,7 @@ app.get("/Project/:category", async (req, res) => {
     }
 });
 
-app.get("/Project", async (req, res) => {
+app.get("/Project", originCheck, async (req, res) => {
 
 
     try {
