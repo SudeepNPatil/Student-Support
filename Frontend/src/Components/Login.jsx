@@ -72,7 +72,7 @@ export default function Login() {
                     <h1 className="text-xl font-semibold tracking-wider">Student Support</h1>
                 </div>
 
-                <div className="flex flex-col hover:bg-[#00000010] hover:rounded-3xl cursor-pointer ">
+                <div className="flex flex-col hover:bg-[#00000010] hover:rounded-3xl cursor-pointer">
                     <div className="flex flex-wrap gap-2 mt-8 items-center">
                         <button className="border-2 w-7 h-7 lg:ml-10 md:ml-6 sm:ml-2  rounded-full border-blue-400">✓</button>
                         <h1 className="text-lg font-semibold tracking-wide">Login</h1>
