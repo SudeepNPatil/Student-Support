@@ -36,6 +36,11 @@ const createToken = (email) => {
     return jwt.sign({ email: email }, "secret_Code", { expiresIn: "15d" });
 }
 
+app.get('/ping', (req, res) => {
+    res.send('Server is alive!');
+});
+
+
 
 app.post("/User", signupLimiter, async (req, res) => {
 
