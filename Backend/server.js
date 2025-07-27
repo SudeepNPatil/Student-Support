@@ -41,7 +41,6 @@ app.get('/ping', (req, res) => {
 });
 
 
-
 app.post("/User", signupLimiter, async (req, res) => {
 
     const { firstname, lastname, email, password } = req.body;
