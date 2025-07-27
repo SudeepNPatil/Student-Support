@@ -7,7 +7,7 @@ const ModalLoading = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-15 flex flex-col justify-center items-center z-30">
+        <div className="fixed inset-0 bg-black bg-opacity-15 flex flex-col justify-center items-center z-50">
             {children}
         </div>
     )

@@ -10,7 +10,8 @@ import { HiOutlineDotsVertical } from "react-icons/hi";
 import Modalmain from '../Modals/Modalmain';
 import { HiChevronRight } from "react-icons/hi";
 import ModalAccountinfo from '../Modals/ModalAccoutinfo';
-import { useNavigate } from 'react-router-dom';
+import ModalLoading from '../Modals/ModalLoading';
+
 
 export default function Navbar() {
 
@@ -19,6 +20,8 @@ export default function Navbar() {
     const [isclicked, setisclicked] = useState(false);
 
     const [modal, setmodal] = useState(false);
+
+    const [loadingmodal, setloadingmodal] = useState(false);
 
 
     const { isLogin, setisLogin, data, setdata } = useContext(LoginContext);
@@ -30,9 +33,12 @@ export default function Navbar() {
     }
 
     const logout = async () => {
+
+        setloadingmodal(true);
+
         await fetch("https://student-support-s0xt.onrender.com/logout", {
             credentials: "include"
-        }).then(data => data.json()).then(data => console.log(data));
+        }).then(data => data.json()).then(data => (console.log(data), setloadingmodal(false)));
 
     };
 
@@ -65,6 +71,12 @@ export default function Navbar() {
             </div>
 
             <Modalmain isOpen={isclicked} onClose={() => setisclicked(false)}></Modalmain>
+
+            <ModalLoading isOpen={loadingmodal} onClose={() => setloadingmodal(false)}>
+                <div className="flex justify-center items-center z-50 ">
+                    <div className="w-12 h-12 border-4  border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            </ModalLoading>
 
 
             {/* mobile view */}

@@ -105,7 +105,7 @@ export default function ProductDetails() {
 
             <div className={`bg-gradient-to-b from-transparent via-white/80 to-white backdrop-blur-sm h-52 w-full absolute bottom-0 transition-transform duration-700 z-30 ease-in-out ${isLogin ? "translate-y-full" : "-translate-y-0"}`}>
                 <div className="flex flex-col justify-center gap-5">
-                    <p className="text-black text-center mt-10 sm:text-xl font-semibold">Please login to view more about the Project</p>
+                    <p className="text-black text-center mt-10 sm:text-xl font-semibold px-3">Please login to view more about the Project</p>
                     <Link to={`/Login`} className="py-2 px-2 w-fit block mx-auto rounded-lg text-white text-center bg-black">Go to Login</Link>
                 </div>
             </div>
