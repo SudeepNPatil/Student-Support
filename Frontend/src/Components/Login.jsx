@@ -69,7 +69,7 @@ export default function Login() {
 
                 <div className="flex py-10 lg:px-10 md:px-6 sm:ml-2 sm:mt-6 md:mt-0 items-center gap-2 ">
                     <button className="border-4 w-7 h-7 rounded-full border-blue-700"></button>
-                    <h1 className="text-xl font-semibold tracking-wider">Student Support</h1>
+                    <h1 className="text-xl font-semibold tracking-wider">Code Mentor</h1>
                 </div>
 
                 <div className="flex flex-col hover:bg-[#00000010] hover:rounded-3xl cursor-pointer">

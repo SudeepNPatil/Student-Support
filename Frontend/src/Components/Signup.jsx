@@ -75,7 +75,7 @@ export default function Signup() {
 
                     <div className="flex py-10 xl:px-10 lg:px-6 md:px-4 sm:px-3 lg:mt-0 md:mt-10 sm:mt-6 items-center gap-2">
                         <button className="border-4 w-7 h-7 rounded-full border-blue-700"></button>
-                        <h1 className="text-xl font-semibold tracking-wider">Student Support</h1>
+                        <h1 className="text-xl font-semibold tracking-wider">Code Mentor</h1>
                     </div>
 
 

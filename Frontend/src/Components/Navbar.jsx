@@ -48,7 +48,7 @@ export default function Navbar() {
 
             <div className='flex '>
                 <img src={logo} alt="logo" className='ml-2 rounded-full xl:ml-16 lg:ml-10 md:ml-6 sm:ml-4  w-16 h-16 mt-2 hover:scale-125 duration-500 ease-in-out cursor-pointer' />
-                <h1 className='mt-7 ml-1 md:text-xl lg:text-2xl xs:text-lg font-bold lg:mt-6 lg:ml-2 hover:scale-105 duration-500 ease-in-out cursor-pointer'>STUDENT SUPPORT</h1>
+                <h1 className='mt-7 ml-1 md:text-xl lg:text-2xl xs:text-lg font-bold lg:mt-6 lg:ml-2 hover:scale-105 duration-500 ease-in-out cursor-pointer'>CODE MENTOR</h1>
             </div>
 
             <div className='hidden md:flex justify-end xl:gap-28 md:gap-12 lg:gap-16 items-center font-semibold mr-10'>
