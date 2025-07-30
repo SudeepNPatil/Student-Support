@@ -34,6 +34,11 @@ export default function ProductDetails() {
 
     }
 
+    const handleorder = async () => {
+
+
+    }
+
 
     return (
         <div className="relative overflow-hidden">
@@ -97,7 +102,7 @@ export default function ProductDetails() {
 
                     <div className="flex sm:gap-10 gap-5  mt-8">
                         <button onClick={handlecart} className="py-2 w-full text-white bg-black cursor-pointer hover:bg-slate-900 rounded-lg">Add to Cart</button>
-                        <button className="py-2 w-full text-black rounded-lg cursor-pointer hover:bg-blue-400 border bg-blue-600 font-semibold">Order</button>
+                        <button onClick={handleorder} className="py-2 w-full text-black rounded-lg cursor-pointer hover:bg-blue-400 border bg-blue-600 font-semibold">Order</button>
                     </div>
                 </div>
 
