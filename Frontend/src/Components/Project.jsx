@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { ProductContext } from "../Context/ProductContext";
+import { OrderContext } from "../Context/OrderContext";
 
 export default function Project() {
 
@@ -18,6 +19,7 @@ export default function Project() {
     const [stretch, setstretch] = useState(false)
     const { WishlistItem } = useContext(WishlistContext);
     const { setsearchProduct } = useContext(ProductContext);
+    const { Order } = useContext(OrderContext);
 
     const [isOpen, setIsopen] = useState(false)
 
@@ -57,7 +59,18 @@ export default function Project() {
                                     null
                                 }
                             </div>
-                            <Link to={`/Project/Order`}> <BsTruck className="w-7 h-7 cursor-pointer" /></Link>
+                            <div className="relative">
+                                <Link to={`/Project/Order`}> <BsTruck className="w-7 h-7 cursor-pointer" /></Link>
+                                {Order.length > 0 ?
+                                    /*  <span className="relative flex size-3">
+                                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                         <span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
+                                     </span> */
+                                    <span className="bg-pink-500 text-black font-semibold text-center absolute -top-3 -right-2 rounded-full w-6 h-6">{Order.length}</span>
+                                    :
+                                    null
+                                }
+                            </div>
                         </div>
 
                         <Outlet />
@@ -120,6 +133,11 @@ export default function Project() {
 
                         <div className="relative">
                             <Link to={`/Project/Order`} className="text-sm mb-5 block pl-5 pr-5 font-bold  hover:bg-gray-100 hover:border rounded-lg opacity-70"><BsTruck size={30} className=" cursor-pointer inline-block p-2" /> Order </Link>
+                            {Order.length > 0 ?
+                                <span className="bg-pink-500 text-black font-semibold text-center absolute rounded-full text-[10px] top-0 left-8 px-1.5">{Order.length}</span>
+                                :
+                                null
+                            }
                         </div>
                     </div>
 

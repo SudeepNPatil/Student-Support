@@ -23,6 +23,7 @@ import { ProductContextProvider } from './Context/ProductContext.jsx'
 import Search from './Components/Search.jsx'
 import { Fragment } from 'react'
 import AllProduct from './Components/AllProduct.jsx'
+import { OrderContextProvider } from './Context/OrderContext.jsx'
 
 const Contact = lazy(() => import('./Components/Contact.jsx'));
 const Custom_Build_Service = lazy(() => import('./Components/Custom_Build_Service.jsx'));
@@ -158,14 +159,15 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root'))
     .render(
-        <ProductContextProvider>
-            <WishlistContextProvider>
-                <CartContextProvider>
-                    <LoginContextProvider>
-                        <RouterProvider router={router} />
-                    </LoginContextProvider>
-                </CartContextProvider>
-            </WishlistContextProvider>
-        </ProductContextProvider>
-
+        <OrderContextProvider>
+            <ProductContextProvider>
+                <WishlistContextProvider>
+                    <CartContextProvider>
+                        <LoginContextProvider>
+                            <RouterProvider router={router} />
+                        </LoginContextProvider>
+                    </CartContextProvider>
+                </WishlistContextProvider>
+            </ProductContextProvider>
+        </OrderContextProvider>
     )

@@ -6,6 +6,9 @@ import { CartContext } from "../Context/CartContext";
 import { WishlistContext } from "../Context/WishlistContext";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../Context/LoginContext";
+import { OrderContext } from "../Context/OrderContext";
+import ModalConfirmOrder from "../Modals/ModalConfirmOrder";
+import ModalLogin from "../Modals/ModalLogin";
 
 export default function ProductDetails() {
 
@@ -14,8 +17,10 @@ export default function ProductDetails() {
 
     const { addToCart } = useContext(CartContext);
     const { isLogin, setisLogin, data, setdata } = useContext(LoginContext)
-
     const { WishlistItem, addToWishlist, RemoveWishlistItem } = useContext(WishlistContext);
+    const { addToOrder } = useContext(OrderContext);
+    const [ConfirmOrder, setConfirmOrder] = useState(false)
+    const [checklogin, setchecklogin] = useState(false)
 
 
     const isLiked = WishlistItem?.some((wish) => wish?.projectId === getdata?.projectId);
@@ -35,8 +40,7 @@ export default function ProductDetails() {
     }
 
     const handleorder = async () => {
-
-
+        setConfirmOrder(true);
     }
 
 
@@ -114,6 +118,22 @@ export default function ProductDetails() {
                     <Link to={`/Login`} className="py-2 px-2 w-fit block mx-auto rounded-lg text-white text-center bg-black">Go to Login</Link>
                 </div>
             </div>
+
+            <ModalConfirmOrder isOpen={ConfirmOrder} onClose={() => setConfirmOrder(false)}>
+                <div className="flex flex-col gap-5 justify-center w-96 px-2">
+                    <h1 className="text-2xl text-black opacity-75 font-semibold text-center">Confirm Order😍</h1>
+                    <p className="text-gray-700 text-base">if you comfirm Your Order Our Person will Cantact you soon to discus about the Project and make the Order Confirm</p>
+                    <button onClick={() =>
+                    (
+                        addToOrder(getdata),
+                        setConfirmOrder(false)
+
+                    )}
+                        className="py-2 px-2 text-center border rounded-lg hover:bg-black hover:text-white">Confirm Order</button>
+                </div>
+            </ModalConfirmOrder>
+
+            <ModalLogin isOpen={checklogin} onClose={() => setchecklogin(false)}></ModalLogin>
 
         </div>
 

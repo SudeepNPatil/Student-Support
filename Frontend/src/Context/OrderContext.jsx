@@ -3,9 +3,25 @@ import { createContext, useState } from "react";
 
 export const OrderContext = createContext();
 
-function OrderContextProvider({ children }) {
+export function OrderContextProvider({ children }) {
 
-    const [Order, setOrder] = useState(null);
+    const [Order, setOrder] = useState([]);
 
+    const addToOrder = (item) => {
+        setOrder((prev) => [...prev, item]);
+    }
+
+    const RemoveFromOrder = (id) => {
+
+        const Orderlist = Order.filter((filitem) => filitem.projectId != id);
+
+        console.log(Orderlist);
+        setOrder(Orderlist);
+
+    }
+
+    return <OrderContext.Provider value={{ Order, addToOrder, RemoveFromOrder }}>
+        {children}
+    </OrderContext.Provider>
 
 }
