@@ -34,7 +34,7 @@ export default function Wishlist() {
                 </div>
 
                 :
-                <div className="flex flex-col flex-wrap items-center pt-40 min-h-screen">
+                <div className="flex flex-col items-center justify-center min-h-screen">
 
                     <FaHandHoldingHeart size={100} className="text-gray-600" />
 

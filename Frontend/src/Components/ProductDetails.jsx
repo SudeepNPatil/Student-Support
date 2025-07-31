@@ -50,10 +50,14 @@ export default function ProductDetails() {
                 <div className="relative w-[70%] sm:w-96 rounded-xl">
                     <img src={getdata?.image_url?.split("?")[0] + "?tr=w-auto,h-auto,fo-auto"} alt={getdata?.projectId} className="w-full h-fit object-cover rounded-xl" />
                     <RiHeartAdd2Fill onClick={() => {
-                        if (isLiked) {
-                            RemoveWishlistItem(getdata)
+                        if (isLogin) {
+                            if (isLiked) {
+                                RemoveWishlistItem(getdata)
+                            } else {
+                                addToWishlist(getdata)
+                            }
                         } else {
-                            addToWishlist(getdata)
+                            setchecklogin(true);
                         }
                     }}
                         className={`text-5xl top-2 absolute right-0 rounded-full bg-[#00000006] ${isLiked ? "text-red-600" : "text-gray-400"}  hover:bg-gray-200 p-3 cursor-pointer`} />

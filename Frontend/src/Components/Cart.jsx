@@ -49,13 +49,13 @@ export default function Cart() {
                     }
                 </div>
                 :
-                <div className="flex flex-col items-center pt-40 min-h-screen">
+                <div className="flex flex-col items-center justify-center min-h-screen">
 
                     <LiaCartArrowDownSolid size={100} className="opacity-75" />
 
                     <p className="mt-2 text-base text-gray-700">Your cart is empty</p>
 
-                    <Link to={`/Project/ecommerce`} className="h-10 mt-4 w-60 bg-black block pt-1.5 text-white text-center rounded-md">Go to project</Link>
+                    <Link to={`/Project`} className="h-10 mt-4 w-60 bg-black block pt-1.5 text-white text-center rounded-md">Go to project</Link>
 
                 </div>
             }

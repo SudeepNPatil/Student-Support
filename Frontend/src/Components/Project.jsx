@@ -62,10 +62,6 @@ export default function Project() {
                             <div className="relative">
                                 <Link to={`/Project/Order`}> <BsTruck className="w-7 h-7 cursor-pointer" /></Link>
                                 {Order.length > 0 ?
-                                    /*  <span className="relative flex size-3">
-                                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                         <span className="relative inline-flex size-3 rounded-full bg-sky-500"></span>
-                                     </span> */
                                     <span className="bg-pink-500 text-black font-semibold text-center absolute -top-3 -right-2 rounded-full w-6 h-6">{Order.length}</span>
                                     :
                                     null
@@ -106,8 +102,8 @@ export default function Project() {
                     </Link>
                     <div className="relative">
                         <IoArrowBackCircleOutline size={35} onClick={(e) => { e.stopPropagation(), setIsopen(true) }} />
-                        {Cartitem.length > 0 || WishlistItem.length > 0 ?
-                            <span className="bg-pink-500 text-black font-semibold text-center absolute text-[10px] top-0  rounded-full px-1.5">{Cartitem.length + WishlistItem.length}</span>
+                        {Cartitem.length > 0 || WishlistItem.length > 0 || Order.length > 0 ?
+                            <span className="bg-pink-500 text-black font-semibold text-center absolute text-[10px] top-0  rounded-full px-1.5">{Cartitem.length + WishlistItem.length + Order.length}</span>
                             :
                             null
                         }
@@ -143,15 +139,16 @@ export default function Project() {
 
                 </div>
 
-                <div className={`bg-green-50 flex flex-col z-10 px-10 rounded-xl h-screen w-1/2 absolute left-0 top-24 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
+                <div className={`bg-green-50 flex flex-col z-10 px-10 rounded-xl h-screen w-[85%] xss:w-[75%] xs:w-[70%] ls:w-[65%] sl:w-[60%] absolute left-0 top-24 transform transition-transform duration-300 ease-in-out ${stretch ? 'translate-x-0' : '-translate-x-full'}`}>
 
                     <MdArrowBackIosNew size={30} className="absolute top-1/2 right-0 border rounded-full p-2" />
-                    <Link to={`/Project/ecommerce`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">E-commerce</Link>
-                    <Link to={`/Project/IOT`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">IOT</Link>
-                    <Link to={`/Project/AI_ML`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">AI/ML</Link>
-                    <Link to={`/Project/busines`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</Link>
-                    <Link to={`#`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Portfolio</Link>
-                    <Link to={`#`} className="text-center mt-5 border font-semibold opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">Others</Link>
+                    <h1 className="text-center mt-5 min-w-20 font-medium text-lg tracking-wide font-serif">Catagories</h1>
+                    <Link to={`/Project/ecommerce`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">E-commerce</Link>
+                    <Link to={`/Project/IOT`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">IOT</Link>
+                    <Link to={`/Project/AI_ML`} className="text-center mt-5 border opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">AI/ML</Link>
+                    <Link to={`/Project/busines`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</Link>
+                    <Link to={`#`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Portfolio</Link>
+                    <Link to={`#`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">Others</Link>
 
                 </div>
 

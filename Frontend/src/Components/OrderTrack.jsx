@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { OrderContext } from "../Context/OrderContext";
 import ModalCancelOrder from "../Modals/ModalCancelOrder";
 import { TbMoodEmpty } from "react-icons/tb";
+import { Link } from "react-router-dom";
 
 
 
@@ -27,7 +28,7 @@ export default function OrderTrack() {
 
 
     return (
-        <div className="">
+        <>
             {Order.length > 0 ?
                 <div className="flex flex-col mx-auto sm:w-11/12 w-screen px-3 my-10 gap-10">
                     {Order.map((item, index) => (
@@ -61,13 +62,13 @@ export default function OrderTrack() {
                     </ModalCancelOrder>
                 </div>
                 :
-                <div className="flex flex-col flex-wrap pt-40 min-h-screen">
+                <div className="flex flex-col items-center justify-center  min-h-screen">
 
-                    <TbMoodEmpty className="text-6xl sm:text-7xl  opacity-75 mx-auto" />
-                    <p className="text-center text-gray-700 sm:text-2xl font-bold">No orderes yet</p>
-
+                    <TbMoodEmpty size={100} className="text-gray-700" />
+                    <p className="text-center text-gray-700 text-base mt-2">No orderes yet</p>
+                    <Link to={`/Project`} className="h-10 mt-4 w-60 bg-black block pt-1.5 text-white text-center rounded-md">Go to project</Link>
                 </div>
             }
-        </div>
+        </>
     )
 }

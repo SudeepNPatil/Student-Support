@@ -8,11 +8,15 @@ import { ProductContext } from "../Context/ProductContext";
 import { useEffect } from "react";
 import { useState } from "react";
 import { WishlistContext } from "../Context/WishlistContext";
+import { LoginContext } from "../Context/LoginContext";
+import ModalLogin from "../Modals/ModalLogin";
 
 export default function AllProduct() {
 
     const { Products, setProducts } = useContext(ProductContext);
     const { WishlistItem, addToWishlist, RemoveWishlistItem } = useContext(WishlistContext);
+    const { isLogin } = useContext(LoginContext);
+    const [logincheck, setlogincheck] = useState(false);
 
     const allProduct = useGetallProducts();
 
@@ -47,10 +51,14 @@ export default function AllProduct() {
                             </Link>
 
                             <RiHeartAdd2Fill onClick={() => {
-                                if (isLiked) {
-                                    RemoveWishlistItem(item)
+                                if (isLogin) {
+                                    if (isLiked) {
+                                        RemoveWishlistItem(item)
+                                    } else {
+                                        addToWishlist(item)
+                                    }
                                 } else {
-                                    addToWishlist(item)
+                                    setlogincheck(true);
                                 }
                             }}
                                 className={`text-2xl fixed top-1 right-1 ${isLiked ? "text-red-600" : "text-gray-600"} `} />
@@ -62,6 +70,8 @@ export default function AllProduct() {
                 }
 
             </div>
+
+            <ModalLogin isOpen={logincheck} onClose={() => setlogincheck(false)}></ModalLogin>
 
             <div className="flex flex-wrap justify-center gap-10 py-7 h-[75vh] overflow-y-scroll no-scrollbar sm:hidden">
 
@@ -83,10 +93,14 @@ export default function AllProduct() {
                             </Link>
 
                             <RiHeartAdd2Fill onClick={() => {
-                                if (isLiked) {
-                                    RemoveWishlistItem(item)
+                                if (isLogin) {
+                                    if (isLiked) {
+                                        RemoveWishlistItem(item)
+                                    } else {
+                                        addToWishlist(item)
+                                    }
                                 } else {
-                                    addToWishlist(item)
+                                    setlogincheck(true);
                                 }
                             }}
                                 className={`text-xl fixed top-2 right-2 ${isLiked ? "text-red-600" : "text-gray-600"} `} />

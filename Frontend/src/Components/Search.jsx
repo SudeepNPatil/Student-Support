@@ -4,11 +4,15 @@ import { ProductContext } from "../Context/ProductContext";
 import { RiHeartAdd2Fill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { WishlistContext } from "../Context/WishlistContext";
+import { LoginContext } from "../Context/LoginContext";
+import ModalLogin from "../Modals/ModalLogin";
 
 export default function Search() {
 
     const { Products, searchProduct } = useContext(ProductContext);
     const { WishlistItem, addToWishlist, RemoveWishlistItem } = useContext(WishlistContext);
+    const { isLogin } = useContext(LoginContext);
+    const [logincheck, setlogincheck] = useState(false)
 
     if (!Array.isArray(Products) || Products.length === 0) {
         return <div></div>;
@@ -43,11 +47,15 @@ export default function Search() {
                                 </Link>
 
                                 <RiHeartAdd2Fill onClick={() => {
-                                    if (isLiked) {
-                                        RemoveWishlistItem(item)
-                                    }
-                                    else {
-                                        addToWishlist(item)
+                                    if (isLogin) {
+                                        if (isLiked) {
+                                            RemoveWishlistItem(item)
+                                        }
+                                        else {
+                                            addToWishlist(item)
+                                        }
+                                    } else {
+                                        setlogincheck(true);
                                     }
                                 }}
                                     className={`text-2xl fixed top-1 right-1 ${isLiked ? "text-red-600" : "text-gray-500"}`} />
@@ -65,6 +73,8 @@ export default function Search() {
                 )
 
             }
+
+            <ModalLogin isOpen={logincheck} onClose={() => setlogincheck(false)}></ModalLogin>
 
         </div>
     )
