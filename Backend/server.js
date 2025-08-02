@@ -10,6 +10,7 @@ import Admin from "./models/Admin.model.js";
 import jwt from "jsonwebtoken"
 import cookieParser from "cookie-parser";
 import { originCheck } from "./Middleware/originCheck.js";
+import ProjectInfo from "./models/projectInfo.model.js"
 
 dotenv.config();
 const app = express();
@@ -249,7 +250,19 @@ app.get("/Project/:category/:projectId", originCheck, async (req, res) => {
 
     try {
         const projects = await Project.findOne({ category, projectId: Number(projectId) });
-        res.json(projects);
+
+        if (!projects) {
+            return res.status(404).json({ message: "Project not found" });
+        }
+
+        const info = await ProjectInfo.findOne({ title: projects.title });
+
+        const combined = {
+            ...projects._doc,
+            ...(info ? { projectInfo: info._doc } : {})
+        };
+
+        res.json(combined);
     } catch (error) {
         console.error("Error fetching projects:", error);
         res.status(500).json({ message: "Failed to fetch projects" });
