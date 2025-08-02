@@ -23,7 +23,6 @@ export default function Search() {
     );
 
 
-
     return (
         <div className="flex flex-row my-10 px-10 flex-wrap gap-10 justify-center items-center max-h-screen overflow-y-scroll scroll-smooth no-scrollbar">
 
