@@ -79,14 +79,17 @@ export default function ProductDetails() {
 
                     <div>
                         <h1 className="text-lg text-gray-800 font-semibold py-1">Prise</h1>
+                        <p className="text-lg text-green-500 font-semibold py-1"> ₹ {getdata?.projectInfo?.price}</p>
                     </div>
 
                     <div>
                         <h1 className="text-lg text-gray-800 font-semibold py-1">Delivered In</h1>
+                        <p className="text-lg text-green-500 font-semibold py-1">{getdata?.projectInfo?.deliveredIn} Days</p>
                     </div>
 
                     <div>
                         <h1 className="text-lg text-gray-800 font-semibold py-1" >Hosting Service</h1>
+                        <p className="text-lg text-green-600">Avaleble</p>
                     </div>
                     {/*  <div>
                     <h1 className="text-lg text-gray-800 font-semibold py-1">Quantity</h1>
@@ -99,7 +102,7 @@ export default function ProductDetails() {
 
                     <div>
                         <h1 className="text-lg text-gray-800 font-semibold py-1">Description</h1>
-                        <p className="text-base text-gray-700">some explanation need to add</p>
+                        <p className="text-base text-gray-700">{getdata?.projectInfo?.description}</p>
                     </div>
 
                     <div className="flex gap-1 items-center">
@@ -116,7 +119,7 @@ export default function ProductDetails() {
 
             </div>
 
-            <div className={`bg-gradient-to-b from-transparent via-white/80 to-white backdrop-blur-sm h-52 w-full absolute bottom-0 transition-transform duration-700 z-30 ease-in-out ${isLogin ? "translate-y-full" : "-translate-y-0"}`}>
+            <div className={`bg-gradient-to-b from-transparent via-white/80 to-white backdrop-blur-sm h-60 w-full absolute bottom-0 transition-transform duration-700 z-30 ease-in-out ${isLogin ? "translate-y-full" : "-translate-y-0"}`}>
                 <div className="flex flex-col justify-center gap-5">
                     <p className="text-black text-center mt-10 sm:text-xl font-semibold px-3">Please login to view more about the Project</p>
                     <Link to={`/Login`} className="py-2 px-2 w-fit block mx-auto rounded-lg text-white text-center bg-black">Go to Login</Link>
