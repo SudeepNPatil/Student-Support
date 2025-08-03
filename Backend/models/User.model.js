@@ -15,7 +15,7 @@ const UserSchema = mongoose.Schema(
             default: []
         },
         orders: {
-            type: [[String]],
+            type: [String],
             default: []
         },
     },
