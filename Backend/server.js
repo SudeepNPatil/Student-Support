@@ -277,9 +277,27 @@ app.get("/me", async (req, res) => {
             })
         );
 
+
+        const orderProjectIds = (user.orders || []).map(id => Number(id));
+        const orderProjects = await Project.find({
+            projectId: { $in: orderProjectIds }
+        });
+
+        const detailsOrderProjects = await Promise.all(
+            orderProjects.map(async (project) => {
+                const info = await ProjectInfo.findOne({ title: project.title });
+                return {
+                    ...project._doc,
+                    ...(info ? { projectInfo: info._doc } : {})
+                };
+            })
+        );
+
+
         const userData = {
             ...user._doc,
-            cartdetails: detailsCartProjects
+            cartdetails: detailsCartProjects,
+            orderdetails: detailsOrderProjects
         };
 
         res.json(userData);
