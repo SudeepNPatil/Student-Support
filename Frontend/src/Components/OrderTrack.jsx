@@ -5,12 +5,15 @@ import ModalCancelOrder from "../Modals/ModalCancelOrder";
 import { TbMoodEmpty } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import ModalOrderTrack from "../Modals/ModalOrderTrack";
+import { LoginContext } from "../Context/LoginContext";
 
 
 
 export default function OrderTrack() {
 
     const { Order, RemoveFromOrder } = useContext(OrderContext);
+
+    const { data } = useContext(LoginContext);
 
     const [cancelordermodal, setcancelordermodal] = useState(false);
     const [selectedorderid, setselectedorderid] = useState(null);
@@ -21,13 +24,6 @@ export default function OrderTrack() {
         setselectedorderid(id)
         setcancelordermodal(true);
     }
-
-    const handleyesCancel = () => {
-        RemoveFromOrder(selectedorderid);
-        setselectedorderid(null);
-        setcancelordermodal(false);
-    }
-
 
 
     return (
@@ -45,6 +41,7 @@ export default function OrderTrack() {
                                 </h1>
                                 <p className="text-gray-700 truncate">{item?.Category_Badge}</p>
                                 <p className="text-gray-700 truncate">{item?.Tech_Stack_Badges?.join(" ,")}</p>
+                                <p className="text-green-700 ">₹ {item?.projectInfo?.price}</p>
                                 <div className="flex flex-row sm:gap-5 gap-3 justify-center sm:justify-start mt-2">
                                     <button onClick={() => handleCancel(item.projectId)} className="sm:px-2 sm:py-2 sm:text-base px-1 py-1  text-sm rounded-lg text-black border hover:shadow-inner hover:shadow-rose-600 hover:border-red-600">Cancel Order</button>
                                     <button onClick={() => settrackorder(true)} className="sm:px-2 sm:py-2  sm:text-base text-sm py-1 px-1  rounded-lg text-black border hover:shadow-inner hover:shadow-green-600/40 hover:border-green-500">Track Order</button>
@@ -59,41 +56,55 @@ export default function OrderTrack() {
                         <p className="text-gray-700 text-center text-lg">Are you sure  do you want to cancel the order</p>
                         <div className="flex flex-row gap-5 justify-center mt-2">
                             <button onClick={() => setcancelordermodal(false)} className="py-2 px-5 rounded-lg border hover:bg-black hover:text-white">keep it</button>
-                            <button onClick={handleyesCancel} className="py-2 px-3 rounded-lg border hover:bg-red-700">Yes cancel</button>
+                            <button onClick={async () => (
+                                RemoveFromOrder(selectedorderid),
+                                setselectedorderid(null),
+                                setcancelordermodal(false),
+
+                                await fetch('https://student-support-s0xt.onrender.com/orders/cancle', {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify({ email: data?.email, projectId: selectedorderid })
+                                })
+
+                            )}
+                                className="py-2 px-3 rounded-lg border hover:bg-red-700">Yes cancel</button>
                         </div>
-                    </ModalCancelOrder>
+                    </ModalCancelOrder >
 
                     <ModalOrderTrack isOpen={trackorder} onClose={() => settrackorder(false)}>
 
                         <div className="flex flex-row gap-2">
                             <div className="flex flex-col items-center flex-wrap mt-1.5">
-                                <span class="relative flex size-3">
-                                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                                    <span class="relative inline-flex size-3 rounded-full bg-green-500"></span>
+                                <span className="relative flex size-3">
+                                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                                    <span className="relative inline-flex size-3 rounded-full bg-green-500"></span>
                                 </span>
                                 <div className="h-24 w-0.5 bg-gray-500 opacity-50"></div>
 
                                 <span class="relative flex size-3">
-                                    <span class="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-50"></span>
-                                    <span class="relative inline-flex size-3 rounded-full bg-gray-500 opacity-50"></span>
+                                    <span className="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-50"></span>
+                                    <span className="relative inline-flex size-3 rounded-full bg-gray-500 opacity-50"></span>
                                 </span>
                                 <div className="h-[70px] w-0.5 bg-gray-500 opacity-50"></div>
 
-                                <span class="relative flex size-3">
-                                    <span class="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-50"></span>
-                                    <span class="relative inline-flex size-3 rounded-full bg-gray-500 opacity-50"></span>
+                                <span className="relative flex size-3">
+                                    <span className="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-50"></span>
+                                    <span className="relative inline-flex size-3 rounded-full bg-gray-500 opacity-50"></span>
                                 </span>
                                 <div className="h-[72px] w-0.5 bg-gray-500 opacity-50"></div>
 
-                                <span class="relative flex size-3">
-                                    <span class="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-50"></span>
-                                    <span class="relative inline-flex size-3 rounded-full bg-gray-500 opacity-50"></span>
+                                <span className="relative flex size-3">
+                                    <span className="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-50"></span>
+                                    <span className="relative inline-flex size-3 rounded-full bg-gray-500 opacity-50"></span>
                                 </span>
                                 <div className="h-12 w-0.5 bg-gray-500 opacity-50"></div>
 
-                                <span class="relative flex size-3">
-                                    <span class="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-50"></span>
-                                    <span class="relative inline-flex size-3 rounded-full bg-gray-500 opacity-50"></span>
+                                <span className="relative flex size-3">
+                                    <span className="absolute inline-flex h-full w-full rounded-full bg-gray-500 opacity-50"></span>
+                                    <span className="relative inline-flex size-3 rounded-full bg-gray-500 opacity-50"></span>
                                 </span>
 
                             </div>
@@ -123,7 +134,7 @@ export default function OrderTrack() {
                     </ModalOrderTrack>
 
 
-                </div>
+                </div >
                 :
                 <div className="flex flex-col items-center justify-center  min-h-screen">
 

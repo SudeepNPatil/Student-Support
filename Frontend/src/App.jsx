@@ -6,12 +6,14 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { LoginContext } from "./Context/LoginContext.jsx";
 import { CartContext } from "./Context/CartContext.jsx";
+import { OrderContext } from "./Context/OrderContext.jsx";
 
 
 function App() {
 
   const { setisLogin, setdata } = useContext(LoginContext);
-  const { Cartitem, addToCart, RemoveCartItem } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
+  const { addToOrder } = useContext(OrderContext);
 
   useEffect(() => {
     fetch("https://student-support-s0xt.onrender.com/me", {
@@ -32,8 +34,9 @@ function App() {
         data.cartdetails.forEach(element => {
           addToCart(element);
         });
-
-        console.log(data);
+        data.orderdetails.forEach((order) => {
+          addToOrder(order)
+        })
 
       })
       .catch(() => {

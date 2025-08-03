@@ -78,7 +78,24 @@ export default function Cart() {
                         )}
 
                             className="text-center py-2 px-2 w-[25%] bg-black text-white text-balance rounded-lg">Clear Cart</button>
-                        <button onClick={() => setConfirmOrder(true)} className="text-center py-2 px-2 w-[25%] bg-blue-600 text-balance text-white rounded-lg">Order</button>
+                        <button onClick={() => (
+
+                            setConfirmOrder(true),
+
+                            Cartitem.forEach(async (element) => {
+
+                                await fetch('https://student-support-s0xt.onrender.com/orders', {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify({ email: data?.email, projectId: element?.projectId })
+                                })
+                            })
+
+                        )}
+
+                            className="text-center py-2 px-2 w-[25%] bg-blue-600 text-balance text-white rounded-lg">Order</button>
                     </div>
 
                     <ModalConfirmOrder isOpen={ConfirmOrder} onClose={() => setConfirmOrder(false)}>

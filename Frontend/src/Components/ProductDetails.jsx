@@ -130,11 +130,18 @@ export default function ProductDetails() {
                 <div className="flex flex-col gap-5 justify-center w-96 px-2">
                     <h1 className="text-2xl text-black opacity-75 font-semibold text-center">Confirm Order😍</h1>
                     <p className="text-gray-700 text-base">if you comfirm Your Order Our Person will Cantact you soon to discus about the Project and make the Order Confirm</p>
-                    <button onClick={() =>
+                    <button onClick={async () =>
                     (
                         addToOrder(getdata),
-                        setConfirmOrder(false)
 
+                        await fetch('https://student-support-s0xt.onrender.com/orders', {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({ email: data?.email, projectId: getdata?.projectId })
+                        }),
+                        setConfirmOrder(false)
                     )}
                         className="py-2 px-2 text-center border rounded-lg hover:bg-black hover:text-white">Confirm Order</button>
                 </div>
