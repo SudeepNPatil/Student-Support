@@ -302,6 +302,7 @@ app.get("/me", async (req, res) => {
 
         res.json(userData);
     } catch (err) {
+        console.error("Error in /me route:", err);
         res.status(401).json({ message: "Token invalid" });
     }
 });
