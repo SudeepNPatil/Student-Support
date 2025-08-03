@@ -204,9 +204,20 @@ app.get("/me", async (req, res) => {
             projectId: { $in: cartProjectIds }
         });
 
+        const detailsCartProjects = await Promise.all(
+            cartProjects.map(async (project) => {
+                const info = await ProjectInfo.findOne({ title: project.title });
+
+                return {
+                    ...project._doc,
+                    ...(info ? { projectInfo: info._doc } : {})
+                };
+            })
+        );
+
         const userData = {
             ...user._doc,
-            cartdetails: cartProjects
+            cartdetails: detailsCartProjects
         };
 
         res.json(userData);

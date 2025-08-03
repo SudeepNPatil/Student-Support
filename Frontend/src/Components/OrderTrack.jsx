@@ -129,7 +129,7 @@ export default function OrderTrack() {
 
                     <TbMoodEmpty size={100} className="text-gray-700" />
                     <p className="text-center text-gray-700 text-base mt-2">No orderes yet</p>
-                    <Link to={`/Project`} className="h-10 mt-4 w-60 bg-black block pt-0w-0.5.5 text-white text-center rounded-md">Go to project</Link>
+                    <Link to={`/Project`} className="h-10 mt-4 w-60 pt-2 bg-black block pt-0w-0.5.5 text-white text-center rounded-md">Go to project</Link>
                 </div>
             }
         </>

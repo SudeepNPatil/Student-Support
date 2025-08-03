@@ -33,6 +33,8 @@ function App() {
           addToCart(element);
         });
 
+        console.log(data);
+
       })
       .catch(() => {
         console.log("error");

@@ -26,8 +26,9 @@ export default function Project() {
     return (
         <>
             <div className="hidden inset-0 sm:flex xl:flex-col sm:flex-row flex-wrap">
+
                 <div className="inset-0 hidden sm:flex xl:flex-row sm:flex-col flex-wrap xl:pt-20 sm:pt-20 overflow-x-scroll no-scrollbar">
-                    <div className="xl:w-[20%] sm:w-full xl:gap-0 sm:gap-10 xl:px-0 lg:px-12 md:px-8 sm:px-7  overflow-x-scroll no-scrollbar bg-green-50 sm:flex xl:flex-col sm:flex-row items-center xl:border-r xl:pb-20 sm:pb-5">
+                    <div className="xl:w-[20%] sm:w-full xl:gap-0 sm:gap-10 xl:px-0 lg:px-12 md:px-8 sm:px-7  overflow-x-scroll no-scrollbar shadow-md  sm:flex xl:flex-col sm:flex-row items-center  xl:pb-20 sm:pb-5">
                         <h2 className="xl:mt-8 sm:mt-5 font-bold text-xl text-center">Catagories</h2>
                         <hr className="hidden xl:block xl:w-full mt-5" />
                         <Link to="/Project/ecommerce" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">E-commerce</Link>
@@ -38,7 +39,7 @@ export default function Project() {
                         <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Others</Link>
                     </div>
                     <div className="flex-1">
-                        <div className="flex xl:px-20 lg:px-12 md:px-10 sm:px-9 sm:justify-between h-20 border-b items-center ">
+                        <div className="flex xl:px-20 lg:px-12 md:px-10 sm:px-9 sm:justify-between h-20 shadow-[0_2px_4px_-2px_rgba(0,0,0,0.3)] items-center ">
                             <Link to={`/Project/Search`} className="flex flex-row">
                                 <BsSearch size={20} className="-mr-8 self-center z-10 cursor-pointer" />
                                 <input onChange={(e) => setsearchProduct(e.target.value)} type="text" name="text" id="some" className="h-10 w-80 border rounded-md pl-12" placeholder="Search..." />

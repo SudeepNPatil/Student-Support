@@ -4,9 +4,13 @@ import { useContext } from "react";
 import { WishlistContext } from "../Context/WishlistContext";
 import { CartContext } from "../Context/CartContext";
 import { Link } from "react-router-dom";
+import { LoginContext } from "../Context/LoginContext";
+
+
 export default function Wishlist() {
 
     const { WishlistItem, RemoveWishlistItem } = useContext(WishlistContext);
+    const { isLogin, setisLogin, data, setdata } = useContext(LoginContext);
 
     const { addToCart } = useContext(CartContext);
 
@@ -25,7 +29,20 @@ export default function Wishlist() {
                             </div>
                             <div className="flex flex-row gap-4 left-1 absolute -bottom-12">
                                 <button onClick={() => RemoveWishlistItem(item)} className="h-10 px-6 bg-black font-semibold hover:bg-gray-800 text-white rounded-lg">Remove</button>
-                                <button onClick={() => (addToCart(item), RemoveWishlistItem(item))} className="h-10 px-2 font-semibold bg-gray-400 hover:bg-blue-200 rounded-lg">Move to Cart</button>
+
+                                <button onClick={async () => (
+                                    addToCart(item), RemoveWishlistItem(item),
+                                    await fetch('https://student-support-s0xt.onrender.com/cart', {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({ email: data?.email, projectId: item?.projectId })
+                                    })
+
+                                )}
+
+                                    className="h-10 px-2 font-semibold bg-gray-400 hover:bg-blue-200 rounded-lg">Move to Cart</button>
                             </div>
                         </div>
                     ))

@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { LiaCartArrowDownSolid } from "react-icons/lia";
 import { CartContext } from "../Context/CartContext";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../Context/LoginContext";
+import { OrderContext } from "../Context/OrderContext";
+import ModalConfirmOrder from "../Modals/ModalConfirmOrder";
 
 
 
 export default function Cart() {
 
-    const { Cartitem, RemoveCartItem } = useContext(CartContext);
+    const { Cartitem, RemoveCartItem, clearcart } = useContext(CartContext);
+    const { addToOrder } = useContext(OrderContext);
 
     const { data } = useContext(LoginContext);
+    const [ConfirmOrder, setConfirmOrder] = useState(false);
 
     let totalamount;
     let count = 0
@@ -58,9 +62,49 @@ export default function Cart() {
                         <p className="text-2xl font-serif text-green-600 pr-2"> ₹ {count * 1000}</p>
                     </div>
                     <div className="flex flex-row justify-end gap-5 pr-2">
-                        <button className="text-center py-2 px-2 w-[25%] bg-black text-white text-balance rounded-lg">Clear Cart</button>
-                        <button className="text-center py-2 px-2 w-[25%] bg-blue-600 text-balance text-white rounded-lg">Order</button>
+                        <button onClick={() => (
+
+                            Cartitem.forEach(async (element) => {
+
+                                await fetch('https://student-support-s0xt.onrender.com/cart/remove', {
+                                    method: "POST",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify({ email: data?.email, projectId: element?.projectId })
+                                })
+                            }),
+                            clearcart()
+                        )}
+
+                            className="text-center py-2 px-2 w-[25%] bg-black text-white text-balance rounded-lg">Clear Cart</button>
+                        <button onClick={() => setConfirmOrder(true)} className="text-center py-2 px-2 w-[25%] bg-blue-600 text-balance text-white rounded-lg">Order</button>
                     </div>
+
+                    <ModalConfirmOrder isOpen={ConfirmOrder} onClose={() => setConfirmOrder(false)}>
+                        <div className="flex flex-col gap-5 justify-center w-96 px-2">
+                            <h1 className="text-2xl text-black opacity-75 font-semibold text-center">Confirm Order😍</h1>
+                            <p className="text-gray-700 text-base">if you comfirm Your Order Our Person will Cantact you soon to discus about the Project and make the Order Confirm</p>
+                            <button onClick={() =>
+                            (
+                                Cartitem.forEach(async (element) => {
+
+                                    addToOrder(element);
+                                    await fetch('https://student-support-s0xt.onrender.com/cart/remove', {
+                                        method: "POST",
+                                        headers: {
+                                            "Content-Type": "application/json"
+                                        },
+                                        body: JSON.stringify({ email: data?.email, projectId: element?.projectId })
+                                    })
+                                }),
+                                setConfirmOrder(false),
+                                clearcart()
+                            )}
+                                className="py-2 px-2 text-center border rounded-lg hover:bg-black hover:text-white">Confirm Order</button>
+                        </div>
+                    </ModalConfirmOrder>
+
                 </div>
                 :
                 <div className="flex flex-col items-center justify-center min-h-screen">
