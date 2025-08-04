@@ -35,7 +35,7 @@ export default function Project() {
                         <Link to="/Project/IOT" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">IOT</Link>
                         <Link to="/Project/AI_ML" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">AI/ML</Link>
                         <Link to="/Project/business" className="text-center mt-5 border font-semibold opacity-80 sm:min-w-80 xl:min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</Link>
-                        <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Portfolio</Link>
+                        <Link to="/Project/Portfolio" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Portfolio</Link>
                         <Link to="#" className="text-center mt-5 border font-semibold opacity-80 min-w-52 cursor-pointer pl-8 pr-8 rounded-md bg-gray-200 pt-1 pb-1">Others</Link>
                     </div>
                     <div className="flex-1">
@@ -148,7 +148,7 @@ export default function Project() {
                     <Link to={`/Project/IOT`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">IOT</Link>
                     <Link to={`/Project/AI_ML`} className="text-center mt-5 border opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">AI/ML</Link>
                     <Link to={`/Project/busines`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Business DashBoards</Link>
-                    <Link to={`#`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Portfolio</Link>
+                    <Link to={`/Project/Portfolio`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer  rounded-md bg-gray-200 pt-1 pb-1">Portfolio</Link>
                     <Link to={`#`} className="text-center mt-5 border  opacity-80 min-w-20 cursor-pointer rounded-md bg-gray-200 pt-1 pb-1">Others</Link>
 
                 </div>

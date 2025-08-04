@@ -4,13 +4,20 @@ import { BsTwitterX } from "react-icons/bs";
 import { FaLinkedin } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import ModalLoading from "../Modals/ModalLoading";
+import { useContext } from "react";
+import ModalLogin from "../Modals/ModalLogin";
+import { Link } from "react-router-dom";
+import { LoginContext } from "../Context/LoginContext";
 
 
 export default function Contact() {
 
+    const { isLogin } = useContext(LoginContext);
+
     const [serverinfo, setserverinfo] = useState(null);
 
     const [modalstate, setmodalstate] = useState(false)
+    const [checklogin, setchecklogin] = useState(false)
 
     const [contact, setcontact] = useState({
 
@@ -36,23 +43,29 @@ export default function Contact() {
 
         e.preventDefault();
 
-        setmodalstate(true);
+        if (isLogin) {
 
-        let res = await fetch("https://student-support-s0xt.onrender.com/Contactinfo", {
+            setmodalstate(true);
 
-            method: "POST",
-            credentials: "include",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(contact)
-        })
+            let res = await fetch("https://student-support-s0xt.onrender.com/Contactinfo", {
 
-        let result = await res.json();
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(contact)
+            })
 
-        setmodalstate(false)
+            let result = await res.json();
 
-        setserverinfo(result.message);
+            setmodalstate(false)
+
+            setserverinfo(result.message);
+        }
+        else {
+            setchecklogin(true);
+        }
 
     }
 
@@ -140,6 +153,20 @@ export default function Contact() {
                     <div className="w-12 h-12 border-4  border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
             </ModalLoading>
+
+            <ModalLogin isOpen={checklogin} onClose={() => setchecklogin(false)}>
+                <div>
+                    <div className="flex flex-col px-2 gap-3">
+
+                        <h1 className="text-black opacity-75 font-bold text-2xl text-center">Login Please..!</h1>
+
+                        <p className="text-gray-700 text-lg">Please login to Book the your session to discuss</p>
+
+                        <Link to={`/Login`} className="py-2 px-2 block text-center border rounded-lg hover:bg-black hover:text-white">Go to Login</Link>
+
+                    </div>
+                </div>
+            </ModalLogin>
 
         </>
     )

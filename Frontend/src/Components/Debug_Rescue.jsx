@@ -4,6 +4,16 @@ import Footer from "./Footer";
 import { MdErrorOutline } from "react-icons/md";
 
 export default function Debug_Rescue() {
+
+
+    const handlechange = (e) => {
+
+        const file = e.target.file[0]
+
+        console.log(file);
+    }
+
+
     return (
         <>
 
@@ -65,7 +75,7 @@ export default function Debug_Rescue() {
                         <label htmlFor="textarea">Describe Your Issue</label>
                         <textarea name="textarea" id="textarea" placeholder="Paste your error, code, or explain what’s not working..." className="border mb-5 pl-2 mt-2 h-24 text-sm rounded-md"></textarea>
                         <label htmlFor="file">Upload Screenshot</label>
-                        <input type="file" id="file" className="block xl:file:w-[26.5vw] file:text-black file:bg-blue-50 file:rounded-md file:py-2   file:border-0 mb-6 mt-2 text-sm" />
+                        <input onChange={handlechange} type="file" id="file" name="image" className="block xl:file:w-[26.5vw] file:text-black file:bg-blue-50 file:rounded-md file:py-2   file:border-0 mb-6 mt-2 text-sm" />
                         <button className="bg-black text-white text-center  rounded-md h-10 text-sm">Submit</button>
                     </form>
 

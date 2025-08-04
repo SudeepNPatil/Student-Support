@@ -2,8 +2,47 @@ import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { FcIdea } from "react-icons/fc";
+import { useState } from "react";
 
 export default function Custom_Build_Service() {
+
+    const [Custom, setCustom] = useState({
+        name: "",
+        Phnumber: "",
+        Email: "",
+        Describe: "",
+    })
+
+    const handlechange = (e) => {
+        const { name, value } = e.target;
+
+        setCustom((prev) => ({
+            ...prev,
+            [name]: value
+        }))
+
+        console.log(Custom);
+
+    }
+
+
+    const handlesubmit = async (e) => {
+
+        e.preventDefault();
+
+        await fetch("http://localhost:5000/CustomBuildService", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(Custom)
+        })
+            .then((data) => data.json())
+            .then((data) => console.log(data));
+
+    }
+
+
     return (
         <>
 
@@ -20,13 +59,13 @@ export default function Custom_Build_Service() {
             <div className="flex flex-col items-center mt-5 flex-wrap sm:hidden">
                 <form className="flex flex-col flex-wrap lg:p-14">
                     <label htmlFor="Name">Name :</label>
-                    <input type="text" id="Name" placeholder="Enter your Full Name" className="border rounded-md text-sm h-8 pl-2 mb-4 mt-2 w-[80vw] bg-gray-200" />
+                    <input type="text" id="Name" placeholder="Enter your Full Name" className="border rounded-md text-sm h-8 pl-2 mb-4 mt-2 w-[80vw]" />
                     <label htmlFor="number">Phone Number :</label>
-                    <input type="number" id="number" placeholder="Enter your phone Number" className="border  rounded-md h-8 pl-2 mb-4 mt-2 text-sm w-[80vw] bg-gray-200" />
+                    <input type="number" id="number" placeholder="Enter your phone Number" className="border  rounded-md h-8 pl-2 mb-4 mt-2 text-sm w-[80vw]" />
                     <label htmlFor="Email">Email :</label>
-                    <input type="text" id="Email" placeholder="Enter email id" className="border  rounded-md text-sm w-[80vw] mb-4 mt-2 h-8 pl-2 bg-gray-200 " />
+                    <input type="text" id="Email" placeholder="Enter email id" className="border  rounded-md text-sm w-[80vw] mb-4 mt-2 h-8 pl-2 " />
                     <label htmlFor="textarea">Describe your idea :</label>
-                    <textarea name="textarea" id="textarea" placeholder="describe your Project idea here..." className="w-[80vw] border mb-4 mt-2 pl-2 h-20 rounded-md text-sm bg-gray-200"></textarea>
+                    <textarea name="textarea" id="textarea" placeholder="describe your Project idea here..." className="w-[80vw] border mb-4 mt-2 pl-2 h-20 rounded-md text-sm"></textarea>
                     <button className="bg-black text-white text-center  rounded-md h-8 text-sm w-[80vw]">Submit</button>
                 </form>
 
@@ -35,16 +74,6 @@ export default function Custom_Build_Service() {
                         <FcIdea size={52} className="mt-14 self-center opacity-70" />
                         <p className="text-sm text-center font-light opacity-65 mt-2">You are not submited your idea yet !</p>
                     </div>
-                </div>
-
-                <div className="w-[80vw] text-sm mt-8 mb-10">
-                    <h1 className="text-md font-semibold"> Why Choose Us</h1>
-                    <ul className="list-none">
-                        <li className="mt-2">✅ Affordable & Negotiable Pricing</li>
-                        <li className="w-[86vw] mt-2">✅ On-Time Delivery with Source Code & Demo</li>
-                        <li className="mt-2">✅ Friendly Support & Regular Updates</li>
-                    </ul>
-
                 </div>
 
             </div>
@@ -64,14 +93,14 @@ export default function Custom_Build_Service() {
                     <form className="flex xl:flex-col xl:flex-wrap p-14 xl:min-w-[35vw]">
                         <h1 className="text-center font-semibold text-xl -mt-2 mb-8">Fill the Details </h1>
                         <label htmlFor="Name">Name :</label>
-                        <input type="text" id="Name" placeholder="Enter your Full Name" className="border rounded-md text-sm h-10 pl-2 mb-5 mt-2" />
+                        <input onChange={handlechange} type="text" id="Name" name="name" placeholder="Enter your Full Name" className="border rounded-md text-sm h-10 pl-2 mb-5 mt-2" />
                         <label htmlFor="number">Phone Number :</label>
-                        <input type="number" id="number" placeholder="Enter your phone Number" className="border  rounded-md h-10  pl-2 mb-5 mt-2 text-sm " />
+                        <input onChange={handlechange} type="number" id="number" name="Phnumber" placeholder="Enter your phone Number" className="border  rounded-md h-10  pl-2 mb-5 mt-2 text-sm " />
                         <label htmlFor="Email">Email :</label>
-                        <input type="text" id="Email" placeholder="Enter email id" className="border  rounded-md text-sm mb-5 mt-2 h-10 pl-2 " />
+                        <input onChange={handlechange} type="text" id="Email" name="Email" placeholder="Enter email id" className="border  rounded-md text-sm mb-5 mt-2 h-10 pl-2 " />
                         <label htmlFor="textarea">Describe your idea :</label>
-                        <textarea name="textarea" id="textarea" placeholder="describe your Project idea here..." className="border mb-8 mt-2 pl-2 h-24 rounded-md text-sm"></textarea>
-                        <button className="bg-black text-white text-center  rounded-md h-10 text-sm">Submit</button>
+                        <textarea onChange={handlechange} name="Describe" id="textarea" placeholder="describe your Project idea here..." className="border mb-8 mt-2 pl-2 h-24 rounded-md text-sm"></textarea>
+                        <button onClick={handlesubmit} className="bg-black text-white text-center  rounded-md h-10 text-sm">Submit</button>
                     </form>
 
                 </div>

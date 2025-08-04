@@ -73,7 +73,17 @@ export default function Search() {
 
             }
 
-            <ModalLogin isOpen={logincheck} onClose={() => setlogincheck(false)}></ModalLogin>
+            <ModalLogin isOpen={logincheck} onClose={() => setlogincheck(false)}>
+                <div className="flex flex-col px-2 gap-3">
+
+                    <h1 className="text-black opacity-75 font-bold text-2xl text-center">Login Please..!</h1>
+
+                    <p className="text-gray-700 text-lg">Please login to add Project to your Wishlist...☺</p>
+
+                    <Link to={`/Login`} className="py-2 px-2 block text-center border rounded-lg hover:bg-black hover:text-white">Go to Login</Link>
+
+                </div>
+            </ModalLogin>
 
         </div>
     )
