@@ -30,7 +30,7 @@ export default function Custom_Build_Service() {
 
         e.preventDefault();
 
-        await fetch("http://localhost:5000/CustomBuildService", {
+        await fetch("https://student-support-s0xt.onrender.com/CustomBuildService", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -46,9 +46,7 @@ export default function Custom_Build_Service() {
     return (
         <>
 
-
             {/* Mobile View */}
-
 
             <div className="pt-28 flex flex-col bg-blue-100 pb-5 rounded-md sm:hidden">
                 <h1 className="text-xl text-center font-bold">Bring Your Project Idea to Life</h1>
