@@ -11,6 +11,9 @@ import jwt from "jsonwebtoken"
 import cookieParser from "cookie-parser";
 import { originCheck } from "./Middleware/originCheck.js";
 import ProjectInfo from "./models/projectInfo.model.js"
+import CustomBuildService from "./models/CustomBuildService.model.js";
+import ProjectNavigator from "./models/ProjectNavigator.model.js";
+import DebugAndRescue from "./models/DebugAndRescue.model.js";
 
 dotenv.config();
 const app = express();
@@ -94,7 +97,79 @@ app.post('/Contactinfo', async (req, res) => {
 
     }
     catch (error) {
-        console.error("Signup error", error.message);
+        console.error("/Contactinfo route", error.message);
+        res.status(500).json({ message: "server error" });
+    }
+})
+
+app.post('/CustomBuildService', async (req, res) => {
+
+    const { name, Phnumber, Email, describe } = req.body;
+
+    try {
+
+        const newCustomBuildService = new CustomBuildService({
+            name,
+            Phnumber,
+            Email,
+            describe
+        })
+
+        await newCustomBuildService.save();
+
+        res.status(201).json({ message: "We Review your request and will connect with you soon..!" })
+
+    }
+    catch (error) {
+        console.error("/CustomBuildService route error", error.message);
+        res.status(500).json({ message: "server error" });
+    }
+})
+
+app.post('/ProjectNavigator', async (req, res) => {
+
+    const { name, date, time, language } = req.body;
+
+    try {
+
+        const newProjectNavigator = new ProjectNavigator({
+            name,
+            date,
+            time,
+            language
+        })
+
+        await newProjectNavigator.save();
+
+        res.status(201).json({ message: "We Review your request and will connect with you soon..!" })
+
+    }
+    catch (error) {
+        console.error("/ProjectNavigator route error", error.message);
+        res.status(500).json({ message: "server error" });
+    }
+})
+
+app.post('/DebugAndRescue', async (req, res) => {
+
+    const { name, whatsapp, describe, screenshots } = req.body;
+
+    try {
+
+        const newDebugAndRescue = new DebugAndRescue({
+            name,
+            whatsapp,
+            describe,
+            screenshots
+        })
+
+        await newDebugAndRescue.save();
+
+        res.status(201).json({ message: "We Review your request and will connect with you soon..!" })
+
+    }
+    catch (error) {
+        console.error("/DebugAndRescue route error", error.message);
         res.status(500).json({ message: "server error" });
     }
 })
