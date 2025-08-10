@@ -14,6 +14,7 @@ import ProjectInfo from "./models/projectInfo.model.js"
 import CustomBuildService from "./models/CustomBuildService.model.js";
 import ProjectNavigator from "./models/ProjectNavigator.model.js";
 import DebugAndRescue from "./models/DebugAndRescue.model.js";
+import multer from "multer";
 
 dotenv.config();
 const app = express();
@@ -150,9 +151,12 @@ app.post('/ProjectNavigator', async (req, res) => {
     }
 })
 
-app.post('/DebugAndRescue', async (req, res) => {
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
-    const { name, whatsapp, describe, screenshots } = req.body;
+app.post('/DebugAndRescue', upload.single("screenshots"), async (req, res) => {
+
+    const { name, whatsapp, describe } = req.body;
 
     try {
 
@@ -160,12 +164,17 @@ app.post('/DebugAndRescue', async (req, res) => {
             name,
             whatsapp,
             describe,
-            screenshots
+            screenshots: {
+                data: req.file.buffer,
+                contentType: req.file.mimetype,
+                size: req.file.size,
+                fileName: req.file.originalname
+            }
         })
 
-        await newDebugAndRescue.save();
+        const saveddata = await newDebugAndRescue.save();
 
-        res.status(201).json({ message: "We Review your request and will connect with you soon..!" })
+        res.status(201).json({ message: "We Review your request and will connect with you soon..!", data: saveddata })
 
     }
     catch (error) {
