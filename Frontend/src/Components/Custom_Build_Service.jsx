@@ -1,8 +1,10 @@
-import React from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
 import { FcIdea } from "react-icons/fc";
 import { useState } from "react";
+import { useContext } from "react";
+import { LoginContext } from "../Context/LoginContext";
+import ModalLogin from "../Modals/ModalLogin";
+import { Link } from "react-router-dom";
+
 
 export default function Custom_Build_Service() {
 
@@ -12,6 +14,9 @@ export default function Custom_Build_Service() {
         Email: "",
         Describe: "",
     })
+     const { isLogin } = useContext(LoginContext);
+    
+         const [modal ,setmodal] = useState(false)
 
     const handlechange = (e) => {
         const { name, value } = e.target;
@@ -21,14 +26,14 @@ export default function Custom_Build_Service() {
             [name]: value
         }))
 
-        console.log(Custom);
-
     }
 
 
     const handlesubmit = async (e) => {
 
         e.preventDefault();
+
+        if(isLogin){
 
         await fetch("https://student-support-s0xt.onrender.com/CustomBuildService", {
             method: "POST",
@@ -39,6 +44,11 @@ export default function Custom_Build_Service() {
         })
             .then((data) => data.json())
             .then((data) => console.log(data));
+    
+    }
+    else{
+        setmodal(true);
+    }
 
     }
 
@@ -75,6 +85,19 @@ export default function Custom_Build_Service() {
                 </div>
 
             </div>
+
+
+             <ModalLogin isOpen={modal} onClose={()=>setmodal(false)}>
+                 <div className="flex flex-col px-2 gap-3">
+
+                    <h1 className="text-black opacity-75 font-bold text-2xl text-center">Login Please..!</h1>
+
+                    <p className="text-gray-700 text-lg">Please login to Book your service...</p>
+
+                    <Link to={`/Login`} className="py-2 px-2 block text-center border rounded-lg hover:bg-black hover:text-white">Go to Login</Link>
+
+                </div>
+            </ModalLogin>
 
             {/* Desktop view */}
 

@@ -32,7 +32,7 @@ export default function Login() {
 
         setloadingmodal(true)
 
-        const res = await fetch("https://student-support-s0xt.onrender.com/login", {
+        const res = await fetch("https://student-support-s0xt.onrender.com/User/login", {
             method: "POST",
             credentials: "include",
             headers: {

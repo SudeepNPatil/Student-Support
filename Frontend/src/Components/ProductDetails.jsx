@@ -78,8 +78,9 @@ export default function ProductDetails() {
                     </div>
 
                     <div>
-                        <h1 className="text-lg text-gray-800 font-semibold py-1">Prise</h1>
+                        <h1 className="text-lg text-gray-800 font-semibold py-1">Prize</h1>
                         <p className="text-lg text-green-500 font-semibold py-1"> ₹ {getdata?.projectInfo?.price}</p>
+                         <p className="text-sm text-red-400 opacity-90 mt-0.5">( Prizes are vary according to Number of Page )</p>
                     </div>
 
                     <div>
@@ -89,7 +90,7 @@ export default function ProductDetails() {
 
                     <div>
                         <h1 className="text-lg text-gray-800 font-semibold py-1" >Hosting Service</h1>
-                        <p className="text-lg text-green-600">Avaleble</p>
+                        <p className="text-lg text-green-600">Available</p>
                     </div>
                     {/*  <div>
                     <h1 className="text-lg text-gray-800 font-semibold py-1">Quantity</h1>

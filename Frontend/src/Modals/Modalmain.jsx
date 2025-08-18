@@ -11,7 +11,7 @@ const Modalmain = ({ isOpen, onClose, children }) => {
     const { isLogin, setisLogin, data, setdata } = useContext(LoginContext);
 
     const logout = async () => {
-        await fetch("https://student-support-s0xt.onrender.com/logout", {
+        await fetch("https://student-support-s0xt.onrender.com/User/logout", {
             credentials: "include"
         }).then(data => data.json())
             .then(data => {

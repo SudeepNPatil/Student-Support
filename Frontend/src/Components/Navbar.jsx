@@ -1,4 +1,3 @@
-import React from 'react'
 import logo from '../assets/logo-transparent.png'
 import { useState } from 'react'
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -36,7 +35,7 @@ export default function Navbar() {
 
         setloadingmodal(true);
 
-        await fetch("https://student-support-s0xt.onrender.com/logout", {
+        await fetch("https://student-support-s0xt.onrender.com/User/logout", {
             credentials: "include"
         }).then(data => data.json()).then(data => (console.log(data), setloadingmodal(false)));
 
@@ -46,10 +45,10 @@ export default function Navbar() {
     return (
         <div onClick={(e) => (e.stopPropagation(), setisclicked(false))} className="flex justify-between h-20 border-b fixed bg-white w-full z-50">
 
-            <div className='flex '>
+            <Link to={`/Home`} className='flex'>
                 <img src={logo} alt="logo" className='ml-2 rounded-full xl:ml-16 hover:text-[#FFD93D] lg:ml-10 md:ml-6 sm:ml-4  w-16 h-16 mt-2 hover:scale-125 duration-500 ease-in-out cursor-pointer' />
                 <h1 className='mt-7 ml-1 md:text-xl lg:text-2xl xs:text-lg hover:text-[#FFD93D] font-bold lg:mt-6 lg:ml-2 hover:scale-105 duration-500 ease-in-out cursor-pointer'>CODE MENTOR</h1>
-            </div>
+            </Link>
 
             <div className='hidden md:flex justify-end xl:gap-28 md:gap-12 lg:gap-16 items-center font-semibold mr-10'>
                 <Link to='/Home' className='hover:text-yellow-400'>Home</Link >
@@ -118,8 +117,6 @@ export default function Navbar() {
             <button className='md:hidden border-2 bg-gray-50 rounded-md w-10 block h-10 text-center text-3xl pl-1 mr-4 mt-5' onClick={clickfunction}>
                 <RxHamburgerMenu />
             </button>
-
-
 
         </div>
     )

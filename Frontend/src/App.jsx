@@ -16,7 +16,7 @@ function App() {
   const { addToOrder } = useContext(OrderContext);
 
   useEffect(() => {
-    fetch("https://student-support-s0xt.onrender.com/me", {
+    fetch("https://student-support-s0xt.onrender.com/User/me", {
       credentials: "include"
     })
       .then(async (res) => {

@@ -17,7 +17,6 @@ export default function Cart() {
     const { data } = useContext(LoginContext);
     const [ConfirmOrder, setConfirmOrder] = useState(false);
 
-    let totalamount;
     let count = 0
 
     return (
