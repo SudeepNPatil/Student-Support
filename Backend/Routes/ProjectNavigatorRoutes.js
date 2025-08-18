@@ -19,9 +19,9 @@ router.post('/', async (req, res) => {
             language
         })
 
-        const data = await newProjectNavigator.save();
+        const saveddata = await newProjectNavigator.save();
 
-        res.status(201).json({ message: "We Review your request and will connect with you soon..!" , saveddata:data })
+        res.status(201).json({ message: "We Review your request and will connect with you soon..!" , data:saveddata })
 
     }
     catch (error) {

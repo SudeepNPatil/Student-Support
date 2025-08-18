@@ -16,9 +16,9 @@ router.post('/', async (req, res) => {
             describe
         })
 
-        await newCustomBuildService.save();
+        const saveddata = await newCustomBuildService.save();
 
-        res.status(201).json({ message: "We Review your request and will connect with you soon..!" })
+        res.status(201).json({ message: "We Review your request and will connect with you soon..!",data:saveddata })
 
     }
     catch (error) {
