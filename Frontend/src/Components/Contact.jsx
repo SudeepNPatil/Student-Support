@@ -18,6 +18,7 @@ export default function Contact() {
 
     const [modalstate, setmodalstate] = useState(false)
     const [checklogin, setchecklogin] = useState(false)
+    const [error,seterror]= useState('');
 
     const [contact, setcontact] = useState({
 
@@ -37,11 +38,23 @@ export default function Contact() {
             [name]: value
         }))
 
+         if(!contact.name || !contact.Budget || !contact.Email || !contact.service){
+            seterror("⚠ Please fill all the details..!")
+            return
+        }else{
+            seterror('');
+        }
+
     }
 
     const handlesubmit = async (e) => {
 
         e.preventDefault();
+
+        if(!contact.name || !contact.Budget || !contact.Email || !contact.service){
+            seterror("⚠ Please fill all the details..!")
+            return
+        }
 
         if (isLogin) {
 
@@ -137,6 +150,10 @@ export default function Contact() {
                         <label htmlFor="message" className="block">Message </label>
 
                         <textarea onChange={handlechange} name="text" id="text" placeholder="write what you want to ask about..." className="text-sm  pl-3 pt-2 mt-1 mb-4 min-h-28 border rounded-md"></textarea>
+
+                        {error && (
+                        <p className="text-red-500 text-sm font-normal  mb-4">{error}</p>
+                        )}
 
                         <button type="button" onClick={handlesubmit} className="bg-black text-white block h-10 rounded-md mb-4">Submit</button>
 

@@ -7,6 +7,7 @@ import SellProject from '../assets/SellProject.jpeg'
 import getstuck from '../assets/getstuck.jpeg'
 import { GoArrowRight } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 export default function Ourservices() {
@@ -54,7 +55,7 @@ export default function Ourservices() {
     }
 
 
-    let items = [{ image: SellProject, name: "Ready2Go Projects" }, { image: Ready2Go, name: "Custom Build Service" }, { image: Support, name: "🧭 Project Navigator" }, { image: getstuck, name: "Debug & Rescue" }];
+    let items = [{ image: SellProject, name: "Ready2Go Projects",route:"Project" }, { image: Ready2Go, name: "Custom Build Service",route:"Custom_Build_Service" }, { image: Support, name: "🧭 Project Navigator",route:"Project_Navigator" }, { image: getstuck, name: "Debug & Rescue",route:"Debug_Rescue" }];
 
     return (
         <>
@@ -67,7 +68,9 @@ export default function Ourservices() {
                     <img src={SellProject} alt="image" className="sm:w-full sm:h-full  sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
                         <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg md:p-3 p-2 font-semibold" onClick={handleclick}>Ready2Go Projects </button>
+                        <Link to="/Project">
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
+                        </Link>
                     </div>
                 </div>
 
@@ -75,7 +78,9 @@ export default function Ourservices() {
                     <img src={Ready2Go} alt="image" className="sm:w-full sm:h-full sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
                         <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg md:p-3 p-2 font-semibold" onClick={handleclick}>Custom Build Service</button>
+                        <Link to="/Custom_Build_Service">
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -86,7 +91,9 @@ export default function Ourservices() {
                     <img src={Support} alt="image" className="sm:w-full sm:h-full  sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
                         <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg md:p-3 p-2 font-semibold" onClick={handleclick}>🧭 Project Navigator</button>
+                         <Link to="/Project_Navigator">
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
+                        </Link>
                     </div>
                 </div>
 
@@ -94,7 +101,9 @@ export default function Ourservices() {
                     <img src={getstuck} alt="image" className="sm:w-full sm:h-full  sm:rounded-[60px]" />
                     <div className="bottom-4 flex items-center gap-5 justify-center -mt-16">
                         <button className="text-lg bg-[#00000010] hover:bg-[#00000030] rounded-lg md:p-3 p-2 font-semibold" onClick={handleclick} >Debug & Rescue</button>
+                         <Link to="/Debug_Rescue">
                         <GoArrowRight size={40} className="hover:bg-[#00000030] bg-[#00000010] cursor-pointer rounded-full p-2 animate-horizontal-bounce" />
+                         </Link>
                     </div>
                 </div>
 
@@ -117,7 +126,9 @@ export default function Ourservices() {
                                 <img src={item.image} alt="img" className="relative border opacity-80 w-full h-full rounded-xl" />
                                 <div className="flex flex-row gap-2 justify-center items-center w-full absolute bottom-3 z-10" onClick={handleclick}>
                                     <h1 className="text-md w-fit p-1 font-semibold bg-[#00000030]  hover:bg-transparent hover:border rounded-md">{item.name}</h1>
+                                    <Link to={item.route}>
                                     <GoArrowRight size={25} className="rounded-full hover:border bg-[#00000020]  hover:bg-[#00000025] animate-horizontal-bounce" onClick={handleclick} />
+                                    </Link>
                                 </div>
                             </div>
                         ))}
