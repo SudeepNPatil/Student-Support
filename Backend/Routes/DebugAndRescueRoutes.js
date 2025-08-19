@@ -25,13 +25,18 @@ router.post('/', upload.single('screenshots'), async (req, res) => {
 
     const saveddata = await newDebugAndRescue.save();
 
-    const imageBase64 = saveddata.image.toString('base64');
+    let base64Image = null;
+    if (saveddata.screenshots && saveddata.screenshots.data) {
+      base64Image = saveddata.screenshots.data.toString('base64');
+    }
 
     res.status(201).json({
       message: 'We Review your request and will connect with you soon..!',
       data: {
         ...saveddata._doc,
-        image: `data:image/png;base64,${imageBase64}`,
+        screenshots: base64Image
+          ? `data:${saveddata.screenshots.contentType};base64,${base64Image}`
+          : null,
       },
     });
   } catch (error) {
