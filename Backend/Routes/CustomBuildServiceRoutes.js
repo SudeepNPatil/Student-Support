@@ -27,4 +27,22 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.delete('/:email', async (req, res) => {
+  try {
+    const { email } = req.params;
+
+    const deletesession = await CustomBuildService.findOneAndDelete({ email });
+
+    if (!deletesession) {
+      return res
+        .status(404)
+        .json({ message: 'something went wrong ..Please try again!' });
+    }
+
+    res.json({ message: 'session cancelled successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+});
+
 export default router;
