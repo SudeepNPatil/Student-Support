@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 import ModalLoading from '../Modals/ModalLoading.jsx';
 
 export default function Project_Navigator() {
-  const { isLogin } = useContext(LoginContext);
+  const { isLogin, data: userData } = useContext(LoginContext);
   const [modal, setmodal] = useState(false);
   const [modalloding, setmodalloding] = useState(false);
   const [error, seterror] = useState('');
   const [saveddata, setsaveddata] = useState({});
 
   const [Navigator, setNavigator] = useState({
+    email: userData?.email,
     name: '',
     date: '',
     time: '',
@@ -49,18 +50,39 @@ export default function Project_Navigator() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(Navigator),
+          body: JSON.stringify({ ...Navigator, email: userData?.email }),
         }
       )
-        .then((data) => data.json())
-        .then((data) => {
-          setsaveddata(data);
+        .then((some) => some.json())
+        .then((some) => {
+          setsaveddata(some);
           setmodalloding(false);
-          setNavigator({ name: '', date: '', time: '', language: '' });
+          setNavigator({
+            email: userData?.email,
+            name: '',
+            date: '',
+            time: '',
+            language: '',
+          });
         });
     } else {
       setmodal(true);
     }
+  };
+
+  const handlcancel = async (email) => {
+    setmodalloding(true);
+    const res = await fetch(
+      `https://student-support-s0xt.onrender.com/ProjectNavigator/${email}`,
+      {
+        method: 'DELETE',
+      }
+    );
+
+    const returnedinfo = await res.json();
+    setmodalloding(false);
+    setsaveddata({});
+    alert(returnedinfo.message);
   };
 
   return (
@@ -151,6 +173,14 @@ export default function Project_Navigator() {
               <h1 className="text-lg text-black bg-[#00000005] rounded-lg py-2 w-56 mx-auto mt-8 text-center font-bold">
                 Sesssion Booked
               </h1>
+              <p
+                onClick={(e) => (
+                  e.preventDefault(), handlcancel(userData?.email)
+                )}
+                className="text-base mt-5 text-red-600 text-center hover:underline cursor-pointer"
+              >
+                Cancel Session
+              </p>
             </div>
           ) : (
             <div className="flex flex-col justify-center">
@@ -289,6 +319,14 @@ export default function Project_Navigator() {
               <h1 className="text-xl text-black bg-[#00000005] rounded-lg py-2 w-56 mx-auto mt-8 text-center font-bold">
                 Sesssion Booked
               </h1>
+              <p
+                onClick={(e) => (
+                  e.preventDefault(), handlcancel(userData?.email)
+                )}
+                className="text-base mt-5 text-red-600 text-center hover:underline cursor-pointer"
+              >
+                Cancel Session
+              </p>
             </div>
           ) : (
             <>

@@ -7,18 +7,19 @@ import { Link } from 'react-router-dom';
 import ModalLoading from '../Modals/ModalLoading';
 
 export default function Custom_Build_Service() {
+  const { isLogin, data: userData } = useContext(LoginContext);
+  const [modal, setmodal] = useState(false);
+  const [error, seterror] = useState('');
+  const [saveddata, setsaveddata] = useState(null);
+  const [modalloding, setmodalloding] = useState(false);
+
   const [Custom, setCustom] = useState({
+    unic: userData?.email,
     name: '',
     Phnumber: '',
     Email: '',
     describe: '',
   });
-  const { isLogin } = useContext(LoginContext);
-
-  const [modal, setmodal] = useState(false);
-  const [error, seterror] = useState('');
-  const [saveddata, setsaveddata] = useState(null);
-  const [modalloding, setmodalloding] = useState(false);
 
   const handlechange = (e) => {
     const { name, value } = e.target;
@@ -49,18 +50,40 @@ export default function Custom_Build_Service() {
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(Custom),
+          body: JSON.stringify({ ...Custom, unic: userData?.email }),
         }
       )
         .then((data) => data.json())
         .then((data) => {
           setsaveddata(data);
           setmodalloding(false);
-          setCustom({ name: '', Phnumber: '', Email: '', describe: '' });
+          setCustom({
+            name: '',
+            Phnumber: '',
+            Email: '',
+            describe: '',
+            unic: userData?.email,
+          });
         });
     } else {
       setmodal(true);
     }
+  };
+
+  const handlcancel = async (email) => {
+    setmodalloding(true);
+    const res = await fetch(
+      `https://student-support-s0xt.onrender.com/CustomBuildService/${email}`,
+      {
+        method: 'DELETE',
+      }
+    );
+
+    const returnedinfo = await res.json();
+
+    setmodalloding(false);
+    setsaveddata({});
+    alert(returnedinfo.message);
   };
 
   return (
@@ -155,6 +178,13 @@ export default function Custom_Build_Service() {
               <h1 className="text-lg text-black bg-[#00000005] rounded-lg py-2 w-56 mx-auto mt-8 text-center font-bold">
                 Sesssion Booked
               </h1>
+
+              <p
+                onClick={() => handlcancel(userData?.email)}
+                className="text-base mt-5 text-red-600 text-center hover:underline cursor-pointer"
+              >
+                Cancel Session
+              </p>
             </div>
           ) : (
             <div className="flex flex-col justify-center">
@@ -284,6 +314,13 @@ export default function Custom_Build_Service() {
               <h1 className="text-xl text-black bg-[#00000005] rounded-lg py-2 w-56 mx-auto mt-8 text-center font-bold">
                 Sesssion Booked
               </h1>
+
+              <p
+                onClick={() => handlcancel(userData?.email)}
+                className="text-base mt-5 text-red-600 text-center hover:underline cursor-pointer"
+              >
+                Cancel Session
+              </p>
             </div>
           ) : (
             <>

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import ModalLoading from '../Modals/ModalLoading.jsx';
 
 export default function Debug_Rescue() {
-  const { isLogin } = useContext(LoginContext);
+  const { isLogin, data: userData } = useContext(LoginContext);
 
   const [modal, setmodal] = useState(false);
   const [error, seterror] = useState('');
@@ -16,6 +16,7 @@ export default function Debug_Rescue() {
 
   const [fileName, setFileName] = useState('');
   const [formData, setFormData] = useState({
+    email: userData?.email,
     Name: '',
     Number: '',
     textarea: '',
@@ -44,6 +45,7 @@ export default function Debug_Rescue() {
       setmodalloding(true);
 
       const form = new FormData();
+      form.append('email', userData?.email);
       form.append('name', formData.Name);
       form.append('whatsapp', formData.Number);
       form.append('describe', formData.textarea);
@@ -60,8 +62,8 @@ export default function Debug_Rescue() {
       const data = await res.json();
       setsaveddata(data);
       setmodalloding(false);
-      console.log(data);
       setFormData({
+        email: userData?.email,
         Name: '',
         Number: '',
         textarea: '',
@@ -70,6 +72,21 @@ export default function Debug_Rescue() {
     } else {
       setmodal(true);
     }
+  };
+
+  const handlcancel = async (email) => {
+    setmodalloding(true);
+    const res = await fetch(
+      `https://student-support-s0xt.onrender.com/DebugAndRescue/${email}`,
+      {
+        method: 'DELETE',
+      }
+    );
+
+    const returnedinfo = await res.json();
+    setmodalloding(false);
+    setsaveddata({});
+    alert(returnedinfo.message);
   };
 
   return (
@@ -166,6 +183,12 @@ export default function Debug_Rescue() {
               <h1 className="text-lg text-black bg-[#00000005] rounded-lg py-2 w-56 mx-auto mt-8 text-center font-bold">
                 Sesssion Booked
               </h1>
+              <p
+                onClick={() => handlcancel(userData?.email)}
+                className="text-base mt-5 text-red-600 text-center hover:underline cursor-pointer"
+              >
+                Cancel Session
+              </p>
             </div>
           ) : (
             <div className="flex flex-col justify-center">
@@ -301,6 +324,13 @@ export default function Debug_Rescue() {
               <h1 className="text-xl text-black bg-[#00000005] rounded-lg py-2 w-56 mx-auto mt-8 text-center font-bold">
                 Sesssion Booked
               </h1>
+
+              <p
+                onClick={() => handlcancel(userData?.email)}
+                className="text-base mt-5 text-red-600 text-center hover:underline cursor-pointer"
+              >
+                Cancel Session
+              </p>
             </div>
           ) : (
             <>
