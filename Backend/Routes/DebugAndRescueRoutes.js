@@ -8,10 +8,11 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 router.post('/', upload.single('screenshots'), async (req, res) => {
-  const { name, whatsapp, describe } = req.body;
+  const { name, whatsapp, describe, email } = req.body;
 
   try {
     const newDebugAndRescue = new DebugAndRescue({
+      email,
       name,
       whatsapp,
       describe,

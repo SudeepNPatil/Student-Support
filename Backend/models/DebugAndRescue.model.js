@@ -1,22 +1,23 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const DebugAndRescueSchema = mongoose.Schema(
-    {
-        name: String,
-        whatsapp: Number,
-        describe: String,
-        screenshots: {
-            data: Buffer,
-            contentType: String,
-            size: Number,
-            fileName: String
-        },
+  {
+    email: String,
+    name: String,
+    whatsapp: Number,
+    describe: String,
+    screenshots: {
+      data: Buffer,
+      contentType: String,
+      size: Number,
+      fileName: String,
     },
-    {
-        timestamps: true
-    }
+  },
+  {
+    timestamps: true,
+  }
 );
 
-const DebugAndRescue = mongoose.model("DebugAndRescue", DebugAndRescueSchema);
+const DebugAndRescue = mongoose.model('DebugAndRescue', DebugAndRescueSchema);
 
 export default DebugAndRescue;
