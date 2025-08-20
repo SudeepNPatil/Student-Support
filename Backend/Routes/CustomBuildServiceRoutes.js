@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.delete('/:email', async (req, res) => {
+router.delete('/:unic', async (req, res) => {
   try {
     const { unic } = req.params;
 
