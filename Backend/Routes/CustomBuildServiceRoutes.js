@@ -29,9 +29,9 @@ router.post('/', async (req, res) => {
 
 router.delete('/:email', async (req, res) => {
   try {
-    const { email } = req.params;
+    const { unic } = req.params;
 
-    const deletesession = await CustomBuildService.findOneAndDelete({ email });
+    const deletesession = await CustomBuildService.findOneAndDelete({ unic });
 
     if (!deletesession) {
       return res
