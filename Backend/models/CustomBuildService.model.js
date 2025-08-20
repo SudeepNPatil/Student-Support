@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const CustomBuildServiceSchema = mongoose.Schema(
   {
-    email: String,
+    unic: String,
     name: String,
     Phnumber: Number,
     Email: String,
