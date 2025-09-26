@@ -11,11 +11,13 @@ import AI from './assets/AI.png';
 import { useState } from 'react';
 import ModalChatbot from './Modals/ModalChatbot.jsx';
 import { HiArrowCircleUp } from 'react-icons/hi';
+import { useRef } from 'react';
 
 function App() {
   const { setisLogin, setdata } = useContext(LoginContext);
   const { addToCart } = useContext(CartContext);
   const { addToOrder } = useContext(OrderContext);
+  const chatref = useRef(null);
 
   const [modal, setmodal] = useState(false);
   const [messages, setMessages] = useState([]);
@@ -47,31 +49,34 @@ function App() {
       });
   }, []);
 
+  useEffect(() => {
+    if (chatref.current) {
+      chatref.current.scrollTop = chatref.current.scrollHeight;
+    }
+  }, [messages]);
+
   const sendMessage = async () => {
     if (!input.trim()) return;
-
-    const newMessage = { sender: 'user', text: input };
+    let input1 = input;
+    setInput('');
+    const newMessage = { sender: 'user', text: input1 };
     setMessages((prev) => [...prev, newMessage]);
 
     try {
-      const res = await fetch(
-        'https://student-support-s0xt.onrender.com/chatbot',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: input }),
-        }
-      );
+      const res = await fetch('http://localhost:5000/chatbot', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: input1 }),
+      });
 
       const data = await res.json();
 
-      const botMessage = { sender: 'bot', text: data.message };
+      console.log(data);
+      const botMessage = { sender: 'bot', text: data.reply };
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
       console.error('Error fetching bot reply:', error);
     }
-
-    setInput('');
   };
 
   return (
@@ -88,7 +93,10 @@ function App() {
 
       <ModalChatbot isOpen={modal} onClose={() => setmodal(false)}>
         <div className="h-[500px] w-[550px] relative flex flex-col">
-          <div className="flex-1 overflow-y-auto p-4 space-y-2">
+          <div
+            ref={chatref}
+            className="flex-1  overflow-y-auto p-4 space-y-2 mb-24 scroll-m-1 scroll-smooth no-scrollbar"
+          >
             {messages?.map((msg, idx) => (
               <div
                 key={idx}
@@ -112,7 +120,11 @@ function App() {
           <textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="border rounded-xl w-full outline-none absolute bottom-4 min-h-12 pl-5 pt-2 pr-11"
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey)
+                e.preventDefault(), sendMessage();
+            }}
+            className="border rounded-xl w-full outline-none absolute bottom-4 min-h-12 pl-5 pt-5 pr-11 scroll-smooth no-scrollbar"
             placeholder="ask anything...."
           />
           <HiArrowCircleUp
