@@ -44,7 +44,7 @@ function handleIntent(message, projects) {
     // Fuse.js setup
     const fuse = new Fuse(projects, {
       keys: ['title', 'description'],
-      threshold: 0.45, // more flexible matching
+      threshold: 0.5, // more flexible matching
     });
 
     function cleanText(input) {
