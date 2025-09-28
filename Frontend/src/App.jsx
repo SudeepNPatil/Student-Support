@@ -63,11 +63,14 @@ function App() {
     setMessages((prev) => [...prev, newMessage]);
 
     try {
-      const res = await fetch('http://localhost:5000/chatbot', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input1 }),
-      });
+      const res = await fetch(
+        'https://student-support-s0xt.onrender.com/chatbot',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: input1 }),
+        }
+      );
 
       const data = await res.json();
 

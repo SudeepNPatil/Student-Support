@@ -69,7 +69,8 @@ export default function Navbar() {
         {isLogin ? (
           <div className="flex flex-row justify-between sm:gap-2 lg:gap-5 items-center">
             <span className="rounded-full text-xl flex flex-col justify-center w-12 h-12  bg-[#FFD93D] text-center">
-              {data?.user?.email?.[0]?.toUpperCase()}
+              {data?.user?.email?.[0]?.toUpperCase() ||
+                data?.email?.[0]?.toUpperCase()}
             </span>
             <HiOutlineDotsVertical
               size={35}
@@ -142,7 +143,8 @@ export default function Navbar() {
             >
               <p className="text-center bg-yellow-400 rounded-full w-7 h-7 text-[12px] pt-1">
                 {' '}
-                {data?.user?.email?.[0]?.toUpperCase() || 'S'}{' '}
+                {data?.user?.email?.[0]?.toUpperCase() ||
+                  data?.email?.[0]?.toUpperCase()}{' '}
               </p>
               <p className="text-[12px]">Account info</p>
               <HiChevronRight className="text-base" />
