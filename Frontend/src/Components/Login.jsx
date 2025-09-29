@@ -123,7 +123,7 @@ export default function Login() {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <div className="mx-auto flex flex-col self-center sm:flex-row rounded-lg bg-white xl:w-[75vw] lg:w-[85vw] sm:w-[100vw] lg:border relative">
+      <div className="flex flex-col self-center sm:flex-row rounded-lg bg-white xl:w-[75vw] lg:w-[85vw] w-[100vw] lg:border relative">
         <div className="xl:w-[33%] sm:w-[38%] hidden sm:block rounded-l-lg bg-green-50  h-[580px]">
           <div className="flex py-10 lg:px-10 md:px-6 sm:ml-2 sm:mt-6 md:mt-0 items-center gap-2 ">
             <button className="border-4 w-7 h-7 rounded-full border-blue-700"></button>
@@ -172,7 +172,7 @@ export default function Login() {
             Please Enter the valid details below
           </p>
 
-          <form className="flex flex-col gap-1 flex-wrap">
+          <form className="flex flex-col gap-1 flex-wrap ">
             <label htmlFor="name" className="mt-8 font-semibold">
               Email
             </label>
