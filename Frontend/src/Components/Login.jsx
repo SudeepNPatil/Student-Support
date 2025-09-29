@@ -36,6 +36,18 @@ export default function Login() {
 
   const handlelogin = async (e) => {
     e.preventDefault();
+    if (!logindata.email || !logindata.password) {
+      setmodalopen(true);
+      return setinfo({
+        logo: (
+          <MdBlockFlipped className="text-6xl font-extrabold mb-5 text-red-500 text-opacity-70 self-center p-2 rounded-lg bg-red-100" />
+        ),
+        message: 'Please Enter Credentials ❗',
+        moreinfo: 'Please use valid credentials to login',
+        path: 'login',
+        content: 'Try again',
+      });
+    }
     setloadingmodal(true);
     try {
       const res = await fetch(
@@ -158,7 +170,7 @@ export default function Login() {
         </div>
 
         <div className="xl:w-[67%] sm:w-[58%] w-[70%] sm:mt-20  sm:my-0  xl:px-40 lg:px-20 md:px-16 sm:px-14 mx-auto">
-          <IoPersonAddOutline size={30} className="mx-auto sm:mt-24" />
+          <IoPersonAddOutline size={30} className="mx-auto sm:mt-8" />
 
           <h1 className="tracking-wider font-semibold text-xl text-center mt-2">
             Login

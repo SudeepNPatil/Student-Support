@@ -95,7 +95,7 @@ function App() {
       </div>
 
       <ModalChatbot isOpen={modal} onClose={() => setmodal(false)}>
-        <div className="h-[500px] w-[550px] relative flex flex-col">
+        <div className="h-[500px] w-[80vw] sm:w-[550px] relative flex flex-col">
           <div
             ref={chatref}
             className="flex-1  overflow-y-auto p-4 space-y-2 mb-24 scroll-m-1 scroll-smooth no-scrollbar"
@@ -127,7 +127,7 @@ function App() {
               if (e.key === 'Enter' && !e.shiftKey)
                 e.preventDefault(), sendMessage();
             }}
-            className="border rounded-xl w-full outline-none absolute bottom-4 min-h-12 pl-5 pt-5 pr-11 scroll-smooth no-scrollbar"
+            className="border rounded-xl w-full outline-none absolute bottom-4 min-h-5 sm:min-h-12 pl-5 pt-5 pr-11 scroll-smooth no-scrollbar"
             placeholder="ask anything...."
           />
           <HiArrowCircleUp

@@ -10,7 +10,7 @@ export default function Signupcom1({
   validate,
 }) {
   return (
-    <div className="xl:w-96 lg:w-[62%] md:w-[60%] sm:w-[60%] w-[100vw] mx-auto pb-10 xl:px-0 lg:px-20 md:px-14 sm:px-12 px-12 sm:mt-0 mt-20">
+    <div className="xl:w-96 lg:w-[62%] md:w-[60%] sm:w-[60%] w-[100vw] mx-auto pb-10 xl:px-0 lg:px-20 md:px-14 sm:px-12 px-12 mt-0 sm:mt-14">
       <MdOutlineOutlinedFlag
         size={40}
         className="mt-16 mx-auto border rounded-md px-1 py-1"
@@ -80,6 +80,7 @@ export default function Signupcom1({
               setvalidate('⚠️Please enter all the details');
             } else {
               setNextStep(true);
+              setvalidate('');
             }
           }}
         >

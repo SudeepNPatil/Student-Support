@@ -1,21 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GoArrowLeft } from 'react-icons/go';
 import SignupCom1 from './SignupCom1';
 import SignupCom2 from './SignupCom2';
 import { useState } from 'react';
 import ModalSignup from '../Modals/ModalSignup';
 import ModalLoading from '../Modals/ModalLoading';
-import ModalWarning from '../Modals/ModalWarning';
-
+import { MdError } from 'react-icons/md';
+import { AiOutlineApi } from 'react-icons/ai';
+import { RxCross1 } from 'react-icons/rx';
+import { TbLockOpen } from 'react-icons/tb';
 export default function Signup() {
   const [nextStep, setNextStep] = useState(false);
   const [validate, setvalidate] = useState('');
   const [ismodalopen, setmodalopen] = useState(false);
+  const [info, setinfo] = useState({
+    logo: '',
+    message: '',
+    moreinfo: '',
+    path: '',
+    content: '',
+  });
 
   const [loadingmodal, setloadingmodal] = useState(false);
-
-  const [warnig, setwarning] = useState(false);
 
   const [formData, setFormData] = useState({
     firstname: '',
@@ -33,49 +39,117 @@ export default function Signup() {
     }));
   };
 
-  const handlesubmit = async function (e) {
-    e.preventDefault();
+  const handlesubmit = async function () {
+    if (
+      !formData.firstname ||
+      !formData.lastname ||
+      !formData.email ||
+      !formData.password
+    ) {
+      return setvalidate('⚠️Please Enter valid info');
+    } else {
+      setvalidate('');
+    }
 
     setloadingmodal(true);
 
-    let response = await fetch(
-      'https://student-support-s0xt.onrender.com/User',
-      {
-        method: 'POST',
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      }
-    );
+    try {
+      let response = await fetch(
+        'https://student-support-s0xt.onrender.com/User',
+        {
+          method: 'POST',
+          credentials: 'include',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    let result = await response.json();
-
-    if (response.status == 201) {
+      let result = await response.json();
       setloadingmodal(false);
       setmodalopen(true);
-    }
-    if (response.status == 429) {
+
+      if (response.status == 201) {
+        setinfo({
+          logo: (
+            <TbLockOpen className="text-6xl font-extrabold mb-5 text-green-500 self-center p-2 rounded-lg bg-green-100" />
+          ),
+          message: 'You Registered successfully✅',
+          moreinfo: 'Now go to login page for login',
+          path: 'login',
+          content: 'Go to login',
+        });
+      } else if (response.status == 400) {
+        setinfo({
+          logo: (
+            <RxCross1 className="text-6xl font-extrabold mb-5 text-red-500 self-center p-2 rounded-lg bg-red-100" />
+          ),
+          message: 'You Already Registered  ⛔',
+          moreinfo: 'Please enter different email to Registere and try again',
+          path: 'Signup',
+          content: 'Try again',
+        });
+      } else if (response.status == 429) {
+        setinfo({
+          logo: (
+            <AiOutlineApi className="text-7xl font-extrabold mb-5 text-red-500 text-opacity-70 self-center p-2 rounded-lg bg-red-100" />
+          ),
+          message: 'API rate limit ❗',
+          moreinfo: 'You reached the limit,Please try after some time',
+          path: 'Home',
+          content: 'Go to Home',
+        });
+      } else {
+        setinfo({
+          logo: (
+            <MdError className="text-6xl font-extrabold mb-5 text-red-500 self-center p-2 rounded-lg bg-red-100" />
+          ),
+          message: 'Server Error ❌',
+          moreinfo:
+            'There is server error please wait 2 to 3 minutes and try again',
+          path: 'Signup',
+          content: 'Try again',
+        });
+      }
+    } catch (err) {
+      console.log('Cant reach to a server', err);
+
       setloadingmodal(false);
-      setwarning(true);
+      setmodalopen(true);
+      setinfo({
+        logo: (
+          <MdError className="text-6xl font-extrabold mb-5 text-red-500 self-center p-2 rounded-lg bg-red-100" />
+        ),
+        message: "Can't reach the server ❗",
+        moreinfo: 'Please check the network connetion',
+        path: 'signup',
+        content: 'Try again',
+      });
     }
   };
 
   return (
-    <div className="flex flex-col justify-center items-center min-h-screen">
+    <div className="flex flex-col justify-center items-center min-h-[100vh]">
       <div className="flex flex-col justify-center items-center 2xl:h-screen">
-        <div className="mx-auto flex flex-row rounded-lg bg-white lg:w-[80vw] sm:w-[100vw] lg:border relative">
+        <div className="mx-auto flex flex-row rounded-lg bg-white lg:w-[80vw] w-[100vw] lg:border relative">
           <div className="hidden sm:block lg:w-[38%] sm:w-[40%] rounded-l-lg bg-green-50 h-auto">
             <div className="flex py-10 xl:px-10 lg:px-6 md:px-4 sm:px-3 lg:mt-0 md:mt-10 sm:mt-6 items-center gap-2">
-              <button className="border-4 w-7 h-7 rounded-full border-blue-700"></button>
-              <h1 className="text-xl font-semibold tracking-wider">
+              <Link
+                to={`/Home`}
+                className="border-4 w-7 h-7 block rounded-full border-blue-700"
+              ></Link>
+              <Link
+                to={`/Home`}
+                className="text-xl font-semibold tracking-wider"
+              >
                 Code Mentor
-              </h1>
+              </Link>
             </div>
 
             <div
-              className={`flex flex-col ${
+              onClick={() => setNextStep(false)}
+              className={`flex flex-col cursor-pointer ${
                 nextStep ? 'opacity-50' : 'opacity-100'
               }`}
             >
@@ -93,7 +167,8 @@ export default function Signup() {
             </div>
 
             <div
-              className={`flex flex-col  ${
+              onClick={() => setNextStep(true)}
+              className={`flex flex-col cursor-pointer  ${
                 nextStep ? 'opacity-100' : 'opacity-50'
               }`}
             >
@@ -131,21 +206,20 @@ export default function Signup() {
         </div>
 
         <ModalSignup isOpen={ismodalopen} onClose={() => setmodalopen(false)}>
-          <div className="flex flex-col justify-center">
-            <h1 className="text-xl text-center font-semibold">
-              User registered successfully✅
+          <div className="flex flex-col justify-center p-5">
+            {info.logo}
+            <h1 className="text-2xl text-center font-semibold">
+              {info.message}
             </h1>
-
-            <p className="text-sm text-gray-500 px-8 text-center mt-5">
-              the user created there profile in student suppot poartal now you
-              can login.
+            <p className="text-gray-700 text-base text-center mt-2">
+              {info.moreinfo}
             </p>
-
             <Link
-              to="/Login"
-              className="px-10 py-2 rounded-lg mt-5 bg-black bg-opacity-80 text-white text-center mx-auto"
+              to={`/${info.path}`}
+              onClick={() => setmodalopen(false)}
+              className="px-10 py-2 rounded-lg mt-8 bg-black bg-opacity-80 text-white text-center mx-auto"
             >
-              Go to Login
+              {info.content}
             </Link>
           </div>
         </ModalSignup>
@@ -158,14 +232,6 @@ export default function Signup() {
             <div className="w-12 h-12 border-4  border-blue-500 border-t-transparent rounded-full animate-spin"></div>
           </div>
         </ModalLoading>
-
-        <ModalWarning isOpen={warnig} onClose={() => setwarning(false)}>
-          <div className="flex flex-col">
-            <h1 className="text-lg text-red-500">
-              Too many signup attempts. Please try again after 1 Hour
-            </h1>
-          </div>
-        </ModalWarning>
       </div>
     </div>
   );
