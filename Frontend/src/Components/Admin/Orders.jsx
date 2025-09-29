@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
 
 export default function Orders() {
-    return (
-        <div className="text-gray-600 text-center flex flex-col justify-center items-center mt-32">
-
-            no order yet
-        </div>
-    )
+  return (
+    <div className="flex flex-col flex-1">
+      <div className="felx felx-row justify-between items-center px-10 border-b py-8">
+        <h1 className="text-3xl font-bold ">Orders</h1>
+      </div>
+    </div>
+  );
 }

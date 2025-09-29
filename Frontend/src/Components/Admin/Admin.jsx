@@ -1,20 +1,60 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from 'react-router-dom';
+import { LuUsersRound } from 'react-icons/lu';
+import { FaCartArrowDown } from 'react-icons/fa';
+import { MdLogout } from 'react-icons/md';
+import { MdAdminPanelSettings } from 'react-icons/md';
+import { FaRegLightbulb } from 'react-icons/fa';
+import { VscDebug } from 'react-icons/vsc';
+import { SiSession } from 'react-icons/si';
 
 export default function Admin() {
-    return (
-        <>
-            <div className="flex flex-row bg-green-100 py-8 px-14 justify-around">
+  return (
+    <div className="flex flex-row justify-between min-h-[100vh] w-[100vw]">
+      <div className="flex flex-col justify-between w-[22vw] h-[100vh] shadow-lg border-r flex-shrink-0">
+        <div className="flex flex-row  justify-center items-center border-b p-8 gap-2">
+          <MdAdminPanelSettings className="text-4xl" />
+          <h1 className="text-2xl font-bold text-center">Admin Panel</h1>
+        </div>
 
-                <Link to="/AdminDashboard/Users" className="py-2 px-8 text-center rounded-lg bg-gray-300 text-black">Users</Link>
-                <Link to="/AdminDashboard/Orders" className="py-2 px-8 text-center rounded-lg bg-gray-300 text-black">Orders</Link>
-                <Link className="py-2 px-8 text-center rounded-lg bg-gray-300 text-black">Session Booked</Link>
-                <Link className="py-2 px-8 text-center rounded-lg bg-gray-300 text-black">Ideas</Link>
-                <Link className="py-2 px-8 text-center rounded-lg bg-gray-300 text-black">Debugs</Link>
+        <div className="flex flex-col justify-evenly h-full">
+          <Link
+            to="/AdminDashboard/Users"
+            className="text-center text-black w-full h-14 flex flex-row pl-16 items-center gap-3 hover:bg-green-50 hover:border-r-blue-600 hover:border-r-2"
+          >
+            <LuUsersRound className="text-2xl " />
+            <h1 className="text-lg">Users</h1>
+          </Link>
 
-            </div>
+          <Link
+            to="/AdminDashboard/Orders"
+            className="text-center text-black w-full h-14 flex flex-row pl-16 items-center gap-3 hover:bg-green-50 hover:border-r-blue-600 hover:border-r-2"
+          >
+            <FaCartArrowDown className="text-2xl " />
+            <h1 className="text-lg">Orders</h1>
+          </Link>
+          <Link className="text-center text-black w-full h-14 flex flex-row pl-16 items-center gap-3 hover:bg-green-50 hover:border-r-blue-600 hover:border-r-2">
+            <SiSession className="text-2xl " />
+            <h1 className="text-lg">Session Booked</h1>
+          </Link>
+          <Link className="text-center text-black w-full h-14 flex flex-row pl-16 items-center gap-3 hover:bg-green-50 hover:border-r-blue-600 hover:border-r-2">
+            <FaRegLightbulb className="text-2xl " />
+            <h1 className="text-lg"> Ideas</h1>
+          </Link>
+          <Link className="text-center text-black w-full h-14 flex flex-row pl-16 items-center gap-3 hover:bg-green-50 hover:border-r-blue-600 hover:border-r-2">
+            <VscDebug className="text-2xl " />
+            <h1 className="text-lg">Debugs</h1>
+          </Link>
+        </div>
 
-            <Outlet />
+        <div className="flex flex-row pl-16 items-center gap-3 p-8 border-t hover:text-red-500 hover:cursor-pointer">
+          <MdLogout className="text-3xl " />
+          <p className="font-bold text-red-500 text-opacity-90 text-xl">
+            Logout
+          </p>
+        </div>
+      </div>
 
-        </>
-    )
+      <Outlet />
+    </div>
+  );
 }
