@@ -161,7 +161,7 @@ export default function Login() {
           </Link>
         </div>
 
-        <div className="xl:w-[67%] sm:w-[58%] w-[70%] mt-20  sm:my-0  xl:px-40 lg:px-20 md:px-16 sm:px-14 mx-auto">
+        <div className="xl:w-[67%] sm:w-[58%] w-[70%] sm:mt-20  sm:my-0  xl:px-40 lg:px-20 md:px-16 sm:px-14 mx-auto">
           <IoPersonAddOutline size={30} className="mx-auto mt-24" />
 
           <h1 className="tracking-wider font-semibold text-xl text-center mt-2">
