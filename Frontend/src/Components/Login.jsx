@@ -1,6 +1,5 @@
 import { IoPersonAddOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
-import { GoArrowLeft } from 'react-icons/go';
 import { useState } from 'react';
 import ModalSignup from '../Modals/ModalSignup';
 import { useContext } from 'react';
@@ -37,10 +36,7 @@ export default function Login() {
 
   const handlelogin = async (e) => {
     e.preventDefault();
-
     setloadingmodal(true);
-    /* https://student-support-s0xt.onrender.com */
-
     try {
       const res = await fetch(
         'https://student-support-s0xt.onrender.com/User/login',
