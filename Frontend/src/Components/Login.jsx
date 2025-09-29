@@ -122,7 +122,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
+    <div className="flex flex-col justify-center items-center h-[100vh]">
       <div className="flex flex-col self-center sm:flex-row rounded-lg bg-white xl:w-[75vw] lg:w-[85vw] w-[100vw] lg:border relative">
         <div className="xl:w-[33%] sm:w-[38%] hidden sm:block rounded-l-lg bg-green-50  h-[580px]">
           <div className="flex py-10 lg:px-10 md:px-6 sm:ml-2 sm:mt-6 md:mt-0 items-center gap-2 ">
@@ -162,7 +162,7 @@ export default function Login() {
         </div>
 
         <div className="xl:w-[67%] sm:w-[58%] w-[70%] sm:mt-20  sm:my-0  xl:px-40 lg:px-20 md:px-16 sm:px-14 mx-auto">
-          <IoPersonAddOutline size={30} className="mx-auto mt-24" />
+          <IoPersonAddOutline size={30} className="mx-auto sm:mt-24" />
 
           <h1 className="tracking-wider font-semibold text-xl text-center mt-2">
             Login
