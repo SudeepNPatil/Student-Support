@@ -9,7 +9,7 @@ const router = express.Router();
 
 const signupLimiter = rateLimit({
   windowMs: 60 * 60 * 1000,
-  max: 3,
+  max: 10,
   message: {
     status: 429,
     message: 'Too many signup attempts. Please try again after 1 Hour.',
@@ -23,6 +23,10 @@ const createToken = (email) => {
 router.post('/', signupLimiter, async (req, res) => {
   const { firstname, lastname, email, password } = req.body;
   try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).send({ message: 'Email already registered' });
+    }
     const newuser = new User({
       firstname,
       lastname,
