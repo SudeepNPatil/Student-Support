@@ -6,7 +6,7 @@ import { FaRegEye } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
 import { RiEditBoxFill } from 'react-icons/ri';
 
-export default function Users() {
+export default function Debugs() {
   let count = 0;
   let users = [
     {
@@ -63,7 +63,7 @@ export default function Users() {
   return (
     <div className="flex flex-col flex-1 h-screen overflow-auto">
       <div className="flex felx-row justify-between px-14 border-b py-8">
-        <h1 className="text-3xl font-bold ">Users</h1>
+        <h1 className="text-3xl font-bold ">Debugs</h1>
         <div className="flex flex-row items-center justify-center gap-6">
           <IoNotifications className="text-3xl mt-1" />
           <BsPersonCircle className="text-4xl " />
