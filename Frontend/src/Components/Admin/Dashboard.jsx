@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoPersonOutline } from 'react-icons/io5';
 import { IoNotifications } from 'react-icons/io5';
 import { FaBox } from 'react-icons/fa';
@@ -9,6 +9,14 @@ import { FaIndianRupeeSign } from 'react-icons/fa6';
 import { FaClock } from 'react-icons/fa6';
 
 export default function Dashboard() {
+  const [data, setdata] = useState('');
+
+  useEffect(() => {
+    fetch('https://student-support-s0xt.onrender.com/admin')
+      .then((data) => data.json())
+      .then((data) => setdata(data));
+  }, []);
+
   return (
     <div className="flex flex-col flex-1 h-screen overflow-scroll">
       <div className="flex felx-row justify-between px-14 border-b py-8">
@@ -24,7 +32,7 @@ export default function Dashboard() {
           <FaBox className="text-7xl p-5 bg-red-50 rounded-[26px] text-red-500 text-opacity-70" />
 
           <div className="flex flex-col items-end gap-2">
-            <p className="text-3xl font-bold">36</p>
+            <p className="text-3xl font-bold">{data?.data?.projectcount}</p>
             <p className="text-gray-700 text-lg font-semibold">
               Total Products
             </p>
@@ -35,7 +43,9 @@ export default function Dashboard() {
           <FaBagShopping className="text-7xl p-5 bg-yellow-50 rounded-[26px] text-yellow-500 text-opacity-70" />
 
           <div className="flex flex-col items-end gap-2">
-            <p className="text-3xl font-bold">6</p>
+            <p className="text-3xl font-bold">
+              {data?.data?.totalorders[0]?.totalorders}
+            </p>
             <p className="text-gray-700 text-lg font-semibold">Total Orders</p>
           </div>
         </div>
@@ -56,7 +66,7 @@ export default function Dashboard() {
           <FaUsers className="text-7xl p-5 bg-green-50 rounded-[26px] text-green-500 text-opacity-70" />
 
           <div className="flex flex-col items-end gap-2">
-            <p className="text-3xl font-bold">4</p>
+            <p className="text-3xl font-bold">{data?.data?.userscount}</p>
             <p className="text-gray-700 text-lg font-semibold">Total Users</p>
           </div>
         </div>

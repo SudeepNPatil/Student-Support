@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BsPersonCircle } from 'react-icons/bs';
 import { IoNotifications } from 'react-icons/io5';
-import { FaUsers } from 'react-icons/fa6';
 import { FaRegEye } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
 import { RiEditBoxFill } from 'react-icons/ri';
@@ -60,6 +59,12 @@ export default function Orders() {
       status: 'pending',
     },
   ];
+
+  useEffect(() => {
+    fetch('https://student-support-s0xt.onrender.com/admin/orderinfo')
+      .then((data) => data.json())
+      .then((data) => console.log(data));
+  }, []);
 
   return (
     <div className="flex flex-col flex-1 h-screen overflow-auto">

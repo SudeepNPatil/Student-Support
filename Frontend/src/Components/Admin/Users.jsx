@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsPersonCircle } from 'react-icons/bs';
 import { IoNotifications } from 'react-icons/io5';
 import { FaUsers } from 'react-icons/fa6';
@@ -8,57 +8,13 @@ import { RiEditBoxFill } from 'react-icons/ri';
 
 export default function Users() {
   let count = 0;
-  let users = [
-    {
-      Name: 'Sudeep Patil',
-      email: 'Sudeepbsc02@gail.com',
-      date: '02/10/2025',
-      time: '12:35 am',
-      role: 'user',
-    },
-    {
-      Name: 'Sudeep Patil',
-      email: 'Sudeepbsc02@gail.com',
-      date: '02/10/2025',
-      time: '12:35 am',
-      role: 'user',
-    },
-    {
-      Name: 'Sudeep Patil',
-      email: 'Sudeepbsc02@gail.com',
-      date: '02/10/2025',
-      time: '12:35 am',
-      role: 'user',
-    },
-    {
-      Name: 'Sudeep Patil',
-      email: 'Sudeepbsc02@gail.com',
-      date: '02/10/2025',
-      time: '12:35 am',
-      role: 'user',
-    },
-    {
-      Name: 'Sudeep Patil',
-      email: 'Sudeepbsc02@gail.com',
-      date: '02/10/2025',
-      time: '12:35 am',
-      role: 'user',
-    },
-    {
-      Name: 'Sudeep Patil',
-      email: 'Sudeepbsc02@gail.com',
-      date: '02/10/2025',
-      time: '12:35 am',
-      role: 'user',
-    },
-    {
-      Name: 'Sudeep Patil',
-      email: 'Sudeepbsc0s2@gail.com',
-      date: '02/10/2025',
-      time: '12:35 am',
-      role: 'user',
-    },
-  ];
+  const [users, setusers] = useState([]);
+
+  useEffect(() => {
+    fetch('https://student-support-s0xt.onrender.com/admin/userinfo')
+      .then((data) => data.json())
+      .then((data) => setusers(data));
+  }, []);
 
   return (
     <div className="flex flex-col flex-1 h-screen overflow-auto">
@@ -88,22 +44,28 @@ export default function Users() {
             <th className="border w-28">Role</th>
             <th className="border w-60">Actions</th>
           </tr>
-          {users.map((user, index) => {
+          {users?.map((user, index) => {
             count++;
             return (
               <tr key={index} className="border h-20">
                 <td className="border">{count}</td>
                 <td className="flex flex-col items-start justify-center px-10 gap-1 py-4">
-                  <p className="text-[18px]">{user.Name}</p>
+                  <p className="text-[18px]">
+                    {user.firstname} {user.lastname}
+                  </p>
                   <p className="text-sm">{user.email}</p>
                 </td>
                 <td className="border ">
-                  <span className="block pr-5">{user.date}</span>
-                  <span className="block pr-9">{user.time}</span>
+                  <span className="block pr-5">
+                    {user?.createdAt.slice(0, 10)}
+                  </span>
+                  <span className="block pr-9">
+                    {user?.createdAt.slice(11, 16)}
+                  </span>
                 </td>
                 <td className="border ">
                   <span className="bg-green-100 px-4 py-1 rounded-lg">
-                    {user.role}
+                    {user?.role || 'users'}
                   </span>
                 </td>
                 <td className="border">
