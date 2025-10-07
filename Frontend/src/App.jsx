@@ -73,8 +73,6 @@ function App() {
       );
 
       const data = await res.json();
-
-      console.log(data);
       const botMessage = { sender: 'bot', text: data.reply };
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {

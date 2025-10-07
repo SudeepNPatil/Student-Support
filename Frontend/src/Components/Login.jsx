@@ -70,7 +70,6 @@ export default function Login() {
       if (res.status == 200) {
         setisLogin(true);
         setdata(data);
-        console.log(data);
         setinfo({
           logo: (
             <TbLockOpen className="text-6xl font-extrabold mb-5 text-green-500 self-center p-2 rounded-lg bg-green-100" />

@@ -17,7 +17,6 @@ const Modalmain = ({ isOpen, onClose, children }) => {
       .then((data) => {
         setisLogin(false);
         setdata(null);
-        console.log(data);
       });
   };
 
