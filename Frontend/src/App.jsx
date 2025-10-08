@@ -93,8 +93,14 @@ function App() {
       </div>
 
       <ModalChatbot isOpen={modal} onClose={() => setmodal(false)}>
-        <div className="h-[500px] w-[80vw] sm:w-[550px] relative flex flex-col">
-          <div
+        <div className="h-[500px] w-[80vw] sm:w-[550px] relative flex flex-col ">
+          <iframe
+            src="https://cdn.botpress.cloud/webchat/v3.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/10/08/08/20251008082237-U1HL1ZDG.json"
+            className="w-full h-full border-none rounded-xl"
+            title="CodeMentor Chatbot"
+          />
+
+          {/* <div
             ref={chatref}
             className="flex-1  overflow-y-auto p-4 space-y-2 mb-24 scroll-m-1 scroll-smooth no-scrollbar"
           >
@@ -132,6 +138,7 @@ function App() {
             onClick={sendMessage}
             className="text-4xl absolute bottom-6 right-2 cursor-pointer hover:scale-110 duration-500 ease-in-out"
           />
+           */}
         </div>
       </ModalChatbot>
     </>
