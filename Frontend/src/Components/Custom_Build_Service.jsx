@@ -298,7 +298,7 @@ export default function Custom_Build_Service() {
           </form>
         </div>
 
-        <div className="min-w-96 border rounded-[60px] xl:min-w-[35vw] block box-border">
+        <div className="max-w-96 border rounded-[60px] xl:min-w-[35vw] block box-border">
           {saveddata?.data ? (
             <div className="flex flex-col h-full justify-center gap-3 flex-wrap w-full">
               <h1 className="pl-8 text-xl text-black font-bold">

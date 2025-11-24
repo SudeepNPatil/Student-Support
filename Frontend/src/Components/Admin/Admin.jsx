@@ -71,7 +71,7 @@ export default function Admin() {
             } text-black w-full h-14 flex flex-row pl-16 items-center gap-3 hover:bg-green-50 hover:border-r-blue-600 hover:border-r-2`}
           >
             <FaRegLightbulb className="text-2xl " />
-            <h1 className="text-lg">Ideas</h1>
+            <h1 className="text-lg">Custom Builds</h1>
           </Link>
           <Link
             to="/AdminDashboard/Debugs"

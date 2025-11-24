@@ -17,8 +17,9 @@ function App() {
   const { setisLogin, setdata } = useContext(LoginContext);
   const { addToCart } = useContext(CartContext);
   const { addToOrder } = useContext(OrderContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [chatKey, setChatKey] = useState(Date.now());
   const chatref = useRef(null);
-
   const [modal, setmodal] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -80,13 +81,37 @@ function App() {
     }
   };
 
+  const openChat = () => {
+    setIsLoading(true);
+    setmodal(true);
+  };
+
+  const handleIframeLoad = () => {
+    // Step 1: Wait for Botpress to write its initial data
+    setTimeout(() => {
+      Object.keys(localStorage).forEach((key) => {
+        if (
+          key.startsWith('bp-webchat--') ||
+          key.startsWith('conversations--') ||
+          key.startsWith('botpress-message-history')
+        ) {
+          localStorage.removeItem(key);
+        }
+      });
+
+      // Step 2: Force reload of iframe with fresh key
+      setChatKey(Date.now());
+      setIsLoading(false);
+    }, 800); // small delay to ensure Botpress initializes first
+  };
+
   return (
     <>
       <Navbar />
       <Outlet />
       <Footer />
       <div
-        onClick={() => setmodal(true)}
+        onClick={openChat}
         className="fixed bottom-4 right-2 w-24 hover:scale-125 duration-500 ease-in-out cursor-pointer"
       >
         <img src={AI} alt="chatbot" className="object-cover w-fit h-full" />
@@ -94,10 +119,24 @@ function App() {
 
       <ModalChatbot isOpen={modal} onClose={() => setmodal(false)}>
         <div className="h-[500px] w-[80vw] sm:w-[550px] relative flex flex-col ">
+          {isLoading && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-white z-10">
+              <div className="w-3/4 h-4 rounded-md bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse mb-3" />
+              <div className="w-2/4 h-4 rounded-md bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse mb-3" />
+              <div className="w-1/4 h-4 rounded-md bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-pulse" />
+              <p className="text-gray-500 mt-4 text-lg sm:text-2xl animate-pulse">
+                Loading chatbot...
+              </p>
+            </div>
+          )}
+
           <iframe
-            src="https://cdn.botpress.cloud/webchat/v3.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/10/08/08/20251008082237-U1HL1ZDG.json"
+            key={openChat}
+            src={`https://cdn.botpress.cloud/webchat/v3.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/10/08/08/20251008082237-U1HL1ZDG.json`}
             className="w-full h-full border-none rounded-xl"
             title="CodeMentor Chatbot"
+            onLoad={handleIframeLoad}
+            allow="microphone; autoplay; clipboard-write;"
           />
 
           {/* <div
