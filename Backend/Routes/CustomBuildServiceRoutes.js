@@ -45,4 +45,20 @@ router.delete('/:unic', async (req, res) => {
   }
 });
 
+router.get('/custom', async (req, res) => {
+  try {
+    const allcustombuilds = await CustomBuildService.find({});
+
+    if (!allcustombuilds || allcustombuilds.length === 0) {
+      return res
+        .status(200)
+        .json({ message: 'No custom build yet', customs: [] });
+    }
+
+    res.json({ message: 'All custom builds info', customs: allcustombuilds });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+});
+
 export default router;

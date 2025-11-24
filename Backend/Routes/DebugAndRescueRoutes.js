@@ -64,4 +64,18 @@ router.delete('/:email', async (req, res) => {
   }
 });
 
+router.get('/debugs', async (req, res) => {
+  try {
+    const alldebugs = await DebugAndRescue.find({});
+
+    if (!alldebugs || alldebugs.length === 0) {
+      return res.status(200).send({ message: 'No debugs found', debugs: [] });
+    }
+
+    res.json({ message: 'All debugs info', debugs: alldebugs });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+});
+
 export default router;

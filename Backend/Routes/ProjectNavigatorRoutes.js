@@ -45,4 +45,18 @@ router.delete('/:email', async (req, res) => {
   }
 });
 
+router.get('/sessions', async (req, res) => {
+  try {
+    const allsessions = await ProjectNavigator.find({});
+
+    if (!allsessions || allsessions.length === 0) {
+      return res.status(200).json({ message: 'no sessions yet', sessions: [] });
+    }
+
+    res.json({ message: 'all session info', sessions: allsessions });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error });
+  }
+});
+
 export default router;
