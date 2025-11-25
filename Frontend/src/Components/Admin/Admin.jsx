@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { LuUsersRound } from 'react-icons/lu';
 import { FaCartArrowDown } from 'react-icons/fa';
 import { MdLogout } from 'react-icons/md';
@@ -11,6 +11,7 @@ import { useState } from 'react';
 
 export default function Admin() {
   const [bg, setbg] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-row justify-between min-h-[100vh] w-[100vw]">
@@ -85,7 +86,10 @@ export default function Admin() {
           </Link>
         </div>
 
-        <div className="flex flex-row pl-16 items-center gap-3 p-8 border-t hover:text-red-500 hover:cursor-pointer">
+        <div
+          onClick={() => navigate('/Admin')}
+          className="flex flex-row pl-16 items-center gap-3 p-8 border-t hover:text-red-500 hover:cursor-pointer"
+        >
           <MdLogout className="text-3xl " />
           <p className="font-bold text-red-500 text-opacity-90 text-xl">
             Logout

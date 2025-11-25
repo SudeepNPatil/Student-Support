@@ -83,7 +83,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="flex flex-col justify-between mx-20  items-center rounded-xl border mt-10 flex-grow mb-10">
+      {/* <div className="flex flex-col justify-between mx-20  items-center rounded-xl border mt-10 flex-grow mb-10">
         <div className="flex flex-row justify-between w-full border-b px-8 py-8">
           <div className="flex flex-row justify-center  items-center gap-5">
             <FaBagShopping className="text-2xl text-pink-500 text-opacity-70" />
@@ -98,7 +98,7 @@ export default function Dashboard() {
         <div className="flex flex-col h-40 pt-20 font-semibold text-gray-700">
           No orders Yet
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
