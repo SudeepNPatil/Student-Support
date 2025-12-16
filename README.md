@@ -22,21 +22,32 @@ is good fit for you Project and where to host it this all guidance they can get 
 - MongoDB
 - Framer Motion
 
-![Live Link](https://student-sup.netlify.app)
-![https://student-sup.netlify.app](https://student-sup.netlify.app)
+
+### Live Demo : https://student-sup.netlify.app
 
 ## Screenshot
-![Home Page](<img width="3270" height="6504" alt="Code_mentor" src="https://github.com/user-attachments/assets/db89dfae-8b48-4286-a4e9-b842325b3bf0" />
-)
+``` Home Page ```
+<img width="3270" height="6504" alt="Code_mentor" src="https://github.com/user-attachments/assets/db89dfae-8b48-4286-a4e9-b842325b3bf0" />
 
-![Project Page](<img width="2932" height="2932" alt="student-sup netlify app_Project" src="https://github.com/user-attachments/assets/1baa1b59-dcef-4eee-bd2a-982352ee3130" />
-)
 
-![contact Page](<img width="2932" height="2044" alt="student-sup netlify app_Contact" src="https://github.com/user-attachments/assets/a498f692-1187-43f6-a479-dbf242af6727" />
-)
+<br/>
+---
 
-![Admin Page](<img width="2932" height="2044" alt="student-sup netlify app_Admin" src="https://github.com/user-attachments/assets/6143e1b9-f84f-4a3f-af60-7533a9b9a8e1" />
-)
+``` Project Page ```
+<img width="2932" height="2932" alt="student-sup netlify app_Project" src="https://github.com/user-attachments/assets/1baa1b59-dcef-4eee-bd2a-982352ee3130" />
+
+<br/>
+---
+
+``` Contact Page ```
+<img width="2932" height="2044" alt="student-sup netlify app_Contact" src="https://github.com/user-attachments/assets/a498f692-1187-43f6-a479-dbf242af6727" />
+
+<br/>
+---
+
+``` Admin Page ```
+<img width="2932" height="2044" alt="student-sup netlify app_Admin" src="https://github.com/user-attachments/assets/6143e1b9-f84f-4a3f-af60-7533a9b9a8e1" />
+
 
 ## Installation 
 ```bash 
@@ -58,7 +69,7 @@ PORT = 'Port_you_want_to_Run'
 
 ## Author
 Sudeep Patil 
-github : https://github.com/SudeepNPatil
-Linkedin : https://linkedin.com/in/sudeepnpatil
+- github : https://github.com/SudeepNPatil
+- Linkedin : https://linkedin.com/in/sudeepnpatil
 
 
