@@ -39,7 +39,8 @@ is good fit for you Project and where to host it this all guidance they can get 
 )
 
 ## Installation 
-git clone 
+```bash 
+git clone https://github.com/SudeepNPatil/Student-Support.git
 cd Student-Support
 cd Frontend
 npm install
@@ -49,7 +50,7 @@ cd backend
 npm install 
 npm start
 
-.env for Backedn
+Create a `.env` file and add:
 DB_URL = 'your-Db_url_here'
 JWT= 'your_JWT_Screate_here'
 PORT = 'Port_you_want_to_Run'
