@@ -61,10 +61,10 @@ cd backend
 npm install 
 npm start
 
-Create a `.env` file in the Backend and add:
-DB_URL = 'your-Db_url_here'
-JWT= 'your_JWT_Screate_here'
-PORT = 'Port_you_want_to_Run'
+Create a .env file in the Backend and add:
+DB_URL = your-Db_url_here
+JWT= your_JWT_Screate_here
+PORT = Port_you_want_to_Run
 ```
 
 ## Author
