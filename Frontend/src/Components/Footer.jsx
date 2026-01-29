@@ -31,9 +31,20 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex flex-row justify-start gap-3 sm:gap-6 mt-3 sm:mt-4 opacity-70">
-            <FaInstagram className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
-            <BsTwitterX className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
-            <FaLinkedin className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+            <Link
+              to="https://www.instagram.com/sudeep.patil.37625/"
+              target="_blank"
+            >
+              <FaInstagram className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+            </Link>
+
+            <Link to="https://x.com/Sudeeppatil873/" target="_blank">
+              <BsTwitterX className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+            </Link>
+
+            <Link to="https://linkedin.com/sudeepnpatil/" target="_blank">
+              <FaLinkedin className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+            </Link>
           </div>
         </div>
       </div>
