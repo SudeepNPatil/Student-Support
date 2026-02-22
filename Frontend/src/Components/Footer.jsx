@@ -1,59 +1,90 @@
 import React from 'react';
-import { FaInstagram } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { BsTwitterX } from 'react-icons/bs';
-import { FaLinkedin } from 'react-icons/fa';
 import { MdOutlineMail } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { href, Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <>
-      <div className="bg-slate-50 pt-4 flex xss:gap-4 ls:gap-20  xs:gap-8 flex-row  justify-center sm:pt-6 sm:gap-40 lg:gap-80">
-        <div className="p-2 flex flex-col gap-2 text-sm sm:text-base lg:text-md">
-          <Link to="/Home" className="font-semibold sm:text-lg lg:text-xl">
+    <footer className="bg-slate-900 text-slate-400 border-t border-slate-800">
+      <div className="max-w-6xl mx-auto px-8 py-14 flex flex-wrap gap-12 justify-between">
+        <div className="flex flex-col gap-4 flex-1 min-w-[200px]">
+          <h2 className="text-yellow-400 text-2xl font-bold tracking-tight">
             Code Mentor
-          </Link>
-          <Link to="/Home">Home</Link>
-          <Link to="/Project">Project</Link>
-          <Link to="/Contact">Contact</Link>
-          <Link to="/#">About Us</Link>
+          </h2>
+          <p className="text-slate-400 text-sm leading-relaxed">
+            Empowering developers,
+            <br />
+            one line at a time.
+          </p>
+
+          <div className="flex gap-3 mt-1">
+            {[
+              {
+                icon: <FaInstagram />,
+                href: 'https://www.instagram.com/sudeep.patil.37625/',
+              },
+              { icon: <BsTwitterX />, href: 'https://x.com/Sudeeppatil873/' },
+              {
+                icon: <FaLinkedin />,
+                href: 'https://linkedin.com/sudeepnpatil/',
+              },
+              {
+                icon: <MdOutlineMail />,
+                href: 'mailto:sudeeppatil873@gmail.com',
+              },
+            ].map((s, i) => (
+              <Link
+                key={i}
+                to={s.href}
+                target="_blank"
+                className="flex items-center justify-center w-9 h-9 rounded-lg border border-yellow-400/25 bg-yellow-400/5 text-yellow-400 text-base transition-all duration-200 hover:-translate-y-1 hover:scale-110 hover:border-yellow-400/60 hover:bg-yellow-400/10"
+              >
+                {s.icon}
+              </Link>
+            ))}
+          </div>
         </div>
 
-        <div className="text-sm sm:text-base  lg:text-md flex flex-col p-2">
-          <h1 className="font-semibold sm:text-lg lg:text-xl">
-            Stay connected
-          </h1>
-          <div className="flex flex-row gap-1 mt-1 sm:mt-3">
-            <MdOutlineMail className="opacity-65 w-4 h-4 mt-1 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
-            <p className="text-[12px] sm:text-base lg:mt-1">
-              {' '}
-              sudeeppatil873@gmail.com
-            </p>
-          </div>
-          <div className="flex flex-row justify-start gap-3 sm:gap-6 mt-3 sm:mt-4 opacity-70">
+        <div className="flex flex-col gap-3 min-w-[120px]">
+          <p className="text-yellow-400 text-[0.7rem] font-semibold tracking-[2px] uppercase mb-1">
+            Navigate
+          </p>
+          {[
+            { label: 'Home', to: '/' },
+            { label: 'Project', to: '/project' },
+            { label: 'Contact', to: '/contact' },
+            { label: 'About Us', to: '/#' },
+          ].map((item) => (
             <Link
-              to="https://www.instagram.com/sudeep.patil.37625/"
-              target="_blank"
+              key={item.label}
+              to={item.to}
+              className="text-slate-400 text-sm opacity-65 transition-all duration-200 hover:opacity-100 hover:pl-2 hover:text-slate-200"
             >
-              <FaInstagram className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+              {item.label}
             </Link>
+          ))}
+        </div>
 
-            <Link to="https://x.com/Sudeeppatil873/" target="_blank">
-              <BsTwitterX className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
-            </Link>
-
-            <Link to="https://linkedin.com/sudeepnpatil/" target="_blank">
-              <FaLinkedin className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
-            </Link>
-          </div>
+        <div className="flex flex-col gap-3 min-w-[220px]">
+          <p className="text-yellow-400 text-[0.7rem] font-semibold tracking-[2px] uppercase mb-1">
+            Stay Connected
+          </p>
+          <a
+            href="mailto:sudeeppatil873@gmail.com"
+            className="flex items-center gap-2 text-slate-400 text-sm opacity-70 transition-opacity duration-200 hover:opacity-100 hover:text-slate-200"
+          >
+            <MdOutlineMail className="text-lg shrink-0" />
+            sudeeppatil873@gmail.com
+          </a>
         </div>
       </div>
-      <div className="flex flex-row justify-center pt-2 pb-8 gap-5 xss:gap-9 ls:gap-28 xs:gap-16 sm:gap-48 lg:gap-96 bg-slate-50 sm:pt-8">
-        <p className="text-[12px] xs:ml-2  sm:text-base sm:ml-3 lg:ml-6">
-          Built with 💛 by Sudeep
-        </p>
-        <p className="text-[12px]  sm:text-base ">© 2025 All rights reserved</p>
+
+      <div className="border-t border-slate-800 px-8 py-5 flex flex-wrap items-center justify-center gap-3 text-slate-500 text-xs">
+        <span>Built with 💛 by Sudeep</span>
+        <span className="text-slate-700">·</span>
+        <span>© 2025 All rights reserved</span>
       </div>
-    </>
+    </footer>
   );
 }
