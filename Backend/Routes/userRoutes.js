@@ -51,7 +51,7 @@ router.post('/', signupLimiter, async (req, res) => {
       maxAge: 15 * 24 * 60 * 60 * 1000,
     });
 
-    await sendWelcomeEmail('sudeeppatil873@gmail.com', `${firstname} ${lastname}`);
+    await sendWelcomeEmail(email, `${firstname} ${lastname}`);
     res.status(201).json({ message: 'user registered ssuccefully !' });
   } catch (error) {
     console.error('Signup error', error.message);
