@@ -54,7 +54,7 @@ export default function Footer() {
             { label: 'Home', to: '/' },
             { label: 'Project', to: '/project' },
             { label: 'Contact', to: '/contact' },
-            { label: 'About Us', to: '/#' },
+            { label: 'About Us', to: '/About' },
           ].map((item) => (
             <Link
               key={item.label}

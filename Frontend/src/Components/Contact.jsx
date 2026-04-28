@@ -94,7 +94,7 @@ return (
         <div className="flex flex-col sm:flex-row w-screen  xl:w-9/12 lg:w-11/12 md:w-11/12 h-auto rounded-xl border pb-5">
           <div className="flex flex-col h-auto w-full px-10 mt-10">
             <h1 className="text-2xl sm:text-[35px] font-bold mb-4 pt-36 sm:pt-40 transform scale-y-110">
-              Let's Talk
+              Let's <span className="text-yellow-500">Talk</span>
             </h1>
             <p className="sm:mt-6 mt-3 pr-8 sm:pr-0 sm:max-w-96 text-sm sm:text-base">
               Have some big idea or brand to develop and need help? Then reach
@@ -113,14 +113,21 @@ return (
               <Link
                 to="https://www.instagram.com/sudeep.patil.37625/"
                 target="_blank"
+                className="flex items-center justify-center w-9 h-9 rounded-lg border border-yellow-400/25 bg-yellow-400/5 text-yellow-600 text-base transition-all duration-200 hover:-translate-y-1 hover:scale-110 hover:border-yellow-400/60 hover:bg-yellow-400/10"
               >
                 <FaInstagram className="sm:w-5 sm:h-5 w-4 h-4" />
               </Link>
-              <Link to="https://x.com/Sudeeppatil873" target="_blank">
+              <Link 
+                to="https://x.com/Sudeeppatil873" target="_blank"
+                className="flex items-center justify-center w-9 h-9 rounded-lg border border-yellow-400/25 bg-yellow-400/5 text-yellow-600 text-base transition-all duration-200 hover:-translate-y-1 hover:scale-110 hover:border-yellow-400/60 hover:bg-yellow-400/10"
+                >
                 <BsTwitterX className="sm:w-5 sm:h-5 w-4 h-4" />
               </Link>
 
-              <Link to="https://linkedin.com/in/sudeepnpatil/" target="_blank">
+              <Link 
+                to="https://linkedin.com/in/sudeepnpatil/" target="_blank"
+                className="flex items-center justify-center w-9 h-9 rounded-lg border border-yellow-400/25 bg-yellow-400/5 text-yellow-600 text-base transition-all duration-200 hover:-translate-y-1 hover:scale-110 hover:border-yellow-400/60 hover:bg-yellow-400/10"
+                >
                 <FaLinkedin className="sm:w-5 sm:h-5 w-4 h-4" />
               </Link>
             </div>
@@ -206,7 +213,7 @@ return (
             <button
               type="button"
               onClick={handlesubmit}
-              className="bg-black text-white block h-10 rounded-md mb-4"
+              className="bg-black text-white block h-10 rounded-md mb-4 hover:bg-gray-800 px-4 py-2 text-sm transition-colors duration-200"
             >
               Submit
             </button>
