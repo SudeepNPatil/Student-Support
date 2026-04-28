@@ -4,6 +4,8 @@ import Project from '../models/Project.model.js';
 import ProjectInfo from '../models/projectInfo.model.js';
 import jwt from 'jsonwebtoken';
 import rateLimit from 'express-rate-limit';
+import bcrypt from 'bcrypt';
+import { sendWelcomeEmail } from '../Utils/email.util.js';
 
 const router = express.Router();
 
@@ -22,16 +24,23 @@ const createToken = (email) => {
 
 router.post('/', signupLimiter, async (req, res) => {
   const { firstname, lastname, email, password } = req.body;
+
+
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).send({ message: 'Email already registered' });
     }
+
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    
     const newuser = new User({
       firstname,
       lastname,
       email,
-      password,
+      password:hashedPassword,
+      role:'user'
     });
     await newuser.save();
     const token = createToken(email);
@@ -41,6 +50,8 @@ router.post('/', signupLimiter, async (req, res) => {
       sameSite: 'None',
       maxAge: 15 * 24 * 60 * 60 * 1000,
     });
+
+    await sendWelcomeEmail('sudeeppatil873@gmail.com', `${firstname} ${lastname}`);
     res.status(201).json({ message: 'user registered ssuccefully !' });
   } catch (error) {
     console.error('Signup error', error.message);
@@ -111,8 +122,10 @@ router.post('/login', async (req, res) => {
       return res.status(404).send({ message: 'User not found!' });
     }
 
-    if (user.password != password) {
-      return res.status(400).send({ message: 'invalid credentials' });
+     const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid password" });
     }
 
     if (user) {
@@ -129,12 +142,56 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid email or password' });
     }
   } catch (error) {
+    console.error('Login error:', error.message);
     return res
       .status(500)
       .json({ message: 'Server error', error: error.message });
   }
 });
 
+router.put('/', async (req, res) => {
+  const token = req.cookies.token;
+  if (!token) return res.status(401).json({ message: 'Not logged in' });
+  
+    try {
+    const decoded = jwt.verify(token, 'secret_Code');
+    const user = await User.findOne({ email: decoded.email });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    const allowedFields = ['firstname', 'lastname', 'email', 'phone', 'dob', 'city', 'state', 'pincode', 'username'];
+
+    allowedFields.forEach((field) => {
+      if (req.body[field] !== undefined) {
+        user[field] = req.body[field];
+      }
+    });
+
+    await user.save();
+
+    res.status(200).json({ message: 'Profile updated successfully', ...user._doc });
+  } catch (err) {
+    console.error('Error in PUT /User route:', err);
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+  
+});
+
+router.delete('/', async (req, res) => {
+  const token = req.cookies.token;
+  if (!token) return res.status(401).json({ message: 'Not logged in' });  
+  try {
+    const decoded = jwt.verify(token, 'secret_Code');
+    const user = await User.findOne({ email: decoded.email });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    await User.deleteOne({ email: decoded.email });
+    res.json({ message: 'User deleted successfully' });
+  } catch (err) {
+    console.error('Error in DELETE /User route:', err);
+    res.status(500).json({ message: 'Server error', error: err.message });
+  }
+});
+    
 router.get('/logout', (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,
