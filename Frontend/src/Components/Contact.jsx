@@ -8,9 +8,13 @@ import { useContext } from 'react';
 import ModalLogin from '../Modals/ModalLogin';
 import { Link } from 'react-router-dom';
 import { LoginContext } from '../Context/LoginContext';
+const baseurl = `${import.meta.env.VITE_API_URL}`;
+import Button from './CodeMentor_UI/Button'
+
+import { ShoppingCart, ArrowRight, Trash2, CheckCircle, Map, ChevronRight } from "lucide-react";
 
 export default function Contact() {
-  const { isLogin } = useContext(LoginContext);
+ const { isLogin } = useContext(LoginContext);
 
   const [serverinfo, setserverinfo] = useState(null);
 
@@ -64,7 +68,7 @@ export default function Contact() {
       setmodalstate(true);
 
       let res = await fetch(
-        'https://student-support-s0xt.onrender.com/Contactinfo',
+        `${baseurl}/Contactinfo`,
         {
           method: 'POST',
           credentials: 'include',
@@ -83,11 +87,10 @@ export default function Contact() {
     } else {
       setchecklogin(true);
     }
-  };
-
-  return (
+  }; 
+return (
     <>
-      <div className="flex justify-center mb-8">
+  <div className="flex justify-center mb-8">
         <div className="flex flex-col sm:flex-row w-screen  xl:w-9/12 lg:w-11/12 md:w-11/12 h-auto rounded-xl border pb-5">
           <div className="flex flex-col h-auto w-full px-10 mt-10">
             <h1 className="text-2xl sm:text-[35px] font-bold mb-4 pt-36 sm:pt-40 transform scale-y-110">
@@ -207,8 +210,11 @@ export default function Contact() {
             >
               Submit
             </button>
+
+            
           </div>
         </div>
+        
       </div>
 
       <h1 className="text-center text-green-500 font-semibold text-lg mb-10">

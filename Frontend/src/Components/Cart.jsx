@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { LoginContext } from "../Context/LoginContext";
 import { OrderContext } from "../Context/OrderContext";
 import ModalConfirmOrder from "../Modals/ModalConfirmOrder";
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 
 
@@ -41,7 +42,7 @@ export default function Cart() {
 
                                         RemoveCartItem(item)
 
-                                        await fetch('https://student-support-s0xt.onrender.com/cart/remove', {
+                                        await fetch(`${baseurl}/cart/remove`, {
                                             method: "POST",
                                             headers: {
                                                 "Content-Type": "application/json"
@@ -65,7 +66,7 @@ export default function Cart() {
 
                             Cartitem.forEach(async (element) => {
 
-                                await fetch('https://student-support-s0xt.onrender.com/cart/remove', {
+                                await fetch(`${baseurl}/cart/remove`, {
                                     method: "POST",
                                     headers: {
                                         "Content-Type": "application/json"
@@ -83,7 +84,7 @@ export default function Cart() {
 
                             Cartitem.forEach(async (element) => {
 
-                                await fetch('https://student-support-s0xt.onrender.com/orders', {
+                                await fetch(`${baseurl}/orders`, {
                                     method: "POST",
                                     headers: {
                                         "Content-Type": "application/json"
@@ -106,7 +107,7 @@ export default function Cart() {
                                 Cartitem.forEach(async (element) => {
 
                                     addToOrder(element);
-                                    await fetch('https://student-support-s0xt.onrender.com/cart/remove', {
+                                    await fetch(`${baseurl}/cart/remove`, {
                                         method: "POST",
                                         headers: {
                                             "Content-Type": "application/json"

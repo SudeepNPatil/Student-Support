@@ -4,6 +4,7 @@ import { LoginContext } from '../Context/LoginContext';
 import ModalLogin from '../Modals/ModalLogin';
 import { Link } from 'react-router-dom';
 import ModalLoading from '../Modals/ModalLoading.jsx';
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 export default function Project_Navigator() {
   const { isLogin, data: userData } = useContext(LoginContext);
@@ -44,7 +45,7 @@ export default function Project_Navigator() {
       setmodalloding(true);
 
       await fetch(
-        'https://student-support-s0xt.onrender.com/ProjectNavigator',
+        `${baseurl}/ProjectNavigator`,
         {
           method: 'POST',
           headers: {
@@ -73,7 +74,7 @@ export default function Project_Navigator() {
   const handlcancel = async (email) => {
     setmodalloding(true);
     const res = await fetch(
-      `https://student-support-s0xt.onrender.com/ProjectNavigator/${email}`,
+      `${baseurl}/ProjectNavigator/${email}`,
       {
         method: 'DELETE',
       }

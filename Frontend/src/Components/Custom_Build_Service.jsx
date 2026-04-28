@@ -5,6 +5,7 @@ import { LoginContext } from '../Context/LoginContext';
 import ModalLogin from '../Modals/ModalLogin';
 import { Link } from 'react-router-dom';
 import ModalLoading from '../Modals/ModalLoading';
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 export default function Custom_Build_Service() {
   const { isLogin, data: userData } = useContext(LoginContext);
@@ -44,7 +45,7 @@ export default function Custom_Build_Service() {
       setmodalloding(true);
 
       await fetch(
-        'https://student-support-s0xt.onrender.com/CustomBuildService',
+        `${baseurl}/CustomBuildService`,
         {
           method: 'POST',
           headers: {
@@ -73,7 +74,7 @@ export default function Custom_Build_Service() {
   const handlcancel = async (email) => {
     setmodalloding(true);
     const res = await fetch(
-      `https://student-support-s0xt.onrender.com/CustomBuildService/${email}`,
+      `${baseurl}/CustomBuildService/${email}`,
       {
         method: 'DELETE',
       }

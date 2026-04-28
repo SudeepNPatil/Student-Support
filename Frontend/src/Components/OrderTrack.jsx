@@ -6,7 +6,7 @@ import { TbMoodEmpty } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import ModalOrderTrack from "../Modals/ModalOrderTrack";
 import { LoginContext } from "../Context/LoginContext";
-
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 
 export default function OrderTrack() {
@@ -61,7 +61,7 @@ export default function OrderTrack() {
                                 setselectedorderid(null),
                                 setcancelordermodal(false),
 
-                                await fetch('https://student-support-s0xt.onrender.com/orders/cancle', {
+                                await fetch(`${baseurl}/orders/cancle`, {
                                     method: "POST",
                                     headers: {
                                         "Content-Type": "application/json"

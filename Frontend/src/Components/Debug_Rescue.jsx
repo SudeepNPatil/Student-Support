@@ -5,6 +5,7 @@ import { LoginContext } from '../Context/LoginContext.jsx';
 import ModalLogin from '../Modals/ModalLogin.jsx';
 import { Link } from 'react-router-dom';
 import ModalLoading from '../Modals/ModalLoading.jsx';
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 export default function Debug_Rescue() {
   const { isLogin, data: userData } = useContext(LoginContext);
@@ -52,7 +53,7 @@ export default function Debug_Rescue() {
       form.append('screenshots', e.target.file.files[0]);
 
       const res = await fetch(
-        'https://student-support-s0xt.onrender.com/DebugAndRescue',
+        `${baseurl}/DebugAndRescue`,
         {
           method: 'POST',
           body: form,
@@ -77,7 +78,7 @@ export default function Debug_Rescue() {
   const handlcancel = async (email) => {
     setmodalloding(true);
     const res = await fetch(
-      `https://student-support-s0xt.onrender.com/DebugAndRescue/${email}`,
+      `${baseurl}/DebugAndRescue/${email}`,
       {
         method: 'DELETE',
       }

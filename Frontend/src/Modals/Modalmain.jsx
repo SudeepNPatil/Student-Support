@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { RxCross2 } from 'react-icons/rx';
 import { useContext } from 'react';
 import { LoginContext } from '../Context/LoginContext';
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 const Modalmain = ({ isOpen, onClose, children }) => {
   if (!isOpen) return null;
@@ -10,7 +11,7 @@ const Modalmain = ({ isOpen, onClose, children }) => {
   const { isLogin, setisLogin, data, setdata } = useContext(LoginContext);
 
   const logout = async () => {
-    await fetch('https://student-support-s0xt.onrender.com/User/logout', {
+    await fetch(`${baseurl}/User/logout`, {
       credentials: 'include',
     })
       .then((data) => data.json())
@@ -28,11 +29,16 @@ const Modalmain = ({ isOpen, onClose, children }) => {
       ></RxCross2>
 
       <Link
-        to={`#`}
+        to={`/accountinfo`}
         className="px-6 py-2 font-semibold opacity-80 hover:bg-gray-200 rounded-xl  mt-10"
       >
         Account info
       </Link>
+       {data?.role === 'admin' && 
+       <Link to={`/AdminDashboard`} className="px-6  py-2 font-semibold opacity-80 hover:bg-gray-200 rounded-xl  mt-2">
+              Admin Dashboard
+        </Link>
+        }
 
       <Link
         to={`/Project/Order`}
@@ -45,7 +51,7 @@ const Modalmain = ({ isOpen, onClose, children }) => {
         onClick={logout}
         className="px-6  py-2 font-semibold opacity-80 hover:bg-gray-200 rounded-xl  mt-2"
       >
-        Logout
+        Log out
       </Link>
     </div>
   );

@@ -9,6 +9,7 @@ import { MdError } from 'react-icons/md';
 import { RxCross1 } from 'react-icons/rx';
 import { MdBlockFlipped } from 'react-icons/md';
 import { TbLockOpen } from 'react-icons/tb';
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 export default function Login() {
   const { isLogin, setisLogin, setdata } = useContext(LoginContext);
@@ -51,7 +52,7 @@ export default function Login() {
     setloadingmodal(true);
     try {
       const res = await fetch(
-        'https://student-support-s0xt.onrender.com/User/login',
+        `${baseurl}/User/login`,
         {
           method: 'POST',
           credentials: 'include',

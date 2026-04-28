@@ -9,6 +9,7 @@ import { LoginContext } from "../Context/LoginContext";
 import { OrderContext } from "../Context/OrderContext";
 import ModalConfirmOrder from "../Modals/ModalConfirmOrder";
 import ModalLogin from "../Modals/ModalLogin";
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 export default function ProductDetails() {
 
@@ -29,7 +30,7 @@ export default function ProductDetails() {
 
         addToCart(getdata);
 
-        await fetch('https://student-support-s0xt.onrender.com/cart', {
+        await fetch(`${baseurl}/cart`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -135,7 +136,7 @@ export default function ProductDetails() {
                     (
                         addToOrder(getdata),
 
-                        await fetch('https://student-support-s0xt.onrender.com/orders', {
+                        await fetch(`${baseurl}/orders`, {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"

@@ -12,6 +12,7 @@ import { useState } from 'react';
 import ModalChatbot from './Modals/ModalChatbot.jsx';
 import { HiArrowCircleUp } from 'react-icons/hi';
 import { useRef } from 'react';
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 function App() {
   const { setisLogin, setdata } = useContext(LoginContext);
@@ -25,7 +26,7 @@ function App() {
   const [input, setInput] = useState('');
 
   useEffect(() => {
-    fetch('https://student-support-s0xt.onrender.com/User/me', {
+    fetch(`${baseurl}/User/me`, {
       credentials: 'include',
     })
       .then(async (res) => {
@@ -65,7 +66,7 @@ function App() {
 
     try {
       const res = await fetch(
-        'https://student-support-s0xt.onrender.com/chatbot',
+       `${baseurl}/chatbot`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

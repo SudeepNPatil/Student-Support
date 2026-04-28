@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 export default function useGetallProducts() {
 
@@ -8,7 +9,7 @@ export default function useGetallProducts() {
 
     useEffect(() => {
 
-        fetch('https://student-support-s0xt.onrender.com/Project')
+        fetch(`${baseurl}/Project`)
             .then(data => data.json())
             .then(data => setallProducts(data))
 

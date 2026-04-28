@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 export default function Productdetails() {
 
@@ -13,7 +14,7 @@ export default function Productdetails() {
 
         if (!category) return;
 
-        fetch(`https://student-support-s0xt.onrender.com/Project/${category}`)
+        fetch(`${baseurl}/Project/${category}`)
             .then(data => data.json())
             .then(data => gettargetdata(data))
             .catch(error => console.error("failed to load the data"));

@@ -5,6 +5,7 @@ import { WishlistContext } from "../Context/WishlistContext";
 import { CartContext } from "../Context/CartContext";
 import { Link } from "react-router-dom";
 import { LoginContext } from "../Context/LoginContext";
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 
 export default function Wishlist() {
@@ -32,7 +33,7 @@ export default function Wishlist() {
 
                                 <button onClick={async () => (
                                     addToCart(item), RemoveWishlistItem(item),
-                                    await fetch('https://student-support-s0xt.onrender.com/cart', {
+                                    await fetch(`${baseurl}/cart`, {
                                         method: "POST",
                                         headers: {
                                             "Content-Type": "application/json"

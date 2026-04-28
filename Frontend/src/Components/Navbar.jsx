@@ -10,6 +10,7 @@ import Modalmain from '../Modals/Modalmain';
 import { HiChevronRight } from 'react-icons/hi';
 import ModalAccountinfo from '../Modals/ModalAccoutinfo';
 import ModalLoading from '../Modals/ModalLoading';
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 export default function Navbar() {
   const [isopen, setopen] = useState(false);
@@ -30,7 +31,7 @@ export default function Navbar() {
   const logout = async () => {
     setloadingmodal(true);
 
-    await fetch('https://student-support-s0xt.onrender.com/User/logout', {
+    await fetch(`${baseurl}/User/logout`, {
       credentials: 'include',
     })
       .then((data) => data.json())
@@ -63,8 +64,8 @@ export default function Navbar() {
         <Link to="/Contact" className="hover:text-yellow-400">
           Contact
         </Link>
-        <Link to="/Admin" className="hover:text-yellow-400">
-          Admin
+        <Link to="/About" className="hover:text-yellow-400">
+          About
         </Link>
         {isLogin ? (
           <div className="flex flex-row justify-between sm:gap-2 lg:gap-5 items-center">
@@ -131,10 +132,10 @@ export default function Navbar() {
             Contact
           </Link>
           <Link
-            to="/Admin"
+            to="/About"
             className="w-auto h-auto block bg-[#00000002] py-3 px-2 rounded-xl hover:bg-blue-600"
           >
-            Admin
+            About
           </Link>
           {isLogin ? (
             <div
@@ -159,18 +160,22 @@ export default function Navbar() {
           )}
 
           <ModalAccountinfo isOpen={modal} onClose={() => setmodal(false)}>
-            <h1 className="text-sm border pl-5 mt-10 px-5 py-2 rounded-lg bg-[#00000002]  hover:border-blue-500">
+            <Link to={`/accountinfo`} className="text-sm border pl-5 mt-10 px-5 py-2 rounded-lg bg-[#00000002]  hover:border-blue-500">
               Account info
-            </h1>
-            <h1 className="text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-blue-500">
+            </Link>
+            <Link to={`/Project/Order`} className="text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-blue-500">
               Your Orders
-            </h1>
+            </Link>
+            {data?.role === 'admin' && <Link to={`/AdminDashboard`} className="text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-blue-500">
+              Admin Dashboard
+            </Link>}
             <Link
               onClick={logout}
               className="text-sm border pl-5 mt-2 px-5 py-2 rounded-lg bg-[#00000002] hover:border-red-500 hover:shadow-inner hover:shadow-red-300"
             >
               Logout
             </Link>
+            
           </ModalAccountinfo>
         </div>
       </div>

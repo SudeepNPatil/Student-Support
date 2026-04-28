@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+const baseurl = `${import.meta.env.VITE_API_URL}`;
 
 export default function useGetProduct() {
 
@@ -12,7 +13,7 @@ export default function useGetProduct() {
 
         if (!projectId) return;
 
-        fetch(`https://student-support-s0xt.onrender.com/Project/${category}/${projectId}`)
+        fetch(`${baseurl}/Project/${category}/${projectId}`)
             .then(data => data.json())
             .then(data => setgetdata(data))
 

@@ -29,6 +29,9 @@ import Ideas from './Components/Admin/Ideas.jsx';
 import Debugs from './Components/Admin/Debugs.jsx';
 import Session from './Components/Admin/Session.jsx';
 import Dashboard from './Components/Admin/Dashboard.jsx';
+import AccountInfo from './Components/Account_info.jsx';
+
+const AboutPage = lazy(()=> import('./Components/AboutPage.jsx'));
 
 const Contact = lazy(() => import('./Components/Contact.jsx'));
 const Custom_Build_Service = lazy(() =>
@@ -53,11 +56,11 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/Home',
+        path: 'Home',
         element: <Home />,
       },
       {
-        path: '/Project',
+        path: 'Project',
         element: <Project />,
         children: [
           {
@@ -95,15 +98,23 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: '/Contact',
+        path: 'Contact',
         element: (
           <Suspense fallback={<Loding />}>
             <Contact />
           </Suspense>
         ),
       },
+       {
+        path: 'About',
+        element: (
+          <Suspense fallback={<Loding />}>
+            <AboutPage />
+          </Suspense>
+        ),
+      },
       {
-        path: '/Custom_Build_Service',
+        path: 'Custom_Build_Service',
         element: (
           <Suspense fallback={<Loding />}>
             <Custom_Build_Service />
@@ -111,7 +122,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/Project_Navigator',
+        path: 'Project_Navigator',
         element: (
           <Suspense fallback={<Loding />}>
             <Project_Navigator />
@@ -119,17 +130,21 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/Debug_Rescue',
+        path: 'Debug_Rescue',
         element: (
           <Suspense fallback={<Loding />}>
             <Debug_Rescue />
           </Suspense>
         ),
       },
+    {
+    path:'accountinfo',
+    element: <AccountInfo />
+    },
     ],
   },
   {
-    path: '/Login',
+    path: 'Login',
     element: (
       <Suspense fallback={<Loding />}>
         <Login />
@@ -137,7 +152,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/Signup',
+    path: 'Signup',
     element: (
       <Suspense fallback={<Loding />}>
         <Signup />
@@ -145,7 +160,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/Admin',
+    path: 'Admin',
     element: (
       <Suspense fallback={<Loding />}>
         <AdminLogin />
@@ -156,6 +171,14 @@ const router = createBrowserRouter([
     path: 'AdminDashboard',
     element: <Admin />,
     children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+      {
+       path: 'Dashboard',
+        element: <Dashboard />,
+      },
       {
         path: 'Users',
         element: <User />,
@@ -171,11 +194,6 @@ const router = createBrowserRouter([
       {
         path: 'Debugs',
         element: <Debugs />,
-      },
-      {
-        path: 'Dashboard',
-        index: true,
-        element: <Dashboard />,
       },
       {
         path: 'Session',
