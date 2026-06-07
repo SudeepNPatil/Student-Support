@@ -17,7 +17,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'https://student-sup.netlify.app'],
+    origin: ['http://localhost:5173',"https://localhost","capacitor://localhost", 'https://student-sup.netlify.app'],
     credentials: true,
   })
 );
