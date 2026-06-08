@@ -20,11 +20,18 @@ export default function AllProduct() {
 
     const allProduct = useGetallProducts();
 
+    console.log(allProduct);
+
     useEffect(() => {
         if (allProduct.length > 0) {
             setProducts(allProduct);
         }
     }, [allProduct]);
+
+    if (!Array.isArray(allProduct)) {
+    console.log("allProduct is not an array:", allProduct);
+    return <Loding />;
+}
 
     if (allProduct.length === 0) {
         return <Loding />
@@ -85,7 +92,7 @@ export default function AllProduct() {
 
             <div className="flex flex-wrap justify-center gap-10 py-7 h-[75vh] overflow-y-scroll no-scrollbar sm:hidden">
 
-                {allProduct.map((item, index) => {
+                {allProduct?.map((item, index) => {
 
                     const isLiked = WishlistItem.some(wish => wish.projectId === item.projectId)
 

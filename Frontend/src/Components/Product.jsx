@@ -18,7 +18,7 @@ export default function Product() {
 
     const targetdata = useProductdetails();
 
-    if (targetdata.length == 0) {
+    if (targetdata.length === 0) {
         return <Loding />
     }
 
@@ -26,7 +26,7 @@ export default function Product() {
         <>
             <div className="hidden sm:flex flex-row flex-wrap gap-10 py-10 justify-center max-h-screen overflow-y-scroll scroll-smooth no-scrollbar">
 
-                {targetdata.map((item, index) => {
+                {targetdata?.map((item, index) => {
 
                     const isLiked = WishlistItem.some((wish) => wish.projectId === item.projectId);
 
@@ -79,7 +79,7 @@ export default function Product() {
 
             <div className="flex flex-wrap justify-center gap-10 py-7 h-[75vh] overflow-y-scroll no-scrollbar sm:hidden">
 
-                {targetdata.map((item, index) => {
+                {targetdata?.map((item, index) => {
 
                     const isLiked = WishlistItem.some((wish) => wish.projectId === item.projectId);
 

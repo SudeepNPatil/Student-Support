@@ -42,7 +42,7 @@ export default function Project() {
             <h2 className="xl:mt-8 sm:mt-5 font-bold text-xl text-center">Catagories</h2>
             <hr className="hidden xl:block xl:w-full mt-5" />
 
-            {categories.map(({ label, to, icon }) => (
+            {categories?.map(({ label, to, icon }) => (
               <Link
                 key={label}
                 to={to}
@@ -120,7 +120,7 @@ export default function Project() {
           <MdArrowBackIosNew size={30} className="absolute top-1/2 right-0 border rounded-full p-2" />
           <h1 className="text-center mt-5 min-w-20 font-medium text-lg tracking-wide font-serif">Catagories</h1>
 
-          {categories.map(({ label, to, icon }) => (
+          {categories?.map(({ label, to, icon }) => (
             <Link
               key={label}
               to={to}

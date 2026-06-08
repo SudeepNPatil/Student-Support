@@ -15,7 +15,5 @@ export default function useGetallProducts() {
 
     }, [])
 
-    allProducts.quantity = 1;
-
     return allProducts;
 }
